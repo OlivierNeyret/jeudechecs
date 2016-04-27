@@ -1,3 +1,11 @@
 package fr.iutvalence.info.dut.m2107;
-public class IHM_Joueur {
+
+/**
+ * L'interface avec laquelle le joueur agira.
+ * @author olivier
+ *
+ */
+
+public class IHM_Joueur
+{
 }
