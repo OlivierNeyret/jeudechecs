@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="fr.iutvalence.info.dut.m2107.Main" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="129" x="290" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="2" language="java" name="fr.iutvalence.info.dut.m2107.Difficulte" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Difficulte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="129" x="604" y="493"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="3" language="java" name="fr.iutvalence.info.dut.m2107.Reine" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Reine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="166" x="773" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="fr.iutvalence.info.dut.m2107.IHM_Joueur" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/IHM_Joueur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="129" x="459" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="fr.iutvalence.info.dut.m2107.Joueur" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Joueur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="129" x="628" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="fr.iutvalence.info.dut.m2107.Tour" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Tour.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="166" x="979" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="fr.iutvalence.info.dut.m2107.Partie" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Partie.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="216" x="797" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="fr.iutvalence.info.dut.m2107.Pion" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Pion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="166" x="1185" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="fr.iutvalence.info.dut.m2107.IA" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/IA.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="129" x="604" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="10" language="java" name="fr.iutvalence.info.dut.m2107.Type" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Type.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="129" x="1053" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="11" language="java" name="fr.iutvalence.info.dut.m2107.Cavalier" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Cavalier.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="166" x="1391" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="fr.iutvalence.info.dut.m2107.Roi" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Roi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="166" x="1597" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="fr.iutvalence.info.dut.m2107.Deplacement" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Deplacement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="129" x="1222" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="fr.iutvalence.info.dut.m2107.Fou" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Fou.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="166" x="1803" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="fr.iutvalence.info.dut.m2107.Piece" project="jeudechecs" 
+    file="/jeudechecs/src/fr/iutvalence/info/dut/m2107/Piece.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="166" x="1391" y="107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="20">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <association id="21">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="22" name="difficulte"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
