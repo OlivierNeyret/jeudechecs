@@ -11,11 +11,11 @@ public class Partie
 {
 
 	/**
-	 * Affiche tous les déplacements possibles pour une pièce.
+	 * Affiche tous les deplacements possibles pour une piece.
 	 * 
 	 * @param Piece
-	 *            Indique la pièce sur laquelle on veut connaître ses
-	 *            déplacements.
+	 *            Indique la piece sur laquelle on veut connaitre ses
+	 *            deplacements.
 	 */
 	public void AfficherDeplacementsPossible(int Piece)
 	{

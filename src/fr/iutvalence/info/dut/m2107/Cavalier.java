@@ -1,5 +1,10 @@
-package fr.iutvalence.info.dut.m2107;
-
+  package fr.iutvalence.info.dut.m2107;
+  
+/**
+ * Deplacement: se deplace en L, de deux cases en ligne droite puis de une sur le coté
+ * @author lucianor
+ *
+ */
 public class Cavalier extends Piece
 {
 
