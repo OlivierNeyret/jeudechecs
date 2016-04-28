@@ -1,4 +1,12 @@
 package fr.iutvalence.info.dut.m2107;
+/**
+ * Deplacements: 	1 case toute direction 
+ * 					si echec le roi doit etre protégé
+ * 					si plus de roi partie fini
+ * 					si pat egalité
+ * @author pasquiop
+ *
+ */
 public class Roi extends Piece {
 
 	public Deplacement[] deplacement() {
