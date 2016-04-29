@@ -10,12 +10,25 @@ public class Deplacement {
 	/**
 	 * Absisse d'arrivee de la piece
 	 */
-	private int abscisse;
+	private final int abscisse;
 	
 	/**
 	 * Ordonnee d'arrivee de la piece
 	 */
-	private int ordonnee;
+	private final int ordonnee;
+
+	
+	/**
+	 * Cree un deplacement a partir des coorodonnees donnees
+	 * @param abscisse l'abscisse du deplacement
+	 * @param ordonnee l'ordonnee du deplacement
+	 */
+	public Deplacement(int abscisse, int ordonnee)
+	{
+		this.abscisse = abscisse;
+		this.ordonnee = ordonnee;
+	}
+
 
 	/**
 	 * @return renvoie l'abscisse du deplacement
