@@ -7,6 +7,9 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class IA extends Joueur {
 
+	/**
+	 * Difficulte de l'IA 
+	 */
 	private Difficulte difficulte;
 	
 
@@ -20,5 +23,5 @@ public class IA extends Joueur {
 		// TODO - implement IA.deplacer
 		throw new UnsupportedOperationException();
 	}
-
+	
 }
