@@ -7,7 +7,23 @@ package fr.iutvalence.info.dut.m2107;
  */
 public abstract class Piece
 {
-	private Couleur couleur;
+	private final Couleur couleur;
+
+	private final Type type;
+	
+	
+	
+	//TODO comment
+	/**
+	 * Cree
+	 * @param couleur
+	 * @param type
+	 */
+	public Piece(Couleur couleur, Type type)
+	{
+		this.couleur = couleur;
+		this.type = type;
+	}
 
 	/**
 	 * recupere le type de la piece
