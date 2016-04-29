@@ -10,18 +10,41 @@ public class IA extends Joueur {
 	/**
 	 * Difficulte de l'IA 
 	 */
-	private Difficulte difficulte;
+	private final Difficulte difficulte;
 	
+	/**
+	 * Cree une IA avec une difficulte donnee
+	 * @param difficulte difficulte de l'IA
+	 */
+	public IA(Difficulte difficulte)
+	{
+		super();
+		this.difficulte = difficulte;
+	}
+
+
+
 
 	/**
 	 * Redefinition de Joueur.deplacer dans laquelle l'IA choisira le deplacement en
 	 * fonction de la difficulté et de l'état de la partie
-	 * @param Piece La piece a deplacer
-	 * @param Deplacement Le deplacement que la piece doit effectuer
+	 * @param piece La piece a deplacer
+	 * @param deplacement Le deplacement que la piece doit effectuer
 	 */
-	public void deplacer(int Piece, int Deplacement) {
+	public void deplacer(Piece piece, Deplacement deplacement) {
 		// TODO - implement IA.deplacer
 		throw new UnsupportedOperationException();
+	}
+
+
+
+
+	/**
+	 * @return renvoie la difficulte de l'IA
+	 */
+	public Difficulte getDifficulte()
+	{
+		return this.difficulte;
 	}
 	
 }
