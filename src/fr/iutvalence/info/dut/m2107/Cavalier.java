@@ -10,6 +10,7 @@ public class Cavalier extends Piece
 
 	public Deplacement[] deplacement()
 	{
+
 		// TODO - implement Cavalier.deplacement
 		throw new UnsupportedOperationException();
 	}

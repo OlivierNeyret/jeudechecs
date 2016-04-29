@@ -8,14 +8,6 @@ package fr.iutvalence.info.dut.m2107;
 public abstract class Piece
 {
 	private Couleur couleur;
-	/**
-	 * l'abscisse actuelle de la piece
-	 */
-	private int abscisse;
-	/**
-	 * l'ordonnée actuelle de la piece
-	 */
-	private int ordonnee;
 
 	/**
 	 * recupere le type de la piece

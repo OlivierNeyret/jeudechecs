@@ -10,6 +10,7 @@ public class Fou extends Piece {
 
 	public Deplacement[] deplacement() {
 		// TODO - implement Fou.deplacement
+		
 		throw new UnsupportedOperationException();
 	}
 
