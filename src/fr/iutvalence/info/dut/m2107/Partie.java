@@ -9,6 +9,43 @@ package fr.iutvalence.info.dut.m2107;
 
 public class Partie
 {
+	
+	/**
+	 * Le joueur qui joue les blancs
+	 */
+	private Joueur blanc;
+	/**
+	 * Le joueur qui joue les noirs
+	 */
+	private Joueur noir;
+	/**
+	 * Le plateau de la partie
+	 */
+	private Plateau plateau;
+	
+	/**
+	 * Creer une partie a deux joueurs humains
+	 * @param plateau
+	 */
+	public Partie(Plateau plateau)
+	{
+		this.blanc = new Joueur(Couleur.Blanc);
+		this.noir = new Joueur(Couleur.Noir);
+		this.plateau = plateau;
+	}
+	
+	/**
+	 * Creer une partie contre l ordi
+	 * @param plateau
+	 * @param difficulteChoisie la difficulte choisie par le joueur humain
+	 * 
+	 */
+	public Partie(Plateau plateau, Difficulte difficulteChoisie)
+	{
+		this.blanc = new Joueur(Couleur.Blanc);
+		this.noir = new IA(difficulteChoisie);
+		this.plateau = plateau;
+	}
 
 	/**
 	 * Affiche tous les deplacements possibles pour une piece.
