@@ -7,15 +7,6 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Joueur
 {
-	/**
-	 * Constante contenant le nombre maximal de piece de chaque joueur
-	 */
-	private final static int nombreDePieces = 16;
-	
-	/**
-	 * Represente toutes les pieces que possede le joueur
-	 */
-	protected Piece pieceDuJoueur[] = new Piece[nombreDePieces];
 	private Couleur couleur;
 	
 	/**
@@ -28,11 +19,11 @@ public class Joueur
 	}
 
 	/**
-	 * Choix de la piece a déplacer par le joueur
+	 * Choix de la piece a déplacer par le joueur (lien avec IHM)
 	 * 
-	 * @param piece La piece choisie par le joueur
+	 * @param position La position de la piece choisie par le joueur
 	 */
-	public void choisirPiece(Piece piece)
+	public void choisirPiece(Position position)
 	{
 		// TODO
 	}
@@ -50,14 +41,4 @@ public class Joueur
 		// TODO - implement Joueur.deplacer
 		throw new UnsupportedOperationException();
 	}
-	
-	/**
-	 * Donne le nombre max de piece du joueur
-	 * @return Le nombre de piece max du joueur
-	 */
-	public int getNombreDePieces()
-	{
-		return nombreDePieces;
-	}
-
 }

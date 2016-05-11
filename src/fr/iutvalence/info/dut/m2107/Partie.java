@@ -27,24 +27,32 @@ public class Partie
 	 * Creer une partie a deux joueurs humains
 	 * @param plateau
 	 */
-	public Partie(Plateau plateau)
+	public Partie()
 	{
 		this.blanc = new Joueur(Couleur.Blanc);
 		this.noir = new Joueur(Couleur.Noir);
-		this.plateau = plateau;
+		this.plateau = new Plateau();
 	}
 	
 	/**
 	 * Creer une partie contre l ordi
-	 * @param plateau
+	 * @param couleurJoueur la couleur choisie par le joueur humain
 	 * @param difficulteChoisie la difficulte choisie par le joueur humain
 	 * 
 	 */
-	public Partie(Plateau plateau, Difficulte difficulteChoisie)
+	public Partie(Couleur couleurJoueur, Difficulte difficulteChoisie)
 	{
-		this.blanc = new Joueur(Couleur.Blanc);
-		this.noir = new IA(difficulteChoisie);
-		this.plateau = plateau;
+		if (couleurJoueur == Couleur.Blanc)
+		{	
+			this.blanc = new Joueur(Couleur.Blanc);
+			this.noir = new IA(difficulteChoisie);
+		}
+		else
+		{
+			this.noir = new Joueur(Couleur.Noir);
+			this.blanc = new IA(difficulteChoisie);
+		}
+		this.plateau =  new Plateau();
 	}
 
 	/**
