@@ -55,9 +55,6 @@ public class IA extends Joueur
 		
 		if(this.difficulte==Difficulte.Facile)
 		{
-			Random rand = new Random();
-			int nombre = rand.nextInt(16+1);
-			//pieceChoisie = this.pieceDeIA[nombre];
 			//Choisir un deplacement
 		}
 		else if(this.difficulte==Difficulte.Moyen)
