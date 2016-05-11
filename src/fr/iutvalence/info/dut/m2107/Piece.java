@@ -40,7 +40,7 @@ public abstract class Piece
 	 * nous permet de voir les deplacements possibles de la piece
 	 * @return un tableau de tout les deplacements possibles
 	 */
-	public Deplacement[] deplacement()
+	public Position[] deplacement()
 	{
 		// TODO - implement Piece.deplacement
 		throw new UnsupportedOperationException();

@@ -16,7 +16,7 @@ public class Tour extends Piece {
 		super(couleur, Type.Tour);
 	}
 
-	public Deplacement[] deplacement() {
+	public Position[] deplacement() {
 		// TODO - implement Tour.deplacement
 		throw new UnsupportedOperationException();
 	}

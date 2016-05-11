@@ -17,7 +17,7 @@ public class Cavalier extends Piece
 		super(couleur,Type.Cavalier);
 	}
 
-	public Deplacement[] deplacement()
+	public Position[] deplacement()
 	{
 
 		// TODO - implement Cavalier.deplacement

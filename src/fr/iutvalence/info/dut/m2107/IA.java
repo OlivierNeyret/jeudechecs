@@ -37,7 +37,7 @@ public class IA extends Joueur
 	 * @param deplacement
 	 *            Le deplacement que la piece doit effectuer
 	 */
-	public void deplacer(Piece piece, Deplacement deplacement)
+	public void deplacer(Piece piece, Position deplacement)
 	{
 		// TODO - implement IA.deplacer
 		//Pas besoin de la redefinir si la methode IAjoue l appel
@@ -51,7 +51,7 @@ public class IA extends Joueur
 	public void IAjoue()
 	{
 		Piece pieceChoisie;
-		Deplacement deplacementChoisi;
+		Position deplacementChoisi;
 		
 		if(this.difficulte==Difficulte.Facile)
 		{

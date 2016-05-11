@@ -15,7 +15,7 @@ public class Reine extends Piece {
 		super(couleur, Type.Reine);
 	}
 
-	public Deplacement[] deplacement() {
+	public Position[] deplacement() {
 		// TODO - implement Reine.deplacement
 		throw new UnsupportedOperationException();
 	}

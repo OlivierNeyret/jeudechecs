@@ -16,7 +16,7 @@ public class Pion extends Piece {
 		super(couleur, Type.Pion);
 	}
 
-	public Deplacement[] deplacement() {
+	public Position[] deplacement() {
 		// TODO - implement Pion.deplacement
 		throw new UnsupportedOperationException();
 	}

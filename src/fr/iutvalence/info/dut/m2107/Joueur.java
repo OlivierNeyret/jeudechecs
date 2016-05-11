@@ -24,27 +24,13 @@ public class Joueur
 	 */
 	public Joueur(Couleur couleur0)
 	{	
-		this.pieceDuJoueur[0] = new Tour();
-		this.pieceDuJoueur[1] = new Cavalier();
-		this.pieceDuJoueur[2] = new Fou();
-		this.pieceDuJoueur[3] = new Roi();
-		this.pieceDuJoueur[4] = new Reine();
-		this.pieceDuJoueur[5] = new Fou();
-		this.pieceDuJoueur[6] = new Cavalier();
-		this.pieceDuJoueur[7] = new Tour();
-		int i;
-		for(i=nombreDePieces/2;i<nombreDePieces;i++)
-		{
-			this.pieceDuJoueur[i]= new Pion();
-		}
 		this.couleur = couleur0;
 	}
 
 	/**
-	 * Choix de la piece par le joueur
+	 * Choix de la piece a déplacer par le joueur
 	 * 
-	 * @param piece
-	 *            La piece choisie par le joueur
+	 * @param piece La piece choisie par le joueur
 	 */
 	public void choisirPiece(Piece piece)
 	{
@@ -57,9 +43,9 @@ public class Joueur
 	 * @param piece
 	 *            est la piece que l'on souhaite deplacer
 	 * @param deplacement
-	 *            est le deplacement voulu pour la piece
+	 *            est le deplacement voulu pour la piece choisi parmis les déplacements posibbles definis dans la pièce.
 	 */
-	public void deplacer(Piece piece, Deplacement deplacement)
+	public void deplacer(Piece piece, Position deplacement)
 	{
 		// TODO - implement Joueur.deplacer
 		throw new UnsupportedOperationException();

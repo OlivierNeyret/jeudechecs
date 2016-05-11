@@ -18,7 +18,7 @@ public class Roi extends Piece {
 		super(couleur, Type.Roi);
 	}
 
-	public Deplacement[] deplacement() {
+	public Position[] deplacement() {
 		// TODO - implement Roi.deplacement
 		throw new UnsupportedOperationException();
 	}
