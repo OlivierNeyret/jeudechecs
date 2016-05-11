@@ -46,4 +46,13 @@ public abstract class Piece
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * renvoie la couleur de la piece
+	 * @return noir ou blanc selon la couleur de la piece
+	 */
+	public Couleur getCouleur()
+	{
+		return this.couleur;
+	}
+
 }

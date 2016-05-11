@@ -21,7 +21,7 @@ public class Partie
 	/**
 	 * Le plateau de la partie
 	 */
-	private Plateau plateau;
+	private static Plateau plateau;
 	
 	/**
 	 * Creer une partie a deux joueurs humains
@@ -92,5 +92,11 @@ public class Partie
 	{
 		// TODO - implement Partie.Promotion
 		throw new UnsupportedOperationException();
+	}
+
+	public static Plateau getPlateau()
+	{
+		// TODO Auto-generated method stub
+		return plateau;
 	}
 }
