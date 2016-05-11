@@ -35,15 +35,6 @@ public abstract class Piece
 		throw new UnsupportedOperationException();
 	}
 	
-	/**
-	 * on défini une couleur (noir/blanc) pour la piece
-	 * @param a est la couleur de la piece 
-	 */
-	
-	public Piece(Couleur a)
-	{
-		this.couleur = a;
-	}
 	
 	/**
 	 * nous permet de voir les deplacements possibles de la piece

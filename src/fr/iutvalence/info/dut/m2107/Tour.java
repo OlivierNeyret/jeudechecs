@@ -7,6 +7,15 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Tour extends Piece {
 
+	/**
+	 * Cree une tour de la couleur donnee
+	 * @param couleur
+	 */
+	public Tour(Couleur couleur)
+	{
+		super(couleur, Type.Tour);
+	}
+
 	public Deplacement[] deplacement() {
 		// TODO - implement Tour.deplacement
 		throw new UnsupportedOperationException();

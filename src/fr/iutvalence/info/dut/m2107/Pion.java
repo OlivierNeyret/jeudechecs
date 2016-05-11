@@ -7,6 +7,15 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Pion extends Piece {
 
+	/**
+	 * Cree un pion de la couleur donnee
+	 * @param couleur
+	 */
+	public Pion(Couleur couleur)
+	{
+		super(couleur, Type.Pion);
+	}
+
 	public Deplacement[] deplacement() {
 		// TODO - implement Pion.deplacement
 		throw new UnsupportedOperationException();

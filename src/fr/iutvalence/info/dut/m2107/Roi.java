@@ -9,6 +9,15 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Roi extends Piece {
 
+	/**
+	 * Cree un roi de la couleur donnee
+	 * @param couleur
+	 */
+	public Roi(Couleur couleur)
+	{
+		super(couleur, Type.Roi);
+	}
+
 	public Deplacement[] deplacement() {
 		// TODO - implement Roi.deplacement
 		throw new UnsupportedOperationException();

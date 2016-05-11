@@ -8,6 +8,15 @@ package fr.iutvalence.info.dut.m2107;
 public class Fou extends Piece {
 
 
+	/**
+	 * Cree un fou de la couleur donnee
+	 * @param couleur
+	 */
+	public Fou(Couleur couleur)
+	{
+		super(couleur, Type.Fou);
+	}
+
 	public Deplacement[] deplacement() {
 		// TODO - implement Fou.deplacement
 		

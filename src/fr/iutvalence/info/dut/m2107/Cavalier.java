@@ -8,6 +8,15 @@
 public class Cavalier extends Piece
 {
 
+	/**
+	 * Cree un cavalier de la couleur donnee
+	 * @param couleur
+	 */
+	public Cavalier(Couleur couleur)
+	{
+		super(couleur,Type.Cavalier);
+	}
+
 	public Deplacement[] deplacement()
 	{
 

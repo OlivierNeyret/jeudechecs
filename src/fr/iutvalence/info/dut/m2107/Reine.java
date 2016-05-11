@@ -6,6 +6,15 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Reine extends Piece {
 
+	/**
+	 * Cree une reine de la couleur donnee
+	 * @param couleur
+	 */
+	public Reine(Couleur couleur)
+	{
+		super(couleur, Type.Reine);
+	}
+
 	public Deplacement[] deplacement() {
 		// TODO - implement Reine.deplacement
 		throw new UnsupportedOperationException();
