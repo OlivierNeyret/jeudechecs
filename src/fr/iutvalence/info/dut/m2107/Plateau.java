@@ -15,11 +15,11 @@ public class Plateau
 	private Piece[][] plateau;
 	
 	/**
-	 * crée un plateau avec les pièces dessus, en position de départ
+	 * crï¿½e un plateau avec les piï¿½ces dessus, en position de dï¿½part
 	 */
 	public Plateau()
 	{
-		this.plateau = new Piece[7][7];
+		this.plateau = new Piece[8][8];
 		
 		this.plateau[0][7] = new Tour(Couleur.Blanc);
 		this.plateau[1][7] = new Cavalier(Couleur.Blanc);
@@ -32,7 +32,7 @@ public class Plateau
 		
 		for(int i=0;i<8;i++)
 		{
-			this.plateau[i][6]= new Pion(Couleur.Blanc);
+			this.plateau[i][6]= new Pion(Couleur.Blanc, Type.Pion);
 		}
 		
 		this.plateau[0][0] = new Tour(Couleur.Noir);
@@ -46,9 +46,15 @@ public class Plateau
 		
 		for(int i=0;i<8;i++)
 		{
-			this.plateau[i][1]= new Pion(Couleur.Noir);
+			this.plateau[i][1]= new Pion(Couleur.Noir, Type.Pion);
 		}
-		
+		for(int i=0;i<8;i++)
+		{
+			for(int j=2;j<6;j++)
+			{
+				this.plateau[i][j] = new Pion(Couleur.None, Type.None);
+			}
+		}
 	}
 	
 	/**
@@ -77,5 +83,22 @@ public class Plateau
 	public Piece getPieceAtPosition(Position i)
 	{
 		return (this.plateau[i.getOrdonnee()][i.getAbscisse()]);
+	}
+
+	/**
+	 * Affiche le plateau avec les pieces en ASCII
+	 */
+	public String toString()
+	{
+		String result = "";
+		for (int row = 0; row < 8; row++)
+		{
+			for (int column = 0; column < 8; column++)
+			{
+				result += this.plateau[column][row].toString();
+			}
+			result += "\n";
+		}
+		return result;
 	}
 }

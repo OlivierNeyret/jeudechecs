@@ -27,5 +27,9 @@ public enum Type {
 	/**
 	 * represente le pion sur l'echiquier
 	 */
-	Pion
+	Pion,
+	/**
+	 * represente l'absence de piece sur l'echiquier
+	 */
+	None;
 }

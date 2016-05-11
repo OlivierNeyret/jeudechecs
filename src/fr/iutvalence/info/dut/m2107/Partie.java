@@ -101,4 +101,12 @@ public class Partie
 		// TODO - implement Partie.Promotion
 		throw new UnsupportedOperationException();
 	}
+	
+	/**
+	 * Le deroulement de la partie
+	 */
+	public void jouer()
+	{
+		System.out.println(plateau.toString());
+	}
 }
