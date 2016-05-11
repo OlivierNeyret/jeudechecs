@@ -8,7 +8,9 @@ package fr.iutvalence.info.dut.m2107;
 public class Plateau
 {
 	/**
-	 * le plateau du jeu 
+	 * Le plateau du jeu
+	 * Contient les references de chaque piece encore en jeu
+	 * S il n y a pas de piece sur une case, la case vaut NULL
 	 */
-	private Type[][] plateau;
+	private Piece[][] plateau;
 }
