@@ -3,7 +3,7 @@ package fr.iutvalence.info.dut.m2107;
 import java.util.Random;
 
 /**
- * Classe qui gere la façon dont l'intelligence artificielle (IA) va jouer
+ * Classe qui gere la faï¿½on dont l'intelligence artificielle (IA) va jouer
  * 
  * @author Xavier
  *
@@ -30,7 +30,7 @@ public class IA extends Joueur
 
 	/**
 	 * Redefinition de Joueur.deplacer dans laquelle l'IA choisira le
-	 * deplacement en fonction de la difficulté et de l'état de la partie
+	 * deplacement en fonction de la difficultï¿½ et de l'ï¿½tat de la partie
 	 * 
 	 * @param piece
 	 *            La piece a deplacer
@@ -55,15 +55,12 @@ public class IA extends Joueur
 		
 		if(this.difficulte==Difficulte.Facile)
 		{
-			Random rand = new Random();
-			int nombre = rand.nextInt(this.getNombreDePieces()+1);
-			pieceChoisie = this.pieceDuJoueur[nombre];
 			//Choisir un deplacement
 		}
 		else if(this.difficulte==Difficulte.Moyen)
 		{
 			/*
-			 * Parcourir toutes les pièces
+			 * Parcourir toutes les piï¿½ces
 			 * Pour chaque piece essayer chaque deplacement possible et calculer le meilleur coup
 			 * retenir le meilleur coup de chaque piece
 			 * comparer les meilleurs coups et choisir le meilleur coup

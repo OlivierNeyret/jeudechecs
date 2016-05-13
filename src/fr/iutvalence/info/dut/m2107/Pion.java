@@ -1,6 +1,6 @@
 package fr.iutvalence.info.dut.m2107;
 /**
- * Deplacements: 	2 cases avant si non deplacé
+ * Deplacements: 	2 cases avant si non deplacï¿½
  * 					sinon 1 case avant et prend en 1 case diagonale avant
  * @author pasquiop
  *
@@ -11,9 +11,9 @@ public class Pion extends Piece {
 	 * Cree un pion de la couleur donnee
 	 * @param couleur
 	 */
-	public Pion(Couleur couleur)
+	public Pion(Couleur couleur, Type type)
 	{
-		super(couleur, Type.Pion);
+		super(couleur, type);
 	}
 
 	

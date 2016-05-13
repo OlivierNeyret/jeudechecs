@@ -14,5 +14,9 @@ public enum Couleur
 	/**
 	 * represente la couleur noire
 	 */
-	Noir;
+	Noir,
+	/**
+	 * pour les non-pieces
+	 */
+	None;
 }
