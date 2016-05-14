@@ -9,7 +9,7 @@ package fr.iutvalence.info.dut.m2107;
 
 public class Partie
 {
-	
+
 	/**
 	 * Le joueur qui joue les blancs
 	 */
@@ -22,10 +22,9 @@ public class Partie
 	 * Le plateau de la partie
 	 */
 	private static Plateau plateau;
-	
+
 	/**
 	 * Creer une partie a deux joueurs humains
-	 * @param plateau
 	 */
 	public Partie()
 	{
@@ -33,26 +32,28 @@ public class Partie
 		this.noir = new Joueur(Couleur.Noir);
 		this.plateau = new Plateau();
 	}
-	
+
 	/**
 	 * Creer une partie contre l ordi
-	 * @param couleurJoueur la couleur choisie par le joueur humain
-	 * @param difficulteChoisie la difficulte choisie par le joueur humain
+	 * 
+	 * @param couleurJoueur
+	 *            la couleur choisie par le joueur humain
+	 * @param difficulteChoisie
+	 *            la difficulte choisie par le joueur humain
 	 * 
 	 */
 	public Partie(Couleur couleurJoueur, Difficulte difficulteChoisie)
 	{
 		if (couleurJoueur == Couleur.Blanc)
-		{	
+		{
 			this.blanc = new Joueur(Couleur.Blanc);
 			this.noir = new IA(difficulteChoisie);
-		}
-		else
+		} else
 		{
 			this.noir = new Joueur(Couleur.Noir);
 			this.blanc = new IA(difficulteChoisie);
 		}
-		this.plateau =  new Plateau();
+		this.plateau = new Plateau();
 	}
 
 	/**
@@ -70,7 +71,9 @@ public class Partie
 
 	/**
 	 * Verifie si un joueur est en situation d'echec
-	 * @param joueur le joueur qui doit etre verifie
+	 * 
+	 * @param joueur
+	 *            le joueur qui doit etre verifie
 	 * @return true si le joueur est en echec, false sinon
 	 */
 	public boolean verificationConditionsEchec(Joueur joueur)
@@ -81,6 +84,7 @@ public class Partie
 
 	/**
 	 * Verifie si un joueur a gagne
+	 * 
 	 * @return renvoie true si le joueur a gagne, false sinon
 	 */
 	public boolean verifierConditionsVictoire()
@@ -102,17 +106,23 @@ public class Partie
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Renvoie le plateau de la partie
+	 * 
+	 * @return Le plateau de la partie
+	 */
 	public static Plateau getPlateau()
 	{
 		// TODO Auto-generated method stub
 		return plateau;
 	}
-	
+
 	/**
 	 * Le deroulement de la partie
 	 */
 	public void jouer()
 	{
 		System.out.println(plateau.toString());
+		System.out.println(plateau.getPieceJoueur(blanc));
 	}
 }

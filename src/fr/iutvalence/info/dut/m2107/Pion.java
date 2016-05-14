@@ -1,6 +1,6 @@
 package fr.iutvalence.info.dut.m2107;
 /**
- * Deplacements: 	2 cases avant si non deplac�
+ * Deplacements: 	2 cases avant si non deplace
  * 					sinon 1 case avant et prend en 1 case diagonale avant
  * @author pasquiop
  *

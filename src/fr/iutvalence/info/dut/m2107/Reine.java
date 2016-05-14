@@ -1,7 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 /**
  * Deplacements : les quatre diagonales d autant de case que voulues, 
- * idem pour avant, arrière et lateral.
+ * idem pour avant, arriere et lateral.
  * @author jacobjul
  */
 public class Reine extends Piece {

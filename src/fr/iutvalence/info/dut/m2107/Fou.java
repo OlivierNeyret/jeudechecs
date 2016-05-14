@@ -1,7 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
 /**
- * Déplacement : pièce pouvant se déplacer en diagonal, d'autant de cases que voulues (sauf obstacle)
+ * Deplacement : piece pouvant se deplacer en diagonal, d'autant de cases que voulues (sauf obstacle)
  * @author lucianor
  *
  */

@@ -9,6 +9,12 @@ package fr.iutvalence.info.dut.m2107;
 
 public class Main
 {
+	/**
+	 * L'application de jeu d'echecs par Doge Game Company
+	 * Projet IUT Informatique de Valence Semestre 2
+	 * Groupe 3.3 : Olivier Neyret, Paul Pasquiou, Xavier Bret, Julien Jacob, Raphael Luciano
+	 * @param args
+	 */
 	public static void main (String[] args)
 	{
 	    System.out.println("Doge Chess Company presents ChessGame! such chess, very wow");

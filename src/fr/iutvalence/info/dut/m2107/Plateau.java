@@ -1,5 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.util.ArrayList;
+
 /**
  * represente le plateau de jeu
  * @author pasquiop
@@ -15,7 +17,7 @@ public class Plateau
 	private Piece[][] plateau;
 	
 	/**
-	 * cr�e un plateau avec les pi�ces dessus, en position de d�part
+	 * cree un plateau avec les pieces dessus, en position de depart
 	 */
 	public Plateau()
 	{
@@ -85,6 +87,25 @@ public class Plateau
 		return (this.plateau[i.getOrdonnee()][i.getAbscisse()]);
 	}
 
+	/**
+	 * Donne un liste de Piece contenant les pieces restantes du joueur passe en parametre
+	 * @param joueur le joueur pour lequel on veut recuperer ses pieces
+	 * @return une liste de Piece contenant les pieces restantes du joueur passe en parametre
+	 */
+	public ArrayList<Piece> getPieceJoueur(Joueur joueur)
+	{
+		ArrayList<Piece> pieceJoueur = new ArrayList<Piece>();
+		for(int i=0;i<8;i++)
+		{
+			for(int j=0;j<8;j++)
+			{
+				if(this.plateau[i][j].getCouleur()==joueur.getCouleur())
+					pieceJoueur.add(this.plateau[i][j]);
+			}
+		}
+		return pieceJoueur;
+	}
+	
 	/**
 	 * Affiche le plateau avec les pieces en ASCII
 	 */
