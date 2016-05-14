@@ -45,7 +45,6 @@ public abstract class Piece
 		// TODO - implement Piece.deplacement
 		throw new UnsupportedOperationException();
 	}
-<<<<<<< HEAD
 
 	/**
 	 * renvoie la couleur de la piece
@@ -55,8 +54,6 @@ public abstract class Piece
 	{
 		return this.couleur;
 	}
-
-=======
 	
 	/**
 	 * Redefinition de toString
@@ -83,5 +80,4 @@ public abstract class Piece
 		    return "O";             
 		}
 	}
->>>>>>> branch 'master' of https://github.com/OlivierNeyret/jeudechecs.git
 }

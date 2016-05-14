@@ -101,15 +101,12 @@ public class Partie
 		// TODO - implement Partie.Promotion
 		throw new UnsupportedOperationException();
 	}
-<<<<<<< HEAD
 
 	public static Plateau getPlateau()
 	{
 		// TODO Auto-generated method stub
 		return plateau;
 	}
-}
-=======
 	
 	/**
 	 * Le deroulement de la partie
@@ -119,4 +116,3 @@ public class Partie
 		System.out.println(plateau.toString());
 	}
 }
->>>>>>> branch 'master' of https://github.com/OlivierNeyret/jeudechecs.git
