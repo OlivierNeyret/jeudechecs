@@ -21,7 +21,7 @@ public class Partie
 	/**
 	 * Le plateau de la partie
 	 */
-	private static Plateau plateau;
+	private Plateau plateau;
 
 	/**
 	 * Creer une partie a deux joueurs humains
@@ -111,10 +111,10 @@ public class Partie
 	 * 
 	 * @return Le plateau de la partie
 	 */
-	public static Plateau getPlateau()
+	public Plateau getPlateau()
 	{
 		// TODO Auto-generated method stub
-		return plateau;
+		return this.plateau;
 	}
 
 	/**

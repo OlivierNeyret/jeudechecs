@@ -1,4 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
+
+import java.util.ArrayList;
+
 /**
  * Deplacements: 	1 case toute direction 
  * 					si echec le roi doit etre protege
@@ -18,9 +21,31 @@ public class Roi extends Piece {
 		super(couleur, Type.Roi);
 	}
 
-	public Position[] deplacement() {
-		// TODO - implement Roi.deplacement
-		throw new UnsupportedOperationException();
+	public ArrayList<Position> deplacement(Plateau plateau) {
+		ArrayList<Position> deplacement = new ArrayList<Position>();
+		
+		
+		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()+1)).getCouleur()!=this.getCouleur() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()+1),this.getCouleur()))
+			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()+1));
+		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()-1)).getCouleur()!=this.getCouleur() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()-1),this.getCouleur()))
+			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()-1));
+		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()+1)).getCouleur()!=this.getCouleur() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()+1),this.getCouleur()))
+			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()+1));
+		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()-1)).getCouleur()!=this.getCouleur() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()-1),this.getCouleur()))
+			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()-1));
+		
+		int j=1;
+		for (int i =0;i<=1;i++)
+		{
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+j)).getCouleur()!=this.getCouleur() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+j),this.getCouleur()))
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+j));
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-j)).getCouleur()!=this.getCouleur() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+j),this.getCouleur()))
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-j));
+			j=j-1;
+		}
+		
+		
+		return deplacement;
 	}
 
 	public Type recupererType() {

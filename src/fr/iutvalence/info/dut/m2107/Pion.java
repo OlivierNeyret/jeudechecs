@@ -1,4 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
+
+import java.util.ArrayList;
+
 /**
  * Deplacements: 	2 cases avant si non deplace
  * 					sinon 1 case avant et prend en 1 case diagonale avant
@@ -10,48 +13,44 @@ public class Pion extends Piece {
 	/**
 	 * Cree un pion de la couleur donnee
 	 * @param couleur
+	 * @param type type du pion
 	 */
 	public Pion(Couleur couleur, Type type)
 	{
 		super(couleur, type);
 	}
-
 	
-	public Position[] deplacement() {
-		Position deplacement[] = null;
-		int i=0;
+	public ArrayList<Position> deplacement(Plateau plateau) {
+		ArrayList<Position> deplacement = new ArrayList<Position>();
 		if (this.getCouleur()==Couleur.Blanc)
 		{
-			if (Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse() == 6)
+			if (plateau.getCoordonateOfPiece(this).getAbscisse() == 6)
 			{
-				if (Partie.getPlateau().getPieceAtPosition(new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()+2,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse())) != null)
+				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+2,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
 				{
-					deplacement[i]=new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()+2,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse());
-					i=i+1;
+					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+2,plateau.getCoordonateOfPiece(this).getAbscisse()));
 				}
 			}
-			if (Partie.getPlateau().getPieceAtPosition(new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()+1,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse())) != null)
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
 			{
-				deplacement[i]=new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()+1,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse());
-				i=i+1;
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()));
 			}
 		}
-		else
+		else if(this.getCouleur()==Couleur.Noir)
 		{
-			if (Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse() == 1)
+			if (plateau.getCoordonateOfPiece(this).getAbscisse() == 1)
 			{
-				if (Partie.getPlateau().getPieceAtPosition(new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()-2,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse())) != null)
+				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-2,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
 				{
-					deplacement[i]=new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()-2,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse());
-					i=i+1;
+					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-2,plateau.getCoordonateOfPiece(this).getAbscisse()));
 				}
 			}
-			if (Partie.getPlateau().getPieceAtPosition(new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()-1,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse())) != null)
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
 			{
-				deplacement[i]=new Position(Partie.getPlateau().getCoordonateOfPiece(this).getOrdonnee()-1,Partie.getPlateau().getCoordonateOfPiece(this).getAbscisse());
-				i=i+1;
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()));
 			}
 		}
+		else return null;
 		return deplacement;
 	}
 

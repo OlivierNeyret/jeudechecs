@@ -1,5 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.util.ArrayList;
+
 /**
  * piece est une classe abstraite qui est represent�e par une abscisse et une ordonnee
  * @author pasquiop
@@ -38,9 +40,10 @@ public abstract class Piece
 	
 	/**
 	 * nous permet de voir les deplacements possibles de la piece
+	 * @param plateau Le plateau de jeu
 	 * @return un tableau de tout les deplacements possibles
 	 */
-	public Position[] deplacement()
+	public ArrayList<Position> deplacement(Plateau plateau)
 	{
 		// TODO - implement Piece.deplacement
 		throw new UnsupportedOperationException();

@@ -122,4 +122,16 @@ public class Plateau
 		}
 		return result;
 	}
+
+	/**
+	 * Verifie si la position donnee est en echec pour un roi de la couleur donnee
+	 * @param position La position ou position possible d'un roi de la couleur donnee
+	 * @param couleur Couleur du roi sur lequel on veut tester l'echec
+	 * @return true si la position est en echec, false sinon
+	 */
+	public boolean isCheck(Position position, Couleur couleur)
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
