@@ -70,19 +70,6 @@ public class Partie
 	}
 
 	/**
-	 * Verifie si un joueur est en situation d'echec
-	 * 
-	 * @param joueur
-	 *            le joueur qui doit etre verifie
-	 * @return true si le joueur est en echec, false sinon
-	 */
-	public boolean verificationConditionsEchec(Joueur joueur)
-	{
-		// TODO - implement Partie.VerificationConditionsEchec
-		throw new UnsupportedOperationException();
-	}
-
-	/**
 	 * Verifie si un joueur a gagne
 	 * 
 	 * @return renvoie true si le joueur a gagne, false sinon
