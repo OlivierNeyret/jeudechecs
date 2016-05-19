@@ -48,12 +48,22 @@ public class IHM_Player
 	 */
 	public Position askPosition()
 	{
-		Position resultat;
+		boolean test=false;
+		Position resultat = null;
 		System.out.println("Saisisser le numero de ligne :");
 		int ligne = this.scanner.nextInt();
 		System.out.println("Saisisser le numero de colonne :");
 		int colonne = this.scanner.nextInt();
-		resultat = new Position(ligne,colonne);
+		while (!test){
+			try
+			{
+				resultat = new Position(ligne,colonne);
+				test=true;
+			} catch (PositionOutOfBoardException e)
+			{
+				
+			}
+		}
 		return resultat;
 	}
 }
