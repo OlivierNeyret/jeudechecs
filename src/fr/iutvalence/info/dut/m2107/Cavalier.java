@@ -23,16 +23,30 @@ public class Cavalier extends Piece
 	{
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int j=2;
+		int x = plateau.getCoordonateOfPiece(this).getOrdonnee();
+		int y = plateau.getCoordonateOfPiece(this).getAbscisse();
 		for (int i=1;i<=2;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+j)).getCouleur()!=this.getCouleur())
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+j));
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-j,plateau.getCoordonateOfPiece(this).getAbscisse()+i)).getCouleur()!=this.getCouleur())
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-j,plateau.getCoordonateOfPiece(this).getAbscisse()+i));
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-j)).getCouleur()!=this.getCouleur())
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-j));
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+j,plateau.getCoordonateOfPiece(this).getAbscisse()-i)).getCouleur()!=this.getCouleur())
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+j,plateau.getCoordonateOfPiece(this).getAbscisse()-i));
+			if (plateau.getPieceAtPosition(new Position(x+i,y+j)).getCouleur()!=this.getCouleur())
+			{
+				plateau.emulateDeplacement(this, new Position(x+i,y+j)).estEnEchec(plateau.getKing(couleur), couleur)
+				deplacement.add(new Position(x+i,y+j));
+			}
+			if (plateau.getPieceAtPosition(new Position(x-j,y+i)).getCouleur()!=this.getCouleur())
+			{
+				deplacement.add(new Position(x-j,y+i));
+				
+			}
+			if (plateau.getPieceAtPosition(new Position(x-i,y-j)).getCouleur()!=this.getCouleur())
+			{
+				deplacement.add(new Position(x-i,y-j));
+				
+			}
+			if (plateau.getPieceAtPosition(new Position(x+j,y-i)).getCouleur()!=this.getCouleur())
+			{
+				deplacement.add(new Position(x+j,y-i));
+				
+			}
 			j=j-1;
 		}
 		return deplacement;

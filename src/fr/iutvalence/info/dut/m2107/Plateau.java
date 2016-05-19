@@ -60,6 +60,34 @@ public class Plateau
 	}
 	
 	/**
+	 * Cree un plateau a partir d'un tableau de pieces donne
+	 * @param tabP Le tableau de pieces
+	 */
+	public Plateau(Piece[][] tabP)
+	{
+		this.plateau=tabP;
+	}
+
+	/**
+	 * @param piece La piece qu el'on veut deplacer
+	 * @param positionDep La position où l'on veut deplacer la piece
+	 * @return Le plateau avec le deplacement effectué
+	 */
+	public Plateau emulateDeplacement(Piece piece, Position positionDep)
+	{
+		Piece[][] tabP = this.plateau;
+		int x1 = positionDep.getAbscisse();
+		int y1 = positionDep.getOrdonnee();
+		int x2 = this.getCoordonateOfPiece(piece).getAbscisse();
+		int y2 = this.getCoordonateOfPiece(piece).getOrdonnee();
+		tabP[x2][y2]= new Pion(Couleur.None, Type.None);
+		tabP[x1][y1]= piece;
+		
+		Plateau p1 = new Plateau(tabP);
+		return p1;
+	}
+	
+	/**
 	 * renvoie la position de la piece passee en param
 	 * @param piece la piece que l'on souhaite deplacer
 	 * @return la position de la piece a deplacer
@@ -104,6 +132,27 @@ public class Plateau
 			}
 		}
 		return pieceJoueur;
+	}
+	
+	/**
+	 * Recupere le roi de la couleur donnee
+	 * @param couleur La couleur du roi que l'on cherche
+	 * @return Le roi de la couleur donnee
+	 */
+	public Piece getKing(Couleur couleur)
+	{
+		
+		for(int i=0;i<8;i++)
+		{
+			for(int j=0;j<8;j++)
+			{
+				if(this.plateau[i][j].recupererType()==Type.Roi && this.plateau[i][j].getCouleur()==couleur){
+					return (this.plateau[i][j]);
+				}
+					
+			}
+		}
+		return null;
 	}
 	
 	/**
