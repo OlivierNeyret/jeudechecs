@@ -13,13 +13,10 @@ public abstract class Piece
 
 	private final Type type;
 	
-	
-	
-	//TODO comment
 	/**
-	 * Cree
-	 * @param color
-	 * @param type
+	 * Cree une piece avec un type et une couleur
+	 * @param color c'est la couleur de la piece
+	 * @param type de la peice a creer
 	 */
 	public Piece(Color color, Type type)
 	{
