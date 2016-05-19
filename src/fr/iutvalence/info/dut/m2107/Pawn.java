@@ -30,32 +30,52 @@ public class Pawn extends Piece {
 		{
 			if (y == 6)
 			{
-				if (plateau.getPieceAtPosition(new Position(x+2,y)).getType() == Type.NONE && 
-					!(plateau.emulateDeplacement(this, new Position(x+2,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				try
 				{
-					deplacement.add(new Position(x+2,y));
+					if (plateau.getPieceAtPosition(new Position(x+2,y)).getType() == Type.NONE && 
+						!(plateau.emulateDeplacement(this, new Position(x+2,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					{
+						deplacement.add(new Position(x+2,y));
+					}
+				} catch (PositionOutOfBoardException e)
+				{
 				}
 			}
-			if (plateau.getPieceAtPosition(new Position(x+1,y)).getType() == Type.NONE && 
-					!(plateau.emulateDeplacement(this, new Position(x+1,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x+1,y));
+				if (plateau.getPieceAtPosition(new Position(x+1,y)).getType() == Type.NONE && 
+						!(plateau.emulateDeplacement(this, new Position(x+1,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x+1,y));
+				}
+			} catch (PositionOutOfBoardException e)
+			{
 			}
 		}
 		else if(couleur==Color.BLACK)
 		{
 			if (y == 1)
 			{
-				if (plateau.getPieceAtPosition(new Position(x-2,y)).getType() == Type.NONE && 
-					!(plateau.emulateDeplacement(this, new Position(x-2,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				try
 				{
-					deplacement.add(new Position(x-2,y));
+					if (plateau.getPieceAtPosition(new Position(x-2,y)).getType() == Type.NONE && 
+						!(plateau.emulateDeplacement(this, new Position(x-2,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					{
+						deplacement.add(new Position(x-2,y));
+					}
+				} catch (PositionOutOfBoardException e)
+				{
 				}
 			}
-			if (plateau.getPieceAtPosition(new Position(x-1,y)).getType() == Type.NONE && 
-					!(plateau.emulateDeplacement(this, new Position(x-1,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x-1,y));
+				if (plateau.getPieceAtPosition(new Position(x-1,y)).getType() == Type.NONE && 
+						!(plateau.emulateDeplacement(this, new Position(x-1,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x-1,y));
+				}
+			} catch (PositionOutOfBoardException e)
+			{
 			}
 		}
 		else return null;

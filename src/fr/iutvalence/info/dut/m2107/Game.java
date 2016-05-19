@@ -130,6 +130,6 @@ public class Game
 			}
 			nombreDeCoups++;
 		}
-		System.out.println(plateau.getPieceJoueur(Color.WHITE));
+		System.out.println(plateau.getPiecePlayer(Color.WHITE));
 	}
 }

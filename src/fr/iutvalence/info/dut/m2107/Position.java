@@ -22,11 +22,16 @@ public class Position {
 	 * Cree une position a partir des coordonnees donnees
 	 * @param abscissa l'abscisse du position
 	 * @param ordonate l'ordonnee du position
+	 * @throws PositionOutOfBoardException Si la piece est en dehors de l'echiquier
 	 */
-	public Position(int abscissa, int ordonate)
+	public Position(int abscissa, int ordonate) throws PositionOutOfBoardException
 	{
-		this.abscissa = abscissa;
-		this.ordonate = ordonate;
+		if (abscissa<=7 && ordonate<=7 && abscissa>=0 && ordonate>=0)
+		{
+			this.abscissa = abscissa;
+			this.ordonate = ordonate;
+		}
+		else throw new PositionOutOfBoardException();
 	}
 
 

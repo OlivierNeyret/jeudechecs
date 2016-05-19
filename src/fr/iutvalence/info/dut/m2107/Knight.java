@@ -28,28 +28,48 @@ public class Knight extends Piece
 		Color couleur=this.getColor();
 		for (int i=1;i<=2;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(x+i,y+j)).getColor()!=couleur && 
-				!(plateau.emulateDeplacement(this, new Position(x+i,y+j)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
-			{	
-				deplacement.add(new Position(x+i,y+j));
-			}
-			if (plateau.getPieceAtPosition(new Position(x-j,y+i)).getColor()!=couleur &&
-				!(plateau.emulateDeplacement(this, new Position(x-j,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x-j,y+i));
-				
-			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y-j)).getColor()!=couleur &&
-				!(plateau.emulateDeplacement(this, new Position(x-i,y-j)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				if (plateau.getPieceAtPosition(new Position(x+i,y+j)).getColor()!=couleur && 
+					!(plateau.emulateDeplacement(this, new Position(x+i,y+j)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{	
+					deplacement.add(new Position(x+i,y+j));
+				}
+			} catch (PositionOutOfBoardException e)
 			{
-				deplacement.add(new Position(x-i,y-j));
-				
 			}
-			if (plateau.getPieceAtPosition(new Position(x+j,y-i)).getColor()!=couleur &&
-				!(plateau.emulateDeplacement(this, new Position(x+j,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x+j,y-i));
-				
+				if (plateau.getPieceAtPosition(new Position(x-j,y+i)).getColor()!=couleur &&
+					!(plateau.emulateDeplacement(this, new Position(x-j,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x-j,y+i));
+					
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			try
+			{
+				if (plateau.getPieceAtPosition(new Position(x-i,y-j)).getColor()!=couleur &&
+					!(plateau.emulateDeplacement(this, new Position(x-i,y-j)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x-i,y-j));
+					
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			try
+			{
+				if (plateau.getPieceAtPosition(new Position(x+j,y-i)).getColor()!=couleur &&
+					!(plateau.emulateDeplacement(this, new Position(x+j,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x+j,y-i));
+					
+				}
+			} catch (PositionOutOfBoardException e)
+			{
 			}
 			j=j-1;
 		}

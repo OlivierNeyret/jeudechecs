@@ -99,7 +99,14 @@ public class Board
 			for (int j=0;j<8;j++)
 			{
 				if (piece == this.board[i][j])
-					return (new Position(i, j));
+					try
+					{
+						return (new Position(i, j));
+					} catch (PositionOutOfBoardException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 		}
 		return null;
@@ -117,36 +124,36 @@ public class Board
 
 	/**
 	 * Donne un liste de Piece contenant les pieces restantes du joueur passe en parametre
-	 * @param couleur la couleur du joueur dont on veut recuperer les pieces
+	 * @param color la couleur du joueur dont on veut recuperer les pieces
 	 * @return une liste de Piece contenant les pieces restantes du joueur passe en parametre
 	 */
-	public ArrayList<Piece> getPieceJoueur(Color couleur)
+	public ArrayList<Piece> getPiecePlayer(Color color)
 	{
-		ArrayList<Piece> pieceJoueur = new ArrayList<Piece>();
+		ArrayList<Piece> piecePlayer = new ArrayList<Piece>();
 		for(int i=0;i<8;i++)
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(this.board[i][j].getColor()==couleur)
-					pieceJoueur.add(this.board[i][j]);
+				if(this.board[i][j].getColor()==color)
+					piecePlayer.add(this.board[i][j]);
 			}
 		}
-		return pieceJoueur;
+		return piecePlayer;
 	}
 	
 	/**
 	 * Recupere le roi de la couleur donnee
-	 * @param couleur La couleur du roi que l'on cherche
+	 * @param color La couleur du roi que l'on cherche
 	 * @return Le roi de la couleur donnee
 	 */
-	public Piece getKing(Color couleur)
+	public Piece getKing(Color color)
 	{
 		
 		for(int i=0;i<8;i++)
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(this.board[i][j].getType()==Type.KING && this.board[i][j].getColor()==couleur){
+				if(this.board[i][j].getType()==Type.KING && this.board[i][j].getColor()==color){
 					return (this.board[i][j]);
 				}
 					
@@ -175,14 +182,14 @@ public class Board
 	/**
 	 * Verifie si la position donnee est en echec pour le roi de la couleur donnee
 	 * @param position La posiition sur laquelle on veut tester l'echec
-	 * @param couleur La couleur du roi sur lequel on veut tester l'echec
+	 * @param color La couleur du roi sur lequel on veut tester l'echec
 	 * @return true si la position est en echec pour le roi de la couleur donnee, false sinon
 	 */
-	public boolean estEnEchec(Position position, Color couleur)
+	public boolean isCHeck(Position position, Color color)
 	{
 		int i = 0;
 		int j = 0;
-		ArrayList<Piece> piecesJ = getPieceJoueur(couleur.Invertcolor());
+		ArrayList<Piece> piecesJ = getPiecePlayer(color.Invertcolor());
 		while (i < piecesJ.size())
 		{
 			while (j < piecesJ.get(i).deplacement(this).size())

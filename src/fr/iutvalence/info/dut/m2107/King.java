@@ -25,22 +25,52 @@ public class King extends Piece {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		
 		
-		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && plateau.estEnEchec(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
-			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1));
-		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && plateau.estEnEchec(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
-			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1));
-		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && plateau.estEnEchec(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
-			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1));
-		if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && plateau.estEnEchec(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
-			deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1));
+		try
+		{
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && plateau.isCHeck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1));
+		} catch (PositionOutOfBoardException e)
+		{
+		}
+		try
+		{
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && plateau.isCHeck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1));
+		} catch (PositionOutOfBoardException e)
+		{	
+		}
+		try
+		{
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && plateau.isCHeck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1));
+		} catch (PositionOutOfBoardException e)
+		{
+		}
+		try
+		{
+			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && plateau.isCHeck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
+				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1));
+		} catch (PositionOutOfBoardException e)
+		{
+		}
 		
 		int j=1;
 		for (int i =0;i<=1;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor() && plateau.estEnEchec(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j));
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-i,plateau.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor() && plateau.estEnEchec(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-i,plateau.getCoordonateOfPiece(this).getAbscissa()-j));
+			try
+			{
+				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor() && plateau.isCHeck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
+					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j));
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			try
+			{
+				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-i,plateau.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor() && plateau.isCHeck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
+					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-i,plateau.getCoordonateOfPiece(this).getAbscissa()-j));
+			} catch (PositionOutOfBoardException e)
+			{
+			}
 			j=j-1;
 		}
 		

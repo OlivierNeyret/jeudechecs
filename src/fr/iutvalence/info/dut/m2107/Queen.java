@@ -35,62 +35,110 @@ public class Queen extends Piece {
 		
 		for (int i=1;i<=7;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur && colA && 
-				!(plateau.emulateDeplacement(this, new Position(x+i,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x+i,y));
-				if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
-					colA=false;
+				if (plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur && colA && 
+					!(plateau.emulateDeplacement(this, new Position(x+i,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x+i,y));
+					if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
+						colA=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				colA=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur && colB && 
-					!(plateau.emulateDeplacement(this, new Position(x-i,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x-i,y));
-				if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
-					colB=false;
+				if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur && colB && 
+						!(plateau.emulateDeplacement(this, new Position(x-i,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x-i,y));
+					if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
+						colB=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				colB=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur && rowA && 
-					!(plateau.emulateDeplacement(this, new Position(x,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x,y+i));
-				if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
-					rowA=false;
+				if (plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur && rowA && 
+						!(plateau.emulateDeplacement(this, new Position(x,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x,y+i));
+					if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
+						rowA=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				rowA=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur && rowB && 
-					!(plateau.emulateDeplacement(this, new Position(x,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x,y-i));
-				if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
-					rowB=false;
+				if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur && rowB && 
+						!(plateau.emulateDeplacement(this, new Position(x,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x,y-i));
+					if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
+						rowB=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				rowB=false;
 			}
 			
-			if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA && 
-					!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x+i,y+i));
-				if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != Type.NONE)
-					diagA=false;
+				if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA && 
+						!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x+i,y+i));
+					if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != Type.NONE)
+						diagA=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				diagA=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB && 
-					!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x+i,y-i));
-				if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != Type.NONE)
-					diagB=false;
+				if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB && 
+						!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x+i,y-i));
+					if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != Type.NONE)
+						diagB=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				diagB=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC && 
-					!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x-i,y-i));
-				if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != Type.NONE)
-					diagC=false;
+				if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC && 
+						!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x-i,y-i));
+					if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != Type.NONE)
+						diagC=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				diagC=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD && 
-					!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			try
 			{
-				deplacement.add(new Position(x-i,y+i));
-				if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != Type.NONE)
-					diagD=false;
+				if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD && 
+						!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				{
+					deplacement.add(new Position(x-i,y+i));
+					if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != Type.NONE)
+						diagD=false;
+				}
+			} catch (PositionOutOfBoardException e)
+			{
+				diagD=false;
 			}
 			
 		}
