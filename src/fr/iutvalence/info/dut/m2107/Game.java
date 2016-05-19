@@ -69,8 +69,8 @@ public class Game
 	 */
 	public boolean checkVictory()
 	{
-		// TODO - implement Partie.VerifierConditionsVictoire
-		throw new UnsupportedOperationException();
+	// TODO - implement Partie.VerifierConditionsVictoire
+		return false;
 	}
 
 	/**
@@ -156,6 +156,7 @@ public class Game
 				while(!listOfMove.contains(positionOfDestination));
 			}
 			numberOfMoves++;
+			ihm.displayBoard();
 		}
 	}
 }

@@ -75,11 +75,4 @@ public class Knight extends Piece
 		}
 		return deplacement;
 	}
-
-	public Type getType()
-	{
-		// TODO - implement Cavalier.recupererType
-		throw new UnsupportedOperationException();
-	}
-
 }

@@ -36,8 +36,7 @@ public abstract class Piece
 	 */
 	public Type getType()
 	{
-		// TODO - implement Piece.recupererType
-		throw new UnsupportedOperationException();
+		return (this.type);
 	}
 	
 	

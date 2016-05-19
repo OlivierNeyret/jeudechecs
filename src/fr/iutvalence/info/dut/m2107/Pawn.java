@@ -26,7 +26,7 @@ public class Pawn extends Piece {
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
 		Color couleur=this.getColor();
 		
-		if (couleur==Color.WHITE)
+		if (couleur==Color.BLACK)
 		{
 			if (y == 6)
 			{
@@ -52,7 +52,7 @@ public class Pawn extends Piece {
 			{
 			}
 		}
-		else if(couleur==Color.BLACK)
+		else if(couleur==Color.WHITE)
 		{
 			if (y == 1)
 			{
@@ -81,10 +81,4 @@ public class Pawn extends Piece {
 		else return null;
 		return deplacement;
 	}
-
-	public Type getType() {
-		// TODO - implement Pion.recupererType
-		throw new UnsupportedOperationException();
-	}
-
 }

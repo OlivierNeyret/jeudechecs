@@ -88,10 +88,4 @@ public class Bishop extends Piece {
 
 		return deplacement;
 	}
-
-	public Type getType() {
-		// TODO - implement Fou.recupererType
-		throw new UnsupportedOperationException();
-	}
-
 }

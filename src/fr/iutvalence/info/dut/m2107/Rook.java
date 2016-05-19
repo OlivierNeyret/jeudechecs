@@ -86,10 +86,4 @@ public class Rook extends Piece {
 		}
 		return deplacement;
 	}
-
-	public Type getType() {
-		// TODO - implement Tour.recupererType
-		throw new UnsupportedOperationException();
-	}
-
 }

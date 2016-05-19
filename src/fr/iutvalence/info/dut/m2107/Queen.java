@@ -144,10 +144,4 @@ public class Queen extends Piece {
 		}
 		return deplacement;
 	}
-
-	public Type getType() {
-		// TODO - implement Reine.recupererType
-		throw new UnsupportedOperationException();
-	}
-
 }

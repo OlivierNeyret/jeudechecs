@@ -77,10 +77,4 @@ public class King extends Piece {
 		
 		return deplacement;
 	}
-
-	public Type getType() {
-		// TODO - implement Roi.recupererType
-		throw new UnsupportedOperationException();
-	}
-
 }
