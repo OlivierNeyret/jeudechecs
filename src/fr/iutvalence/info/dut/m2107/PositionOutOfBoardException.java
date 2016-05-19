@@ -5,6 +5,7 @@ package fr.iutvalence.info.dut.m2107;
  * @author bretx
  *
  */
+@SuppressWarnings("serial")
 public class PositionOutOfBoardException extends Exception
 {
 

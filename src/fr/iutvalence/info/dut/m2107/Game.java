@@ -16,11 +16,13 @@ public class Game
 	 * Le joueur qui joue les blancs
 	 */
 	
+	@SuppressWarnings("unused")
 	private Player white;
 	/**
 	 * Le joueur qui joue les noirs
 	 */
 
+	@SuppressWarnings("unused")
 	private Player black;
 	/**
 	 * Le plateau de la partie
