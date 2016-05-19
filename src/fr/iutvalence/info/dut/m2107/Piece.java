@@ -9,8 +9,14 @@ import java.util.ArrayList;
  */
 public abstract class Piece
 {
+	/**
+	 * this is the color of the piece white or black
+	 */
 	private final Color color;
-
+	
+	/**
+	 * type of the piece like queen, king, ...
+	 */
 	private final Type type;
 	
 	/**
