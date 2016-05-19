@@ -124,11 +124,12 @@ public class Plateau
 	}
 
 	/**
-	 * Verifie si le roi donne est en echec
-	 * @param roiTeste Le roi sur lequel on veut tester l'echec
-	 * @return true si le roi est en echec, false sinon
+	 * Verifie si la position donnee est en echec pour le roi de la couleur donnee
+	 * @param position La posiition sur laquelle on veut tester l'echec
+	 * @param couleur La couleur du roi sur lequel on veut tester l'echec
+	 * @return true si la position est en echec pour le roi de la couleur donnee, false sinon
 	 */
-	public boolean estEnEchec(Roi roiTeste)
+	public boolean estEnEchec(Position position, Couleur couleur)
 	{
 		// TODO Auto-generated method stub
 		return false;
