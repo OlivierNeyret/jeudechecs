@@ -26,30 +26,38 @@ public class Fou extends Piece {
 		boolean diagC=true;
 		boolean diagD=true;
 		
+		int x = plateau.getCoordonateOfPiece(this).getOrdonnee();
+		int y = plateau.getCoordonateOfPiece(this).getAbscisse();
+		Couleur couleur=this.getCouleur();
+		
 		for (int i=1;i<=7;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+i)).getCouleur()!=this.getCouleur() && diagA)
+			if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getCouleur()!=couleur && diagA &&
+				!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+i));
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()+i)).recupererType() != Type.None)
+				deplacement.add(new Position(x+i,y+i));
+				if (plateau.getPieceAtPosition(new Position(x+i,y+i)).recupererType() != Type.None)
 					diagA=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()-i)).getCouleur()!=this.getCouleur() && diagB)
+			if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getCouleur()!=couleur && diagB &&
+				!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()-i));
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+i,plateau.getCoordonateOfPiece(this).getAbscisse()-i)).recupererType() != Type.None)
+				deplacement.add(new Position(x+i,y-i));
+				if (plateau.getPieceAtPosition(new Position(x+i,y-i)).recupererType() != Type.None)
 					diagB=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-i)).getCouleur()!=this.getCouleur() && diagC)
+			if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getCouleur()!=couleur && diagC &&
+				!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-i));
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()-i)).recupererType() != Type.None)
+				deplacement.add(new Position(x-i,y-i));
+				if (plateau.getPieceAtPosition(new Position(x-i,y-i)).recupererType() != Type.None)
 					diagC=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()+i)).getCouleur()!=this.getCouleur() && diagD)
+			if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getCouleur()!=couleur && diagD &&
+				!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()+i));
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-i,plateau.getCoordonateOfPiece(this).getAbscisse()+i)).recupererType() != Type.None)
+				deplacement.add(new Position(x-i,y+i));
+				if (plateau.getPieceAtPosition(new Position(x-i,y+i)).recupererType() != Type.None)
 					diagD=false;
 			}
 		}

@@ -22,32 +22,40 @@ public class Pion extends Piece {
 	
 	public ArrayList<Position> deplacement(Plateau plateau) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
-		if (this.getCouleur()==Couleur.Blanc)
+		int x = plateau.getCoordonateOfPiece(this).getOrdonnee();
+		int y = plateau.getCoordonateOfPiece(this).getAbscisse();
+		Couleur couleur=this.getCouleur();
+		
+		if (couleur==Couleur.Blanc)
 		{
-			if (plateau.getCoordonateOfPiece(this).getAbscisse() == 6)
+			if (y == 6)
 			{
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+2,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
+				if (plateau.getPieceAtPosition(new Position(x+2,y)).recupererType() == Type.None && 
+					!(plateau.emulateDeplacement(this, new Position(x+2,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
-					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+2,plateau.getCoordonateOfPiece(this).getAbscisse()));
+					deplacement.add(new Position(x+2,y));
 				}
 			}
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
+			if (plateau.getPieceAtPosition(new Position(x+1,y)).recupererType() == Type.None && 
+					!(plateau.emulateDeplacement(this, new Position(x+1,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()+1,plateau.getCoordonateOfPiece(this).getAbscisse()));
+				deplacement.add(new Position(x+1,y));
 			}
 		}
-		else if(this.getCouleur()==Couleur.Noir)
+		else if(couleur==Couleur.Noir)
 		{
-			if (plateau.getCoordonateOfPiece(this).getAbscisse() == 1)
+			if (y == 1)
 			{
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-2,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
+				if (plateau.getPieceAtPosition(new Position(x-2,y)).recupererType() == Type.None && 
+					!(plateau.emulateDeplacement(this, new Position(x-2,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
-					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-2,plateau.getCoordonateOfPiece(this).getAbscisse()));
+					deplacement.add(new Position(x-2,y));
 				}
 			}
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse())).recupererType() == Type.None)
+			if (plateau.getPieceAtPosition(new Position(x-1,y)).recupererType() == Type.None && 
+					!(plateau.emulateDeplacement(this, new Position(x-1,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonnee()-1,plateau.getCoordonateOfPiece(this).getAbscisse()));
+				deplacement.add(new Position(x-1,y));
 			}
 		}
 		else return null;

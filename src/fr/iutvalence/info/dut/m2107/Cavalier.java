@@ -25,24 +25,28 @@ public class Cavalier extends Piece
 		int j=2;
 		int x = plateau.getCoordonateOfPiece(this).getOrdonnee();
 		int y = plateau.getCoordonateOfPiece(this).getAbscisse();
+		Couleur couleur=this.getCouleur();
 		for (int i=1;i<=2;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(x+i,y+j)).getCouleur()!=this.getCouleur())
-			{
-				plateau.emulateDeplacement(this, new Position(x+i,y+j)).estEnEchec(plateau.getKing(couleur), couleur)
+			if (plateau.getPieceAtPosition(new Position(x+i,y+j)).getCouleur()!=couleur && 
+				!(plateau.emulateDeplacement(this, new Position(x+i,y+j)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+			{	
 				deplacement.add(new Position(x+i,y+j));
 			}
-			if (plateau.getPieceAtPosition(new Position(x-j,y+i)).getCouleur()!=this.getCouleur())
+			if (plateau.getPieceAtPosition(new Position(x-j,y+i)).getCouleur()!=couleur &&
+				!(plateau.emulateDeplacement(this, new Position(x-j,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x-j,y+i));
 				
 			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y-j)).getCouleur()!=this.getCouleur())
+			if (plateau.getPieceAtPosition(new Position(x-i,y-j)).getCouleur()!=couleur &&
+				!(plateau.emulateDeplacement(this, new Position(x-i,y-j)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x-i,y-j));
 				
 			}
-			if (plateau.getPieceAtPosition(new Position(x+j,y-i)).getCouleur()!=this.getCouleur())
+			if (plateau.getPieceAtPosition(new Position(x+j,y-i)).getCouleur()!=couleur &&
+				!(plateau.emulateDeplacement(this, new Position(x+j,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x+j,y-i));
 				
