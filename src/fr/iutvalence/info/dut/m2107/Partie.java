@@ -109,7 +109,27 @@ public class Partie
 	 */
 	public void jouer()
 	{
-		System.out.println(plateau.toString());
+		int nombreDeCoups = 0;
+		IHM_Joueur ihm = new IHM_Joueur(this);
+		while (this.verifierConditionsVictoire() == false)
+		{
+			Position pieceABouger;
+			ihm.displayBoard();
+			if(nombreDeCoups%2==0) //Le tour des blancs
+			{
+				System.out.println("Coup des blancs, choisissez une pièce à déplacer :");
+				pieceABouger = ihm.askPosition();
+				//Demander coup
+				//Afficher les deplcaments possibles
+				//verifier validite du coup
+				//effectuer le coup
+			}
+			else //Le tour des noirs
+			{
+				
+			}
+			nombreDeCoups++;
+		}
 		System.out.println(plateau.getPieceJoueur(blanc));
 	}
 }

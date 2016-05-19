@@ -19,4 +19,16 @@ public enum Couleur
 	 * pour les non-pieces
 	 */
 	None;
+
+	/**
+	 * @param couleur est la couleur que lon veut inverser
+	 * @return l'inverse de la couleur passee en param
+	 */
+	public Couleur Invertcolor()
+	{
+		if (this == Couleur.Blanc)
+			return Couleur.Noir;
+		else 
+			return Couleur.Blanc;
+	}
 }
