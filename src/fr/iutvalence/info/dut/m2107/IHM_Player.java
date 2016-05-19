@@ -67,4 +67,33 @@ public class IHM_Player
 		}
 		return result;
 	}
+	
+	/**
+	 * Demande au joueur en quelle piece doit etre promu le pion
+	 * @param piece La piece a promouvoir
+	 * @return La nouvelle piece
+	 */
+	public Piece askPiece(Piece piece)
+	{
+		Color color = piece.getColor();
+		int choix = 0;
+		System.out.println("En quelle pièce souhaitez-vous promouvoir ce pion ?");
+		do
+		{
+			System.out.println("1:Reine  2:Tour  3:Cavalier  4:Fou");
+			choix = this.scanner.nextInt();
+		}while(choix > 0 && choix <= 4);
+		switch (choix)
+		{
+			case 1:
+				return new Queen(color);
+			case 2:
+				return new Rook(color);
+			case 3:
+				return new Knight(color);
+			case 4:
+				return new Bishop(color);           
+		}
+		return null;
+	}
 }

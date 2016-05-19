@@ -118,7 +118,7 @@ public class Game
 						this.board.move(pieceToMove, positionOfDestination);
 						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
 						{
-							promotion(pieceToMove, ihm.askpiece(pieceToMove));
+							this.board.promotion(pieceToMove, ihm.askPiece(pieceToMove));
 						}
 					}
 				}
@@ -147,7 +147,7 @@ public class Game
 						this.board.move(pieceToMove, positionOfDestination);
 						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
 						{
-							promotion(pieceToMove, ihm.askpiece(pieceToMove));
+							this.board.promotion(pieceToMove, ihm.askPiece(pieceToMove));
 						}
 					}
 				}
