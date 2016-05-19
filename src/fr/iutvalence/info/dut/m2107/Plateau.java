@@ -89,17 +89,17 @@ public class Plateau
 
 	/**
 	 * Donne un liste de Piece contenant les pieces restantes du joueur passe en parametre
-	 * @param joueur le joueur pour lequel on veut recuperer ses pieces
+	 * @param couleur la couleur du joueur dont on veut recuperer les pieces
 	 * @return une liste de Piece contenant les pieces restantes du joueur passe en parametre
 	 */
-	public ArrayList<Piece> getPieceJoueur(Joueur joueur)
+	public ArrayList<Piece> getPieceJoueur(Couleur couleur)
 	{
 		ArrayList<Piece> pieceJoueur = new ArrayList<Piece>();
 		for(int i=0;i<8;i++)
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(this.plateau[i][j].getCouleur()==joueur.getCouleur())
+				if(this.plateau[i][j].getCouleur()==couleur)
 					pieceJoueur.add(this.plateau[i][j]);
 			}
 		}
@@ -131,7 +131,20 @@ public class Plateau
 	 */
 	public boolean estEnEchec(Position position, Couleur couleur)
 	{
-		// TODO Auto-generated method stub
+		int i = 0;
+		int j = 0;
+		ArrayList<Piece> piecesJ = getPieceJoueur(couleur.Invertcolor());
+		while (i < piecesJ.size())
+		{
+			while (j < piecesJ.get(i).deplacement(this).size())
+			{
+				if (piecesJ.get(i).deplacement(this).get(j) == position)
+					return true;
+				j++;
+			}
+			i++;
+			j = 0;
+		}
 		return false;
 	}
 }
