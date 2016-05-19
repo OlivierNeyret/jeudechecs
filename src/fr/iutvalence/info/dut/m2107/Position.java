@@ -10,41 +10,41 @@ public class Position {
 	/**
 	 * Absisse 
 	 */
-	private final int abscisse;
+	private final int abscissa;
 	
 	/**
 	 * Ordonnee 
 	 */
-	private final int ordonnee;
+	private final int ordonate;
 
 	
 	/**
 	 * Cree une position a partir des coordonnees donnees
-	 * @param abscisse l'abscisse du position
-	 * @param ordonnee l'ordonnee du position
+	 * @param abscissa l'abscisse du position
+	 * @param ordonate l'ordonnee du position
 	 */
-	public Position(int abscisse, int ordonnee)
+	public Position(int abscissa, int ordonate)
 	{
-		this.abscisse = abscisse;
-		this.ordonnee = ordonnee;
+		this.abscissa = abscissa;
+		this.ordonate = ordonate;
 	}
 
 
 	/**
 	 * @return renvoie l'abscisse de la position
 	 */
-	public int getAbscisse()
+	public int getAbscissa()
 	{
-		return this.abscisse;
+		return this.abscissa;
 	}
 
 
 	/**
 	 * @return renvoie l'ordonnee de la position
 	 */
-	public int getOrdonnee()
+	public int getOrdonate()
 	{
-		return this.ordonnee;
+		return this.ordonate;
 	}
 
 }

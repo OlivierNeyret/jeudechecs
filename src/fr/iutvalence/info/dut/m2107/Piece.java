@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public abstract class Piece
 {
-	private final Couleur couleur;
+	private final Color color;
 
 	private final Type type;
 	
@@ -18,12 +18,12 @@ public abstract class Piece
 	//TODO comment
 	/**
 	 * Cree
-	 * @param couleur
+	 * @param color
 	 * @param type
 	 */
-	public Piece(Couleur couleur, Type type)
+	public Piece(Color color, Type type)
 	{
-		this.couleur = couleur;
+		this.color = color;
 		this.type = type;
 	}
 
@@ -31,7 +31,7 @@ public abstract class Piece
 	 * recupere le type de la piece
 	 * @return retourne le type de la piece
 	 */
-	public Type recupererType()
+	public Type getType()
 	{
 		// TODO - implement Piece.recupererType
 		throw new UnsupportedOperationException();
@@ -40,10 +40,10 @@ public abstract class Piece
 	
 	/**
 	 * nous permet de voir les deplacements possibles de la piece
-	 * @param plateau Le plateau de jeu
+	 * @param board Le plateau de jeu
 	 * @return un tableau de tout les deplacements possibles
 	 */
-	public ArrayList<Position> deplacement(Plateau plateau)
+	public ArrayList<Position> deplacement(Board board)
 	{
 		// TODO - implement Piece.deplacement
 		throw new UnsupportedOperationException();
@@ -53,9 +53,9 @@ public abstract class Piece
 	 * renvoie la couleur de la piece
 	 * @return noir ou blanc selon la couleur de la piece
 	 */
-	public Couleur getCouleur()
+	public Color getColor()
 	{
-		return this.couleur;
+		return this.color;
 	}
 	
 	/**
@@ -67,17 +67,17 @@ public abstract class Piece
 	{
 		switch (this.type)
 		{
-		  case Tour:
-		    return "T"; 
-		  case Cavalier:
-			    return "C";
-		  case Fou:
-			    return "F";
-		  case Reine:
-			    return "R";
-		  case Roi:
+		  case ROOK:
+		    return "R"; 
+		  case KNIGHT:
 			    return "K";
-		  case Pion:
+		  case BISHOP:
+			    return "B";
+		  case QUEEN:
+			    return "Q";
+		  case KING:
+			    return "K";
+		  case PAWN:
 			    return "P";	
 		  default:
 		    return "O";             

@@ -7,30 +7,30 @@ package fr.iutvalence.info.dut.m2107;
  *
  */
 
-public class Partie
+public class Game
 {
 
 	/**
 	 * Le joueur qui joue les blancs
 	 */
-	private Joueur blanc;
+	private Player white;
 	/**
 	 * Le joueur qui joue les noirs
 	 */
-	private Joueur noir;
+	private Player black;
 	/**
 	 * Le plateau de la partie
 	 */
-	private Plateau plateau;
+	private Board plateau;
 
 	/**
 	 * Creer une partie a deux joueurs humains
 	 */
-	public Partie()
+	public Game()
 	{
-		this.blanc = new Joueur(Couleur.Blanc);
-		this.noir = new Joueur(Couleur.Noir);
-		this.plateau = new Plateau();
+		this.white = new Player(Color.WHITE);
+		this.black = new Player(Color.BLACK);
+		this.plateau = new Board();
 	}
 
 	/**
@@ -42,18 +42,18 @@ public class Partie
 	 *            la difficulte choisie par le joueur humain
 	 * 
 	 */
-	public Partie(Couleur couleurJoueur, Difficulte difficulteChoisie)
+	public Game(Color couleurJoueur, Difficulty difficulteChoisie)
 	{
-		if (couleurJoueur == Couleur.Blanc)
+		if (couleurJoueur == Color.WHITE)
 		{
-			this.blanc = new Joueur(Couleur.Blanc);
-			this.noir = new IA(difficulteChoisie);
+			this.white = new Player(Color.WHITE);
+			this.black = new AI(difficulteChoisie);
 		} else
 		{
-			this.noir = new Joueur(Couleur.Noir);
-			this.blanc = new IA(difficulteChoisie);
+			this.black = new Player(Color.BLACK);
+			this.white = new AI(difficulteChoisie);
 		}
-		this.plateau = new Plateau();
+		this.plateau = new Board();
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class Partie
 	 * 
 	 * @return Le plateau de la partie
 	 */
-	public Plateau getPlateau()
+	public Board getPlateau()
 	{
 		// TODO Auto-generated method stub
 		return this.plateau;
@@ -107,10 +107,10 @@ public class Partie
 	/**
 	 * Le deroulement de la partie
 	 */
-	public void jouer()
+	public void play()
 	{
 		int nombreDeCoups = 0;
-		IHM_Joueur ihm = new IHM_Joueur(this);
+		IHM_Player ihm = new IHM_Player(this);
 		while (this.verifierConditionsVictoire() == false)
 		{
 			Position pieceABouger;
@@ -130,6 +130,6 @@ public class Partie
 			}
 			nombreDeCoups++;
 		}
-		System.out.println(plateau.getPieceJoueur(Couleur.Blanc));
+		System.out.println(plateau.getPieceJoueur(Color.WHITE));
 	}
 }

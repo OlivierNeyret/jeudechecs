@@ -5,19 +5,19 @@ package fr.iutvalence.info.dut.m2107;
  * @author Xavier
  *
  */
-public enum Difficulte {
+public enum Difficulty {
 	/**
 	 * Difficulte la plus basse
 	 */
-	Facile,
+	EASY,
 	
 	/**
 	 * Difficulte intermediaire
 	 */
-	Moyen,
+	MIDDLE,
 	
 	/**
 	 * Difficulte la plus importante
 	 */
-	Difficile
+	DIFFICULTY
 }

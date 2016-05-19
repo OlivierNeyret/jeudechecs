@@ -7,54 +7,54 @@ import java.util.ArrayList;
  * @author pasquiop
  *
  */
-public class Plateau
+public class Board
 {
 	/**
 	 * Le plateau du jeu
 	 * Contient les references de chaque piece encore en jeu
 	 * S il n y a pas de piece sur une case, la case vaut NULL
 	 */
-	private Piece[][] plateau;
+	private Piece[][] board;
 	
 	/**
 	 * cree un plateau avec les pieces dessus, en position de depart
 	 */
-	public Plateau()
+	public Board()
 	{
-		this.plateau = new Piece[8][8];
+		this.board = new Piece[8][8];
 		
-		this.plateau[0][7] = new Tour(Couleur.Blanc);
-		this.plateau[1][7] = new Cavalier(Couleur.Blanc);
-		this.plateau[2][7] = new Fou(Couleur.Blanc);
-		this.plateau[4][7] = new Roi(Couleur.Blanc);
-		this.plateau[3][7] = new Reine(Couleur.Blanc);
-		this.plateau[5][7] = new Fou(Couleur.Blanc);
-		this.plateau[6][7] = new Cavalier(Couleur.Blanc);
-		this.plateau[7][7] = new Tour(Couleur.Blanc);
+		this.board[0][7] = new Rook(Color.WHITE);
+		this.board[1][7] = new Knight(Color.WHITE);
+		this.board[2][7] = new Bishop(Color.WHITE);
+		this.board[4][7] = new King(Color.WHITE);
+		this.board[3][7] = new Queen(Color.WHITE);
+		this.board[5][7] = new Bishop(Color.WHITE);
+		this.board[6][7] = new Knight(Color.WHITE);
+		this.board[7][7] = new Rook(Color.WHITE);
 		
 		for(int i=0;i<8;i++)
 		{
-			this.plateau[i][6]= new Pion(Couleur.Blanc, Type.Pion);
+			this.board[i][6]= new Pawn(Color.WHITE, Type.PAWN);
 		}
 		
-		this.plateau[0][0] = new Tour(Couleur.Noir);
-		this.plateau[1][0] = new Cavalier(Couleur.Noir);
-		this.plateau[2][0] = new Fou(Couleur.Noir);
-		this.plateau[3][0] = new Roi(Couleur.Noir);
-		this.plateau[4][0] = new Reine(Couleur.Noir);
-		this.plateau[5][0] = new Fou(Couleur.Noir);
-		this.plateau[6][0] = new Cavalier(Couleur.Noir);
-		this.plateau[7][0] = new Tour(Couleur.Noir);
+		this.board[0][0] = new Rook(Color.BLACK);
+		this.board[1][0] = new Knight(Color.BLACK);
+		this.board[2][0] = new Bishop(Color.BLACK);
+		this.board[3][0] = new King(Color.BLACK);
+		this.board[4][0] = new Queen(Color.BLACK);
+		this.board[5][0] = new Bishop(Color.BLACK);
+		this.board[6][0] = new Knight(Color.BLACK);
+		this.board[7][0] = new Rook(Color.BLACK);
 		
 		for(int i=0;i<8;i++)
 		{
-			this.plateau[i][1]= new Pion(Couleur.Noir, Type.Pion);
+			this.board[i][1]= new Pawn(Color.BLACK, Type.PAWN);
 		}
 		for(int i=0;i<8;i++)
 		{
 			for(int j=2;j<6;j++)
 			{
-				this.plateau[i][j] = new Pion(Couleur.None, Type.None);
+				this.board[i][j] = new Null();
 			}
 		}
 	}
@@ -63,9 +63,9 @@ public class Plateau
 	 * Cree un plateau a partir d'un tableau de pieces donne
 	 * @param tabP Le tableau de pieces
 	 */
-	public Plateau(Piece[][] tabP)
+	public Board(Piece[][] tabP)
 	{
-		this.plateau=tabP;
+		this.board=tabP;
 	}
 
 	/**
@@ -73,17 +73,17 @@ public class Plateau
 	 * @param positionDep La position où l'on veut deplacer la piece
 	 * @return Le plateau avec le deplacement effectué
 	 */
-	public Plateau emulateDeplacement(Piece piece, Position positionDep)
+	public Board emulateDeplacement(Piece piece, Position positionDep)
 	{
-		Piece[][] tabP = this.plateau;
-		int x1 = positionDep.getAbscisse();
-		int y1 = positionDep.getOrdonnee();
-		int x2 = this.getCoordonateOfPiece(piece).getAbscisse();
-		int y2 = this.getCoordonateOfPiece(piece).getOrdonnee();
-		tabP[x2][y2]= new Pion(Couleur.None, Type.None);
+		Piece[][] tabP = this.board;
+		int x1 = positionDep.getAbscissa();
+		int y1 = positionDep.getOrdonate();
+		int x2 = this.getCoordonateOfPiece(piece).getAbscissa();
+		int y2 = this.getCoordonateOfPiece(piece).getOrdonate();
+		tabP[x2][y2]= new Pawn(Color.NONE, Type.NONE);
 		tabP[x1][y1]= piece;
 		
-		Plateau p1 = new Plateau(tabP);
+		Board p1 = new Board(tabP);
 		return p1;
 	}
 	
@@ -98,7 +98,7 @@ public class Plateau
 		{
 			for (int j=0;j<8;j++)
 			{
-				if (piece == this.plateau[i][j])
+				if (piece == this.board[i][j])
 					return (new Position(i, j));
 			}
 		}
@@ -112,7 +112,7 @@ public class Plateau
 	 */
 	public Piece getPieceAtPosition(Position i)
 	{
-		return (this.plateau[i.getOrdonnee()][i.getAbscisse()]);
+		return (this.board[i.getOrdonate()][i.getAbscissa()]);
 	}
 
 	/**
@@ -120,15 +120,15 @@ public class Plateau
 	 * @param couleur la couleur du joueur dont on veut recuperer les pieces
 	 * @return une liste de Piece contenant les pieces restantes du joueur passe en parametre
 	 */
-	public ArrayList<Piece> getPieceJoueur(Couleur couleur)
+	public ArrayList<Piece> getPieceJoueur(Color couleur)
 	{
 		ArrayList<Piece> pieceJoueur = new ArrayList<Piece>();
 		for(int i=0;i<8;i++)
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(this.plateau[i][j].getCouleur()==couleur)
-					pieceJoueur.add(this.plateau[i][j]);
+				if(this.board[i][j].getColor()==couleur)
+					pieceJoueur.add(this.board[i][j]);
 			}
 		}
 		return pieceJoueur;
@@ -139,15 +139,15 @@ public class Plateau
 	 * @param couleur La couleur du roi que l'on cherche
 	 * @return Le roi de la couleur donnee
 	 */
-	public Piece getKing(Couleur couleur)
+	public Piece getKing(Color couleur)
 	{
 		
 		for(int i=0;i<8;i++)
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(this.plateau[i][j].recupererType()==Type.Roi && this.plateau[i][j].getCouleur()==couleur){
-					return (this.plateau[i][j]);
+				if(this.board[i][j].getType()==Type.KING && this.board[i][j].getColor()==couleur){
+					return (this.board[i][j]);
 				}
 					
 			}
@@ -165,7 +165,7 @@ public class Plateau
 		{
 			for (int column = 0; column < 8; column++)
 			{
-				result += this.plateau[column][row].toString();
+				result += this.board[column][row].toString();
 			}
 			result += "\n";
 		}
@@ -178,7 +178,7 @@ public class Plateau
 	 * @param couleur La couleur du roi sur lequel on veut tester l'echec
 	 * @return true si la position est en echec pour le roi de la couleur donnee, false sinon
 	 */
-	public boolean estEnEchec(Position position, Couleur couleur)
+	public boolean estEnEchec(Position position, Color couleur)
 	{
 		int i = 0;
 		int j = 0;

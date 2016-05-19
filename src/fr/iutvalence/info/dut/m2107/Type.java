@@ -7,29 +7,29 @@ public enum Type {
 	/**
 	 * represente le roi sur l'echiquier
 	 */
-	Roi,
+	KING,
 	/**
 	 * represente la reine sur l'echiquier
 	 */
-	Reine, 
+	QUEEN, 
 	/**
 	 * represente le fou sur l'echiquier
 	 */
-	Fou,
+	BISHOP,
 	/**
 	 * represente le cavalier sur l'echiquier
 	 */
-	Cavalier,
+	KNIGHT,
 	/**
 	 * represente la tour sur l'echiquier
 	 */
-	Tour,
+	ROOK,
 	/**
 	 * represente le pion sur l'echiquier
 	 */
-	Pion,
+	PAWN,
 	/**
 	 * represente l'absence de piece sur l'echiquier
 	 */
-	None;
+	NONE;
 }

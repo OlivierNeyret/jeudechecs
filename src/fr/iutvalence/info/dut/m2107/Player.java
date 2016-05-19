@@ -5,28 +5,28 @@ package fr.iutvalence.info.dut.m2107;
  * 
  * @author jacobjul
  */
-public class Joueur
+public class Player
 {
-	private Couleur couleur;
+	private Color color;
 
 	/**
 	 * Creer un joueur avec les pieces par defaut, de la couleur choisie
 	 * 
-	 * @param couleur0
+	 * @param color
 	 *            La couleur choisie par le joueur
 	 */
-	public Joueur(Couleur couleur0)
+	public Player(Color color)
 	{
-		this.couleur = couleur0;
+		this.color = color;
 	}
 
 	/**
-	 * Choix de la piece a d�placer par le joueur (lien avec IHM)
+	 * Choix de la piece a deplacer par le joueur (lien avec IHM)
 	 * 
 	 * @param position
 	 *            La position de la piece choisie par le joueur
 	 */
-	public void choisirPiece(Position position)
+	public void pickPiece(Position position)
 	{
 		// TODO
 	}
@@ -40,7 +40,7 @@ public class Joueur
 	 *            est le deplacement voulu pour la piece choisi parmis les
 	 *            d�placements posibbles definis dans la pi�ce.
 	 */
-	public void deplacer(Piece piece, Position deplacement)
+	public void move(Piece piece, Position deplacement)
 	{
 		// TODO - implement Joueur.deplacer
 		throw new UnsupportedOperationException();
@@ -51,8 +51,8 @@ public class Joueur
 	 * 
 	 * @return la couleur du joueur
 	 */
-	public Couleur getCouleur()
+	public Color getColor()
 	{
-		return this.couleur;
+		return this.color;
 	}
 }

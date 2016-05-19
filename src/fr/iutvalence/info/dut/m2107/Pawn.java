@@ -8,51 +8,51 @@ import java.util.ArrayList;
  * @author pasquiop
  *
  */
-public class Pion extends Piece {
+public class Pawn extends Piece {
 
 	/**
 	 * Cree un pion de la couleur donnee
 	 * @param couleur
 	 * @param type type du pion
 	 */
-	public Pion(Couleur couleur, Type type)
+	public Pawn(Color couleur, Type type)
 	{
 		super(couleur, type);
 	}
 	
-	public ArrayList<Position> deplacement(Plateau plateau) {
+	public ArrayList<Position> deplacement(Board plateau) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
-		int x = plateau.getCoordonateOfPiece(this).getOrdonnee();
-		int y = plateau.getCoordonateOfPiece(this).getAbscisse();
-		Couleur couleur=this.getCouleur();
+		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
+		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
+		Color couleur=this.getColor();
 		
-		if (couleur==Couleur.Blanc)
+		if (couleur==Color.WHITE)
 		{
 			if (y == 6)
 			{
-				if (plateau.getPieceAtPosition(new Position(x+2,y)).recupererType() == Type.None && 
+				if (plateau.getPieceAtPosition(new Position(x+2,y)).getType() == Type.NONE && 
 					!(plateau.emulateDeplacement(this, new Position(x+2,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x+2,y));
 				}
 			}
-			if (plateau.getPieceAtPosition(new Position(x+1,y)).recupererType() == Type.None && 
+			if (plateau.getPieceAtPosition(new Position(x+1,y)).getType() == Type.NONE && 
 					!(plateau.emulateDeplacement(this, new Position(x+1,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x+1,y));
 			}
 		}
-		else if(couleur==Couleur.Noir)
+		else if(couleur==Color.BLACK)
 		{
 			if (y == 1)
 			{
-				if (plateau.getPieceAtPosition(new Position(x-2,y)).recupererType() == Type.None && 
+				if (plateau.getPieceAtPosition(new Position(x-2,y)).getType() == Type.NONE && 
 					!(plateau.emulateDeplacement(this, new Position(x-2,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x-2,y));
 				}
 			}
-			if (plateau.getPieceAtPosition(new Position(x-1,y)).recupererType() == Type.None && 
+			if (plateau.getPieceAtPosition(new Position(x-1,y)).getType() == Type.NONE && 
 					!(plateau.emulateDeplacement(this, new Position(x-1,y)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x-1,y));
@@ -62,7 +62,7 @@ public class Pion extends Piece {
 		return deplacement;
 	}
 
-	public Type recupererType() {
+	public Type getType() {
 		// TODO - implement Pion.recupererType
 		throw new UnsupportedOperationException();
 	}

@@ -3,29 +3,29 @@ package fr.iutvalence.info.dut.m2107;
 import java.util.Random;
 
 /**
- * Classe qui gere la fa�on dont l'intelligence artificielle (IA) va jouer
+ * Classe qui gere la facon dont l'intelligence artificielle (IA) va jouer
  * 
  * @author Xavier
  *
  */
-public class IA extends Joueur
+public class AI extends Player
 {
 
 	/**
 	 * Difficulte de l'IA
 	 */
-	private final Difficulte difficulte;
+private final Difficulty difficulty;
 
 	/**
 	 * Cree une IA avec une difficulte donnee
 	 * 
-	 * @param difficulte
+	 * @param difficulty
 	 *            difficulte de l'IA
 	 */
-	public IA(Difficulte difficulte)
+	public AI(Difficulty difficulty)
 	{
-		super(Couleur.Noir);
-		this.difficulte = difficulte;
+		super(Color.BLACK);
+		this.difficulty = difficulty;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class IA extends Joueur
 	 * @param deplacement
 	 *            Le deplacement que la piece doit effectuer
 	 */
-	public void deplacer(Piece piece, Position deplacement)
+	public void move(Piece piece, Position deplacement)
 	{
 		// TODO - implement IA.deplacer
 		//Pas besoin de la redefinir si la methode IAjoue l appel
@@ -48,16 +48,16 @@ public class IA extends Joueur
 	 * Choix du deplacement a faire
 	 * Effectue le deplacement
 	 */
-	public void IAjoue()
+	public void aiPlay()
 	{
 		Piece pieceChoisie;
 		Position deplacementChoisi;
 		
-		if(this.difficulte==Difficulte.Facile)
+		if(this.difficulty==Difficulty.EASY)
 		{
 			//Choisir un deplacement
 		}
-		else if(this.difficulte==Difficulte.Moyen)
+		else if(this.difficulty==Difficulty.MIDDLE)
 		{
 			/*
 			 * Parcourir toutes les pi�ces
@@ -78,9 +78,9 @@ public class IA extends Joueur
 	/**
 	 * @return renvoie la difficulte de l'IA
 	 */
-	public Difficulte getDifficulte()
+	public Difficulty getDifficulty()
 	{
-		return this.difficulte;
+		return this.difficulty;
 	}
 
 }

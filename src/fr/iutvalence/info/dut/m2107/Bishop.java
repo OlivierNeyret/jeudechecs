@@ -7,57 +7,57 @@ import java.util.ArrayList;
  * @author lucianor
  *
  */
-public class Fou extends Piece {
+public class Bishop extends Piece {
 
 
 	/**
 	 * Cree un fou de la couleur donnee
 	 * @param couleur
 	 */
-	public Fou(Couleur couleur)
+	public Bishop(Color couleur)
 	{
-		super(couleur, Type.Fou);
+		super(couleur, Type.BISHOP);
 	}
 
-	public ArrayList<Position> deplacement(Plateau plateau) {
+	public ArrayList<Position> deplacement(Board plateau) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		boolean diagA=true;
 		boolean diagB=true;
 		boolean diagC=true;
 		boolean diagD=true;
 		
-		int x = plateau.getCoordonateOfPiece(this).getOrdonnee();
-		int y = plateau.getCoordonateOfPiece(this).getAbscisse();
-		Couleur couleur=this.getCouleur();
+		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
+		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
+		Color couleur=this.getColor();
 		
 		for (int i=1;i<=7;i++)
 		{
-			if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getCouleur()!=couleur && diagA &&
+			if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA &&
 				!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x+i,y+i));
-				if (plateau.getPieceAtPosition(new Position(x+i,y+i)).recupererType() != Type.None)
+				if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != Type.NONE)
 					diagA=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getCouleur()!=couleur && diagB &&
+			if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB &&
 				!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x+i,y-i));
-				if (plateau.getPieceAtPosition(new Position(x+i,y-i)).recupererType() != Type.None)
+				if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != Type.NONE)
 					diagB=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getCouleur()!=couleur && diagC &&
+			if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC &&
 				!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x-i,y-i));
-				if (plateau.getPieceAtPosition(new Position(x-i,y-i)).recupererType() != Type.None)
+				if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != Type.NONE)
 					diagC=false;
 			}
-			if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getCouleur()!=couleur && diagD &&
+			if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD &&
 				!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).estEnEchec(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 			{
 				deplacement.add(new Position(x-i,y+i));
-				if (plateau.getPieceAtPosition(new Position(x-i,y+i)).recupererType() != Type.None)
+				if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != Type.NONE)
 					diagD=false;
 			}
 		}
@@ -65,7 +65,7 @@ public class Fou extends Piece {
 		return deplacement;
 	}
 
-	public Type recupererType() {
+	public Type getType() {
 		// TODO - implement Fou.recupererType
 		throw new UnsupportedOperationException();
 	}

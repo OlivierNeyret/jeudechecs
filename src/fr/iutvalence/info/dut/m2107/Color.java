@@ -5,30 +5,30 @@ package fr.iutvalence.info.dut.m2107;
  * @author pasquiop
  *
  */
-public enum Couleur
+public enum Color
 {
 	/**
 	 * represente la couleur banche
 	 */
-	Blanc,
+	WHITE,
 	/**
 	 * represente la couleur noire
 	 */
-	Noir,
+	BLACK,
 	/**
 	 * pour les non-pieces
 	 */
-	None;
+	NONE;
 
 	/**
 	 * @param couleur est la couleur que lon veut inverser
 	 * @return l'inverse de la couleur passee en param
 	 */
-	public Couleur Invertcolor()
+	public Color Invertcolor()
 	{
-		if (this == Couleur.Blanc)
-			return Couleur.Noir;
+		if (this == Color.WHITE)
+			return Color.BLACK;
 		else 
-			return Couleur.Blanc;
+			return Color.WHITE;
 	}
 }

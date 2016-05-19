@@ -9,12 +9,12 @@ import java.util.Scanner;
  *
  */
 
-public class IHM_Joueur
+public class IHM_Player
 {
 	/**
 	 * La partie correspondant a l ihm
 	 */
-	private Partie partie;
+	private Game game;
 
 	/**
 	 * Permet de lire les entrees clavier
@@ -24,11 +24,11 @@ public class IHM_Joueur
 	/**
 	 * Creer l ihm de de la partie
 	 * 
-	 * @param partie
+	 * @param game
 	 */
-	public IHM_Joueur(Partie partie)
+	public IHM_Player(Game game)
 	{
-		this.partie = partie;
+		this.game = game;
 		this.scanner = new Scanner(System.in);
 		System.out.println("Initialisation de l'interface homme-machine.");
 	}
@@ -38,7 +38,7 @@ public class IHM_Joueur
 	 */
 	public void displayBoard()
 	{
-		System.out.println(this.partie.getPlateau().toString());
+		System.out.println(this.game.getPlateau().toString());
 	}
 
 	/**
@@ -50,9 +50,9 @@ public class IHM_Joueur
 	{
 		Position resultat;
 		System.out.println("Saisisser le numero de ligne :");
-		int ligne = scanner.nextInt();
+		int ligne = this.scanner.nextInt();
 		System.out.println("Saisisser le numero de colonne :");
-		int colonne = scanner.nextInt();
+		int colonne = this.scanner.nextInt();
 		resultat = new Position(ligne,colonne);
 		return resultat;
 	}
