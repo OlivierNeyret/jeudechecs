@@ -5,7 +5,8 @@ package fr.iutvalence.info.dut.m2107;
  * @author Xavier
  *
  */
-public class Position {
+public class Position
+{
 
 	/**
 	 * Absisse 
@@ -50,6 +51,14 @@ public class Position {
 	public int getOrdonate()
 	{
 		return this.ordonate;
+	}
+	
+	/**
+	 * Renvoie une coordonnee sous la forme (ligne,colonne)
+	 */
+	public String toString()
+	{
+		return "(" + ordonate + "," + abscissa + ")";
 	}
 
 }
