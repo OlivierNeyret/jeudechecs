@@ -38,7 +38,7 @@ public class IHM_Player
 	 */
 	public void displayBoard()
 	{
-		System.out.println(this.game.getPlateau().toString());
+		System.out.println(this.game.getBoard().toString());
 	}
 
 	/**
@@ -48,22 +48,23 @@ public class IHM_Player
 	 */
 	public Position askPosition()
 	{
-		boolean test=false;
-		Position resultat = null;
-		System.out.println("Saisisser le numero de ligne :");
-		int ligne = this.scanner.nextInt();
-		System.out.println("Saisisser le numero de colonne :");
-		int colonne = this.scanner.nextInt();
-		while (!test){
+		boolean test = false;
+		Position result = null;
+		while (!test)
+		{
+			System.out.println("Saisisser le numero de ligne :");
+			int ligne = this.scanner.nextInt();
+			System.out.println("Saisisser le numero de colonne :");
+			int colonne = this.scanner.nextInt();
 			try
 			{
-				resultat = new Position(ligne,colonne);
-				test=true;
+				result = new Position(ligne, colonne);
+				test = true;
 			} catch (PositionOutOfBoardException e)
 			{
-				
+
 			}
 		}
-		return resultat;
+		return result;
 	}
 }
