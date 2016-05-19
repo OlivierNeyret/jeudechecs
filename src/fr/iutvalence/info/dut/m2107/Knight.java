@@ -31,7 +31,7 @@ public class Knight extends Piece
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x+i,y+j)).getColor()!=couleur && 
-					!(plateau.emulateDeplacement(this, new Position(x+i,y+j)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					!(plateau.emulateDeplacement(this, new Position(x+i,y+j)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{	
 					deplacement.add(new Position(x+i,y+j));
 				}
@@ -41,7 +41,7 @@ public class Knight extends Piece
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x-j,y+i)).getColor()!=couleur &&
-					!(plateau.emulateDeplacement(this, new Position(x-j,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					!(plateau.emulateDeplacement(this, new Position(x-j,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x-j,y+i));
 					
@@ -52,7 +52,7 @@ public class Knight extends Piece
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x-i,y-j)).getColor()!=couleur &&
-					!(plateau.emulateDeplacement(this, new Position(x-i,y-j)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					!(plateau.emulateDeplacement(this, new Position(x-i,y-j)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x-i,y-j));
 					
@@ -63,7 +63,7 @@ public class Knight extends Piece
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x+j,y-i)).getColor()!=couleur &&
-					!(plateau.emulateDeplacement(this, new Position(x+j,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					!(plateau.emulateDeplacement(this, new Position(x+j,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x+j,y-i));
 					

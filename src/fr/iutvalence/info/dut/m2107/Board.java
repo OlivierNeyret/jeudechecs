@@ -185,7 +185,7 @@ public class Board
 	 * @param color La couleur du roi sur lequel on veut tester l'echec
 	 * @return true si la position est en echec pour le roi de la couleur donnee, false sinon
 	 */
-	public boolean isCHeck(Position position, Color color)
+	public boolean isCheck(Position position, Color color)
 	{
 		int i = 0;
 		int j = 0;
@@ -202,5 +202,34 @@ public class Board
 			j = 0;
 		}
 		return false;
+	}
+	
+	/**
+	 * Transforme un pion qui atteindrait la derniere ligne du plateau en une
+	 * reine.
+	 * 
+	 * @param piece
+	 *            Le pion qui doit etre transforme
+	 * @param askedNewPiece la piece demandee, a la place d'un pion
+	 */
+	public void promotion(Piece piece, Piece askedNewPiece)
+	{
+	
+		this.board[this.getCoordonateOfPiece(piece).getOrdonate()][this.getCoordonateOfPiece(piece).getAbscissa()] = askedNewPiece;
+	}
+	
+	/**
+	 * Choix du deplacement par le joueur
+	 * 
+	 * @param piece
+	 *            est la piece que l'on souhaite deplacer
+	 * @param arrivalPosition
+	 *            est le deplacement voulu pour la piece choisi parmis les
+	 *            deplacements posibbles definis dans la piece.
+	 */
+	public void move(Piece piece, Position arrivalPosition)
+	{
+		this.board[this.getCoordonateOfPiece(piece).getOrdonate()][this.getCoordonateOfPiece(piece).getAbscissa()] = new Null();
+		this.board[arrivalPosition.getOrdonate()][arrivalPosition.getAbscissa()] = piece;
 	}
 }

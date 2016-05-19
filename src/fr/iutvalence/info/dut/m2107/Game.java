@@ -15,10 +15,12 @@ public class Game
 	/**
 	 * Le joueur qui joue les blancs
 	 */
+	
 	private Player white;
 	/**
 	 * Le joueur qui joue les noirs
 	 */
+
 	private Player black;
 	/**
 	 * Le plateau de la partie
@@ -70,19 +72,6 @@ public class Game
 	}
 
 	/**
-	 * Transforme un pion qui atteindrait la derniere ligne du plateau en une
-	 * reine.
-	 * 
-	 * @param Pion
-	 *            Le pion qui doit etre transforme
-	 */
-	public void promotion(int Pion)
-	{
-		// TODO - implement Partie.Promotion
-		throw new UnsupportedOperationException();
-	}
-
-	/**
 	 * Renvoie le plateau de la partie
 	 * 
 	 * @return Le plateau de la partie
@@ -118,7 +107,7 @@ public class Game
 						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
 					}
 					while(pieceToMove.getColor()!=Color.WHITE);
-					listOfMove = pieceToMove.deplacement(board);
+					listOfMove = pieceToMove.deplacement(this.board);
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);
 					//Demander le deplacement
@@ -126,7 +115,11 @@ public class Game
 					//verifier validite du coup
 					if(listOfMove.contains(positionOfDestination))
 					{
-						//Faire le deplacement
+						this.board.move(pieceToMove, positionOfDestination);
+						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
+						{
+							promotion(pieceToMove, ihm.askpiece());
+						}
 					}
 				}
 				while(!listOfMove.contains(positionOfDestination));
@@ -143,7 +136,7 @@ public class Game
 						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
 					}
 					while(pieceToMove.getColor()!=Color.BLACK);
-					listOfMove = pieceToMove.deplacement(board);
+					listOfMove = pieceToMove.deplacement(this.board);
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);
 					//Demander le deplacement
@@ -151,13 +144,16 @@ public class Game
 					//verifier validite du coup
 					if(listOfMove.contains(positionOfDestination))
 					{
-						//Faire le deplacement
+						this.board.move(pieceToMove, positionOfDestination);
+						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
+						{
+							promotion(pieceToMove, ihm.askpiece());
+						}
 					}
 				}
 				while(!listOfMove.contains(positionOfDestination));
 			}
 			numberOfMoves++;
 		}
-		System.out.println(board.getPiecePlayer(Color.WHITE));
 	}
 }

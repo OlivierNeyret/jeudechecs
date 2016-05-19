@@ -38,7 +38,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur && colA && 
-					!(plateau.emulateDeplacement(this, new Position(x+i,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					!(plateau.emulateDeplacement(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x+i,y));
 					if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
@@ -51,7 +51,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur && colB && 
-						!(plateau.emulateDeplacement(this, new Position(x-i,y)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x-i,y));
 					if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
@@ -64,7 +64,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur && rowA && 
-						!(plateau.emulateDeplacement(this, new Position(x,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x,y+i));
 					if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
@@ -77,7 +77,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur && rowB && 
-						!(plateau.emulateDeplacement(this, new Position(x,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x,y-i));
 					if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
@@ -91,7 +91,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA && 
-						!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x+i,y+i));
 					if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != Type.NONE)
@@ -104,7 +104,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB && 
-						!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x+i,y-i));
 					if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != Type.NONE)
@@ -117,7 +117,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC && 
-						!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x-i,y-i));
 					if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != Type.NONE)
@@ -130,7 +130,7 @@ public class Queen extends Piece {
 			try
 			{
 				if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD && 
-						!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCHeck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 				{
 					deplacement.add(new Position(x-i,y+i));
 					if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != Type.NONE)
