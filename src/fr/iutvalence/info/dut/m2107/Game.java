@@ -1,5 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.util.ArrayList;
+
 /**
  * Une partie d'echecs.
  * 
@@ -21,7 +23,7 @@ public class Game
 	/**
 	 * Le plateau de la partie
 	 */
-	private Board plateau;
+	private Board board;
 
 	/**
 	 * Creer une partie a deux joueurs humains
@@ -30,7 +32,7 @@ public class Game
 	{
 		this.white = new Player(Color.WHITE);
 		this.black = new Player(Color.BLACK);
-		this.plateau = new Board();
+		this.board = new Board();
 	}
 
 	/**
@@ -53,20 +55,7 @@ public class Game
 			this.black = new Player(Color.BLACK);
 			this.white = new AI(difficulteChoisie);
 		}
-		this.plateau = new Board();
-	}
-
-	/**
-	 * Affiche tous les deplacements possibles pour une piece.
-	 * 
-	 * @param Piece
-	 *            Indique la piece sur laquelle on veut connaitre ses
-	 *            deplacements.
-	 */
-	public void afficherDeplacementsPossible(int Piece)
-	{
-		// TODO - implement Partie.AfficherDeplacementsPossible
-		throw new UnsupportedOperationException();
+		this.board = new Board();
 	}
 
 	/**
@@ -74,7 +63,7 @@ public class Game
 	 * 
 	 * @return renvoie true si le joueur a gagne, false sinon
 	 */
-	public boolean verifierConditionsVictoire()
+	public boolean checkVictory()
 	{
 		// TODO - implement Partie.VerifierConditionsVictoire
 		throw new UnsupportedOperationException();
@@ -98,10 +87,10 @@ public class Game
 	 * 
 	 * @return Le plateau de la partie
 	 */
-	public Board getPlateau()
+	public Board getBoard()
 	{
 		// TODO Auto-generated method stub
-		return this.plateau;
+		return this.board;
 	}
 
 	/**
@@ -109,27 +98,66 @@ public class Game
 	 */
 	public void play()
 	{
-		int nombreDeCoups = 0;
+		int numberOfMoves = 0;
 		IHM_Player ihm = new IHM_Player(this);
-		while (this.verifierConditionsVictoire() == false)
+		while (this.checkVictory() == false)
 		{
-			Position pieceABouger;
+			Position positionPieceToMove, positionOfDestination;
+			Piece pieceToMove;
+			ArrayList<Position> listOfMove;
 			ihm.displayBoard();
-			if(nombreDeCoups%2==0) //Le tour des blancs
+			if(numberOfMoves%2==0) //Le tour des blancs
 			{
-				System.out.println("Coup des blancs, choisissez une pièce à déplacer :");
-				pieceABouger = ihm.askPosition();
-				//Demander coup
-				//Afficher les deplcaments possibles
-				//verifier validite du coup
-				//effectuer le coup
+				do
+				{
+					do
+					{
+						//Demander la piece a jouer
+						System.out.println("Coup des blancs, choisissez une pièce à déplacer :");
+						positionPieceToMove = ihm.askPosition();
+						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
+					}
+					while(pieceToMove.getColor()!=Color.WHITE);
+					listOfMove = pieceToMove.deplacement(board);
+					//Afficher les deplacements possibles
+					System.out.println(listOfMove);
+					//Demander le deplacement
+					positionOfDestination = ihm.askPosition();
+					//verifier validite du coup
+					if(listOfMove.contains(positionOfDestination))
+					{
+						//Faire le deplacement
+					}
+				}
+				while(!listOfMove.contains(positionOfDestination));
 			}
 			else //Le tour des noirs
 			{
-				
+				do
+				{
+					do
+					{
+						//Demander la piece a jouer
+						System.out.println("Coup des noirs, choisissez une pièce à déplacer :");
+						positionPieceToMove = ihm.askPosition();
+						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
+					}
+					while(pieceToMove.getColor()!=Color.BLACK);
+					listOfMove = pieceToMove.deplacement(board);
+					//Afficher les deplacements possibles
+					System.out.println(listOfMove);
+					//Demander le deplacement
+					positionOfDestination = ihm.askPosition();
+					//verifier validite du coup
+					if(listOfMove.contains(positionOfDestination))
+					{
+						//Faire le deplacement
+					}
+				}
+				while(!listOfMove.contains(positionOfDestination));
 			}
-			nombreDeCoups++;
+			numberOfMoves++;
 		}
-		System.out.println(plateau.getPiecePlayer(Color.WHITE));
+		System.out.println(board.getPiecePlayer(Color.WHITE));
 	}
 }
