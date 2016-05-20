@@ -43,8 +43,8 @@ public abstract class Piece
 	/**
 	 * nous permet de voir les deplacements possibles de la piece
 	 * @param board Le plateau de jeu
-	 * @param check TODO
-	 * @return un tableau de tout les deplacements possibles sans verifier l'echec si check est a true
+	 * @param check Est a false si la fonction est appelee depuis isCheck, on ne veut donc pas verifier si le deplacement mettrait la piece en echec
+	 * @return un tableau de tout les deplacements possibles sans verifier l'echec si check est a false
 	 */
 	public ArrayList<Position> deplacement(Board board, boolean check)
 	{

@@ -85,7 +85,6 @@ public class Rook extends Piece {
 						rowB=false;
 					}		
 				}
-			return deplacement;
 			}
 	else{
 		for (int i=0;i<=7;i++)
@@ -139,7 +138,7 @@ public class Rook extends Piece {
 					rowB=false;
 				}		
 			}
-		return deplacement;
 		}
+		return deplacement;
 	}
 }

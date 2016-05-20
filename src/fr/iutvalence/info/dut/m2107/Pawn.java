@@ -26,60 +26,114 @@ public class Pawn extends Piece {
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
 		Color couleur=this.getColor();
 		
-		if (couleur==Color.BLACK)
+		
+		if (check)
 		{
-			
-			if (y == 6)
+			if (couleur==Color.BLACK)
 			{
+				
+				if (y == 6)
+				{
+					try
+					{
+						if (plateau.getPieceAtPosition(new Position(x+2,y)).getType() == Type.NONE && 
+							!(plateau.emulateDeplacement(this, new Position(x+2,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						{
+							deplacement.add(new Position(x+2,y));
+						}
+					} catch (PositionOutOfBoardException e)
+					{
+					}
+				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x+2,y)).getType() == Type.NONE && 
-						!(plateau.emulateDeplacement(this, new Position(x+2,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (plateau.getPieceAtPosition(new Position(x+1,y)).getType() == Type.NONE && 
+							!(plateau.emulateDeplacement(this, new Position(x+1,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
-						deplacement.add(new Position(x+2,y));
+						deplacement.add(new Position(x+1,y));
 					}
 				} catch (PositionOutOfBoardException e)
 				{
 				}
 			}
-			try
+			else if(couleur==Color.WHITE)
 			{
-				if (plateau.getPieceAtPosition(new Position(x+1,y)).getType() == Type.NONE && 
-						!(plateau.emulateDeplacement(this, new Position(x+1,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				if (y == 1)
 				{
-					deplacement.add(new Position(x+1,y));
+					try
+					{
+						if (plateau.getPieceAtPosition(new Position(x-2,y)).getType() == Type.NONE && 
+							!(plateau.emulateDeplacement(this, new Position(x-2,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+						{
+							deplacement.add(new Position(x-2,y));
+						}
+					} catch (PositionOutOfBoardException e)
+					{
+					}
 				}
-			} catch (PositionOutOfBoardException e)
-			{
-			}
-		}
-		else if(couleur==Color.WHITE)
-		{
-			if (y == 1)
-			{
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x-2,y)).getType() == Type.NONE && 
-						!(plateau.emulateDeplacement(this, new Position(x-2,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (plateau.getPieceAtPosition(new Position(x-1,y)).getType() == Type.NONE && 
+							!(plateau.emulateDeplacement(this, new Position(x-1,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
-						deplacement.add(new Position(x-2,y));
+						deplacement.add(new Position(x-1,y));
 					}
 				} catch (PositionOutOfBoardException e)
 				{
 				}
 			}
-			try
+		}
+		else{
+			if (couleur==Color.BLACK)
 			{
-				if (plateau.getPieceAtPosition(new Position(x-1,y)).getType() == Type.NONE && 
-						!(plateau.emulateDeplacement(this, new Position(x-1,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+				
+				if (y == 6)
 				{
-					deplacement.add(new Position(x-1,y));
+					try
+					{
+						if (plateau.getPieceAtPosition(new Position(x+2,y)).getType() == Type.NONE)
+						{
+							deplacement.add(new Position(x+2,y));
+						}
+					} catch (PositionOutOfBoardException e)
+					{
+					}
 				}
-			} catch (PositionOutOfBoardException e)
+				try
+				{
+					if (plateau.getPieceAtPosition(new Position(x+1,y)).getType() == Type.NONE)
+					{
+						deplacement.add(new Position(x+1,y));
+					}
+				} catch (PositionOutOfBoardException e)
+				{
+				}
+			}
+			else if(couleur==Color.WHITE)
 			{
+				if (y == 1)
+				{
+					try
+					{
+						if (plateau.getPieceAtPosition(new Position(x-2,y)).getType() == Type.NONE)
+						{
+							deplacement.add(new Position(x-2,y));
+						}
+					} catch (PositionOutOfBoardException e)
+					{
+					}
+				}
+				try
+				{
+					if (plateau.getPieceAtPosition(new Position(x-1,y)).getType() == Type.NONE)
+					{
+						deplacement.add(new Position(x-1,y));
+					}
+				} catch (PositionOutOfBoardException e)
+				{
+				}
 			}
 		}
-		else return null;
 		return deplacement;
 	}
 }

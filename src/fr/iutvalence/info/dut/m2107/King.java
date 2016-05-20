@@ -22,12 +22,6 @@ public class King extends Piece {
 	}
 
 	
-	/**
-	 * nous permet de voir les deplacements possibles de la piece
-	 * @param board Le plateau de jeu
-	 * @param check est a vrai si la fonction est appelee par la fonction ischeck
-	 * @return un tableau de tout les deplacements possibles sans verifier l'echec si check est a true
-	 */
 	public ArrayList<Position> deplacement(Board board,boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		if (!check) {
@@ -79,9 +73,6 @@ public class King extends Piece {
 				}
 				j=j-1;
 			}
-			
-			
-			return deplacement;
 		}
 		else
 			{
@@ -139,9 +130,7 @@ public class King extends Piece {
 				}
 				j=j-1;
 			}
-			
-			
-			return deplacement;
 		}
+		return deplacement;
 	}
 }
