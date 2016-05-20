@@ -189,12 +189,14 @@ public class Board
 	{
 		int i = 0;
 		int j = 0;
+		
 		ArrayList<Piece> piecesJ = getPiecePlayer(color.Invertcolor());
 		while (i < piecesJ.size())
 		{
-			while (j < piecesJ.get(i).deplacement(this).size())
+			while (j < piecesJ.get(i).deplacement(this, false).size())
 			{
-				if (piecesJ.get(i).deplacement(this).get(j) == position)
+
+				if (piecesJ.get(i).deplacement(this, false).get(j) == position)
 					return true;
 				j++;
 			}

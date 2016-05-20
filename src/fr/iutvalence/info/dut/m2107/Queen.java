@@ -18,7 +18,7 @@ public class Queen extends Piece {
 		super(couleur, Type.QUEEN);
 	}
 
-	public ArrayList<Position> deplacement(Board plateau) {
+	public ArrayList<Position> deplacement(Board plateau, boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();

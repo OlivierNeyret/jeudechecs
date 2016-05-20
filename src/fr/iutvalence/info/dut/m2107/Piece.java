@@ -43,13 +43,15 @@ public abstract class Piece
 	/**
 	 * nous permet de voir les deplacements possibles de la piece
 	 * @param board Le plateau de jeu
-	 * @return un tableau de tout les deplacements possibles
+	 * @param check TODO
+	 * @return un tableau de tout les deplacements possibles sans verifier l'echec si check est a true
 	 */
-	public ArrayList<Position> deplacement(Board board)
+	public ArrayList<Position> deplacement(Board board, boolean check)
 	{
 		// TODO - implement Piece.deplacement
 		throw new UnsupportedOperationException();
 	}
+	
 
 	/**
 	 * renvoie la couleur de la piece
@@ -85,4 +87,5 @@ public abstract class Piece
 		    return "O";             
 		}
 	}
+
 }

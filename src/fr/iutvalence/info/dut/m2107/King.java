@@ -14,67 +14,134 @@ public class King extends Piece {
 
 	/**
 	 * Cree un roi de la couleur donnee
-	 * @param couleur
+	 * @param color
 	 */
-	public King(Color couleur)
+	public King(Color color)
 	{
-		super(couleur, Type.KING);
+		super(color, Type.KING);
 	}
 
-	public ArrayList<Position> deplacement(Board plateau) {
+	
+	/**
+	 * nous permet de voir les deplacements possibles de la piece
+	 * @param board Le plateau de jeu
+	 * @param check est a vrai si la fonction est appelee par la fonction ischeck
+	 * @return un tableau de tout les deplacements possibles sans verifier l'echec si check est a true
+	 */
+	public ArrayList<Position> deplacement(Board board,boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
-		
-		
-		try
-		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()+1));
-		} catch (PositionOutOfBoardException e)
-		{
-		}
-		try
-		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+1,plateau.getCoordonateOfPiece(this).getAbscissa()-1));
-		} catch (PositionOutOfBoardException e)
-		{	
-		}
-		try
-		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()+1));
-		} catch (PositionOutOfBoardException e)
-		{
-		}
-		try
-		{
-			if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
-				deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-1,plateau.getCoordonateOfPiece(this).getAbscissa()-1));
-		} catch (PositionOutOfBoardException e)
-		{
-		}
-		
-		int j=1;
-		for (int i =0;i<=1;i++)
-		{
+		if (!check) {
 			try
 			{
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
-					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j));
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor())					
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
 			try
 			{
-				if (plateau.getPieceAtPosition(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-i,plateau.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor() && plateau.isCheck(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()+i,plateau.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
-					deplacement.add(new Position(plateau.getCoordonateOfPiece(this).getOrdonate()-i,plateau.getCoordonateOfPiece(this).getAbscissa()-j));
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor())
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+			} catch (PositionOutOfBoardException e)
+			{	
+			}
+			try
+			{
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor())
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
-			j=j-1;
+			try
+			{
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor())
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			
+			int j=1;
+			for (int i =0;i<=1;i++)
+			{
+				try
+				{
+					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor())
+						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j));
+				} catch (PositionOutOfBoardException e)
+				{
+				}
+				try
+				{
+					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor())
+						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j));
+				} catch (PositionOutOfBoardException e)
+				{
+				}
+				j=j-1;
+			}
+			
+			
+			return deplacement;
 		}
-		
-		
-		return deplacement;
+		else
+			{
+			try
+			{
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && 
+					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1));
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			try
+			{
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && 
+					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+			} catch (PositionOutOfBoardException e)
+			{	
+			}
+			try
+			{
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && 
+					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1));
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			try
+			{
+				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && 
+					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
+					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+			} catch (PositionOutOfBoardException e)
+			{
+			}
+			
+			int j=1;
+			for (int i =0;i<=1;i++)
+			{
+				try
+				{
+					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor() && 
+						board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
+						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j));
+				} catch (PositionOutOfBoardException e)
+				{
+				}
+				try
+				{
+					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor() && 
+						board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
+						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j));
+				} catch (PositionOutOfBoardException e)
+				{
+				}
+				j=j-1;
+			}
+			
+			
+			return deplacement;
+		}
 	}
 }

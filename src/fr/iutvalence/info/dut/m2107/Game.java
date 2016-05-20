@@ -109,7 +109,7 @@ public class Game
 						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
 					}
 					while(pieceToMove.getColor()!=Color.WHITE);
-					listOfMove = pieceToMove.deplacement(this.board);
+					listOfMove = pieceToMove.deplacement(this.board, false);
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);
 					//Demander le deplacement
@@ -138,7 +138,7 @@ public class Game
 						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
 					}
 					while(pieceToMove.getColor()!=Color.BLACK);
-					listOfMove = pieceToMove.deplacement(this.board);
+					listOfMove = pieceToMove.deplacement(this.board, false);
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);
 					//Demander le deplacement

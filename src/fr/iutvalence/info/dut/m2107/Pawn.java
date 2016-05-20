@@ -20,7 +20,7 @@ public class Pawn extends Piece {
 		super(couleur, type);
 	}
 	
-	public ArrayList<Position> deplacement(Board plateau) {
+	public ArrayList<Position> deplacement(Board plateau, boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
@@ -28,6 +28,7 @@ public class Pawn extends Piece {
 		
 		if (couleur==Color.BLACK)
 		{
+			
 			if (y == 6)
 			{
 				try
