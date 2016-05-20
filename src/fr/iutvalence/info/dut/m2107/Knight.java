@@ -19,7 +19,7 @@ public class Knight extends Piece
 		super(couleur,Type.KNIGHT);
 	}
 
-	public ArrayList<Position> deplacement(Board plateau)
+	public ArrayList<Position> deplacement(Board plateau, boolean check)
 	{
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int j=2;

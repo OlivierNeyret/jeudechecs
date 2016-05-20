@@ -19,7 +19,7 @@ public class Bishop extends Piece {
 		super(couleur, Type.BISHOP);
 	}
 
-	public ArrayList<Position> deplacement(Board plateau) {
+	public ArrayList<Position> deplacement(Board plateau, boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		boolean diagA=true;
 		boolean diagB=true;
