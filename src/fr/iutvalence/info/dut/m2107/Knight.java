@@ -14,7 +14,7 @@ public class Knight extends Piece
 	 * Cree un cavalier de la couleur donnee
 	 * @param couleur
 	 */
-	public Knight(Color couleur)
+	public Knight(PieceColor couleur)
 	{
 		super(couleur,Type.KNIGHT);
 	}
@@ -25,7 +25,7 @@ public class Knight extends Piece
 		int j=2;
 		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
-		Color couleur=this.getColor();
+		PieceColor couleur=this.getColor();
 		
 		if (check){
 			for (int i=1;i<=2;i++)

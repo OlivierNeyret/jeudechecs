@@ -15,7 +15,7 @@ public class Pawn extends Piece {
 	 * @param couleur
 	 * @param type type du pion
 	 */
-	public Pawn(Color couleur, Type type)
+	public Pawn(PieceColor couleur, Type type)
 	{
 		super(couleur, type);
 	}
@@ -24,12 +24,12 @@ public class Pawn extends Piece {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int y = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int x = plateau.getCoordonateOfPiece(this).getAbscissa();
-		Color couleur=this.getColor();
+		PieceColor couleur=this.getColor();
 		
 		
 		if (check)
 		{
-			if (couleur==Color.BLACK)
+			if (couleur==PieceColor.BLACK)
 			{
 				
 				if (x == 1)
@@ -56,7 +56,7 @@ public class Pawn extends Piece {
 				{
 				}
 			}
-			else if(couleur==Color.WHITE)
+			else if(couleur==PieceColor.WHITE)
 			{
 				System.out.println(10);
 				if (x == 6)
@@ -85,7 +85,7 @@ public class Pawn extends Piece {
 			}
 		}
 		else{
-			if (couleur==Color.BLACK)
+			if (couleur==PieceColor.BLACK)
 			{
 				
 				if (x == 1)
@@ -110,7 +110,7 @@ public class Pawn extends Piece {
 				{
 				}
 			}
-			else if(couleur==Color.WHITE)
+			else if(couleur==PieceColor.WHITE)
 			{
 				if (x == 6)
 				{

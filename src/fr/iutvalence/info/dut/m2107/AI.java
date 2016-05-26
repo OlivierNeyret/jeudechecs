@@ -24,7 +24,7 @@ private final Difficulty difficulty;
 	 */
 	public AI(Difficulty difficulty)
 	{
-		super(Color.BLACK);
+		super(PieceColor.BLACK);
 		this.difficulty = difficulty;
 	}
 

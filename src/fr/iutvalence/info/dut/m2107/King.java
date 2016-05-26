@@ -16,7 +16,7 @@ public class King extends Piece {
 	 * Cree un roi de la couleur donnee
 	 * @param color
 	 */
-	public King(Color color)
+	public King(PieceColor color)
 	{
 		super(color, Type.KING);
 	}
