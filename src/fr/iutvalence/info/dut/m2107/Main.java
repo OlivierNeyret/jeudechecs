@@ -19,7 +19,7 @@ public class Main
 	{
 	    System.out.println("Doge Chess Company presents ChessGame! such chess, very wow");
 	    Game game = new Game();
-	    Window zFen = new Window(game.getBoard());
+	    //Window zFen = new Window(game.getBoard());
 	    game.play();
 	}
 }
