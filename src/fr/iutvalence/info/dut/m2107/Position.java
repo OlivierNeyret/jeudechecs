@@ -61,4 +61,20 @@ public class Position
 		return "(" + this.ordonate + "," + this.abscissa + ")";
 	}
 
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Position other = (Position) obj;
+		if (this.abscissa != other.abscissa)
+			return false;
+		if (this.ordonate != other.ordonate)
+			return false;
+		return true;
+	}
+
 }
