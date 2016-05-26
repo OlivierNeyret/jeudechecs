@@ -35,12 +35,14 @@ public class Bishop extends Piece {
 			{
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA &&
-						!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagA && !(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
-						deplacement.add(new Position(x+i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != PieceType.NONE)
-							diagA=false;
+						if(plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur){
+							deplacement.add(new Position(x+i,y+i));
+							if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != PieceType.NONE)
+								diagA=false;
+						}
+						else diagA=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -48,12 +50,14 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB &&
-						!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagB && !(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
-						deplacement.add(new Position(x+i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != PieceType.NONE)
-							diagB=false;
+						if(plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur){
+							deplacement.add(new Position(x+i,y-i));
+							if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != PieceType.NONE)
+								diagB=false;
+						}
+						else diagB=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -61,12 +65,14 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC &&
-						!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagC && !(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
-						deplacement.add(new Position(x-i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != PieceType.NONE)
-							diagC=false;
+						if(plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur){
+							deplacement.add(new Position(x-i,y-i));
+							if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != PieceType.NONE)
+								diagC=false;
+						}
+						else diagC=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -74,12 +80,14 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD &&
-						!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagD && !(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
-						deplacement.add(new Position(x-i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != PieceType.NONE)
-							diagD=false;
+						if(plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur){
+							deplacement.add(new Position(x-i,y+i));
+							if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != PieceType.NONE)
+								diagD=false;
+						}
+						else diagD=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -92,11 +100,14 @@ public class Bishop extends Piece {
 			{
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA)
+					if (diagA)
 					{
-						deplacement.add(new Position(x+i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != PieceType.NONE)
-							diagA=false;
+						if(plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur){
+							deplacement.add(new Position(x+i,y+i));
+							if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != PieceType.NONE)
+								diagA=false;
+						}
+						else diagA=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -104,11 +115,14 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB)
+					if (diagB)
 					{
-						deplacement.add(new Position(x+i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != PieceType.NONE)
-							diagB=false;
+						if(plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur){
+							deplacement.add(new Position(x+i,y-i));
+							if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != PieceType.NONE)
+								diagB=false;
+						}
+						else diagB=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -116,11 +130,14 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC)
+					if (diagC)
 					{
-						deplacement.add(new Position(x-i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != PieceType.NONE)
-							diagC=false;
+						if(plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur){
+							deplacement.add(new Position(x-i,y-i));
+							if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != PieceType.NONE)
+								diagC=false;
+						}
+						else diagC=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -128,11 +145,14 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD)
+					if (diagD)
 					{
-						deplacement.add(new Position(x-i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != PieceType.NONE)
-							diagD=false;
+						if(plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur){
+							deplacement.add(new Position(x-i,y+i));
+							if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != PieceType.NONE)
+								diagD=false;
+						}
+						else diagD=false;
 					}
 				} catch (PositionOutOfBoardException e)
 				{

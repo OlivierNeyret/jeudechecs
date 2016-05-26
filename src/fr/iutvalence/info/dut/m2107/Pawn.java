@@ -42,25 +42,21 @@ public class Pawn extends Piece {
 				} catch (PositionOutOfBoardException e1)
 				{
 				}
-				if (y == 1)
-				{
-					try
-					{
-						if (board.getPieceAtPosition(new Position(x,y+2)).getType() == PieceType.NONE && 
-							!(board.emulateDeplacement(this, new Position(x,y+2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
-						{
-							deplacement.add(new Position(x,y+2));
-						}
-					} catch (PositionOutOfBoardException e)
-					{
-					}
-				}
+				
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x,y+1)).getType() == PieceType.NONE && 
 							!(board.emulateDeplacement(this, new Position(x,y+1)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x,y+1));
+						if (y == 1)
+						{
+							if (board.getPieceAtPosition(new Position(x,y+2)).getType() == PieceType.NONE && 
+								!(board.emulateDeplacement(this, new Position(x,y+2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
+							{
+								deplacement.add(new Position(x,y+2));
+							}
+						}
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -79,25 +75,21 @@ public class Pawn extends Piece {
 				} catch (PositionOutOfBoardException e1)
 				{
 				}
-				if (y == 6)
-				{
-					try
-					{
-						if (board.getPieceAtPosition(new Position(x,y-2)).getType() == PieceType.NONE && 
-							!(board.emulateDeplacement(this, new Position(x,y-2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
-						{
-							deplacement.add(new Position(x,y-2));
-						}
-					} catch (PositionOutOfBoardException e)
-					{
-					}
-				}
+				
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x,y-1)).getType() == PieceType.NONE && 
 							!(board.emulateDeplacement(this, new Position(x,y-1)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x,y-1));
+						if (y == 6)
+						{
+							if (board.getPieceAtPosition(new Position(x,y-2)).getType() == PieceType.NONE && 
+								!(board.emulateDeplacement(this, new Position(x,y-2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
+							{
+								deplacement.add(new Position(x,y-2));
+							}
+						}
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -119,23 +111,19 @@ public class Pawn extends Piece {
 				{
 				}
 				
-				if (y == 1)
-				{
-					try
-					{
-						if (board.getPieceAtPosition(new Position(x,y+2)).getType() == PieceType.NONE)
-						{
-							deplacement.add(new Position(x,y+2));
-						}
-					} catch (PositionOutOfBoardException e)
-					{
-					}
-				}
+				
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x,y+1)).getType() == PieceType.NONE)
 					{
 						deplacement.add(new Position(x,y+1));
+						if (y == 1)
+						{
+							if (board.getPieceAtPosition(new Position(x,y+2)).getType() == PieceType.NONE)
+							{
+								deplacement.add(new Position(x,y+2));
+							}
+						}
 					}
 				} catch (PositionOutOfBoardException e)
 				{
@@ -154,25 +142,20 @@ public class Pawn extends Piece {
 				} catch (PositionOutOfBoardException e1)
 				{
 				}
-				if (y == 6)
-				{
-					System.out.println(1);
-					try
-					{
-						if (board.getPieceAtPosition(new Position(x,y-2)).getType() == PieceType.NONE)
-						{
-							System.out.println(2);
-							deplacement.add(new Position(x, y-2));
-						}
-					} catch (PositionOutOfBoardException e)
-					{
-					}
-				}
+				
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x,y-1)).getType() == PieceType.NONE)
 					{
 						deplacement.add(new Position(x,y-1));
+						if (y == 6)
+						{
+							if (board.getPieceAtPosition(new Position(x,y-2)).getType() == PieceType.NONE)
+							{
+								System.out.println(2);
+								deplacement.add(new Position(x, y-2));
+							}
+						}
 					}
 				} catch (PositionOutOfBoardException e)
 				{

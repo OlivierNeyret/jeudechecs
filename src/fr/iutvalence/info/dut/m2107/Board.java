@@ -76,15 +76,9 @@ public class Board
 	 */
 	public Board emulateDeplacement(Piece piece, Position positionDep)
 	{
-		Piece[][] tabP = this.board;
-		int x1 = positionDep.getAbscissa();
-		int y1 = positionDep.getOrdonate();
-		int x2 = this.getCoordonateOfPiece(piece).getAbscissa();
-		int y2 = this.getCoordonateOfPiece(piece).getOrdonate();
-		tabP[x2][y2]= new Pawn(PieceColor.NONE, PieceType.NONE);
-		tabP[x1][y1]= piece;
+		Board p1 = this;
+		p1.move(piece, positionDep);
 		
-		Board p1 = new Board(tabP);
 		return p1;
 	}
 	
@@ -191,7 +185,8 @@ public class Board
 		int i = 0;
 		int j = 0;
 		
-		ArrayList<Piece> piecesJ = getPiecePlayer(color.Invertcolor());
+		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
+		piecesJ = getPiecePlayer(color.Invertcolor());
 		while (i < piecesJ.size())
 		{
 			while (j < piecesJ.get(i).deplacement(this, false).size())
