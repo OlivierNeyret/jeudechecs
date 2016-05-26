@@ -35,7 +35,7 @@ public class Board
 		
 		for(int i=0;i<8;i++)
 		{
-			this.board[i][6]= new Pawn(PieceColor.WHITE, Type.PAWN);
+			this.board[i][6]= new Pawn(PieceColor.WHITE, PieceType.PAWN);
 		}
 		
 		this.board[0][0] = new Rook(PieceColor.BLACK);
@@ -49,7 +49,7 @@ public class Board
 		
 		for(int i=0;i<8;i++)
 		{
-			this.board[i][1]= new Pawn(PieceColor.BLACK, Type.PAWN);
+			this.board[i][1]= new Pawn(PieceColor.BLACK, PieceType.PAWN);
 		}
 		for(int i=0;i<8;i++)
 		{
@@ -81,7 +81,7 @@ public class Board
 		int y1 = positionDep.getOrdonate();
 		int x2 = this.getCoordonateOfPiece(piece).getAbscissa();
 		int y2 = this.getCoordonateOfPiece(piece).getOrdonate();
-		tabP[x2][y2]= new Pawn(PieceColor.NONE, Type.NONE);
+		tabP[x2][y2]= new Pawn(PieceColor.NONE, PieceType.NONE);
 		tabP[x1][y1]= piece;
 		
 		Board p1 = new Board(tabP);
@@ -154,7 +154,7 @@ public class Board
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(this.board[i][j].getType()==Type.KING && this.board[i][j].getColor()==color){
+				if(this.board[i][j].getType()==PieceType.KING && this.board[i][j].getColor()==color){
 					return (this.board[i][j]);
 				}
 					

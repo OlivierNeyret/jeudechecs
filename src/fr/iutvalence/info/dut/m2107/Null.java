@@ -12,7 +12,7 @@ public class Null extends Piece
 	 */
 	public Null()
 	{
-		super(PieceColor.NONE, Type.NONE);
+		super(PieceColor.NONE, PieceType.NONE);
 		// TODO Auto-generated constructor stub
 	}
 

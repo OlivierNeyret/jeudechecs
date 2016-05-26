@@ -17,14 +17,14 @@ public abstract class Piece
 	/**
 	 * type of the piece like queen, king, ...
 	 */
-	private final Type type;
+	private final PieceType type;
 	
 	/**
 	 * Cree une piece avec un type et une couleur
 	 * @param color c'est la couleur de la piece
 	 * @param type de la peice a creer
 	 */
-	public Piece(PieceColor color, Type type)
+	public Piece(PieceColor color, PieceType type)
 	{
 		this.color = color;
 		this.type = type;
@@ -34,7 +34,7 @@ public abstract class Piece
 	 * recupere le type de la piece
 	 * @return retourne le type de la piece
 	 */
-	public Type getType()
+	public PieceType getType()
 	{
 		return (this.type);
 	}

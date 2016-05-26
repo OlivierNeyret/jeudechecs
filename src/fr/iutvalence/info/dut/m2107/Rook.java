@@ -13,7 +13,7 @@ public class Rook extends Piece {
 	 * Cree une tour de la couleur donnee
 	 * @param couleur
 	 */
-	public Rook(PieceColor couleur)
+	public Rook(Color couleur)
 	{
 		super(couleur, Type.ROOK);
 	}
@@ -22,7 +22,7 @@ public class Rook extends Piece {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
-		PieceColor couleur=this.getColor();
+		Color couleur=this.getColor();
 		
 		boolean rowA=true;
 		boolean rowB=true;

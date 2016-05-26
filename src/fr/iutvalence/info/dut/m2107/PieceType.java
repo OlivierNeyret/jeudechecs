@@ -3,7 +3,7 @@ package fr.iutvalence.info.dut.m2107;
  * Enumeration representant les differents types de pieces
  * @author jacobjul
  */
-public enum Type {
+public enum PieceType {
 	/**
 	 * represente le roi sur l'echiquier
 	 */

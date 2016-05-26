@@ -16,7 +16,7 @@ public class Knight extends Piece
 	 */
 	public Knight(PieceColor couleur)
 	{
-		super(couleur,Type.KNIGHT);
+		super(couleur,PieceType.KNIGHT);
 	}
 
 	public ArrayList<Position> deplacement(Board plateau, boolean check)

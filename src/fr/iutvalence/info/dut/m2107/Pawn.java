@@ -15,7 +15,7 @@ public class Pawn extends Piece {
 	 * @param couleur
 	 * @param type type du pion
 	 */
-	public Pawn(PieceColor couleur, Type type)
+	public Pawn(PieceColor couleur, PieceType type)
 	{
 		super(couleur, type);
 	}
@@ -36,7 +36,7 @@ public class Pawn extends Piece {
 				{
 					try
 					{
-						if (plateau.getPieceAtPosition(new Position(y,x+2)).getType() == Type.NONE && 
+						if (plateau.getPieceAtPosition(new Position(y,x+2)).getType() == PieceType.NONE && 
 							!(plateau.emulateDeplacement(this, new Position(y,x+2)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 						{
 							deplacement.add(new Position(y,x+2));
@@ -47,7 +47,7 @@ public class Pawn extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(y,x+1)).getType() == Type.NONE && 
+					if (plateau.getPieceAtPosition(new Position(y,x+1)).getType() == PieceType.NONE && 
 							!(plateau.emulateDeplacement(this, new Position(y,x+1)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(y,x+1));
@@ -63,7 +63,7 @@ public class Pawn extends Piece {
 				{
 					try
 					{
-						if (plateau.getPieceAtPosition(new Position(y,x-2)).getType() == Type.NONE && 
+						if (plateau.getPieceAtPosition(new Position(y,x-2)).getType() == PieceType.NONE && 
 							!(plateau.emulateDeplacement(this, new Position(y,x-2)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 						{
 							deplacement.add(new Position(y,x-2));
@@ -74,7 +74,7 @@ public class Pawn extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(y,x-1)).getType() == Type.NONE && 
+					if (plateau.getPieceAtPosition(new Position(y,x-1)).getType() == PieceType.NONE && 
 							!(plateau.emulateDeplacement(this, new Position(y,x-1)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(y,x-1));
@@ -92,7 +92,7 @@ public class Pawn extends Piece {
 				{
 					try
 					{
-						if (plateau.getPieceAtPosition(new Position(y,x+2)).getType() == Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(y,x+2)).getType() == PieceType.NONE)
 						{
 							deplacement.add(new Position(y,x+2));
 						}
@@ -102,7 +102,7 @@ public class Pawn extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(y,x+1)).getType() == Type.NONE)
+					if (plateau.getPieceAtPosition(new Position(y,x+1)).getType() == PieceType.NONE)
 					{
 						deplacement.add(new Position(y,x+1));
 					}
@@ -117,7 +117,7 @@ public class Pawn extends Piece {
 					System.out.println(1);
 					try
 					{
-						if (plateau.getPieceAtPosition(new Position(y,x-2)).getType() == Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(y,x-2)).getType() == PieceType.NONE)
 						{
 							System.out.println(2);
 							deplacement.add(new Position(y, x-2));
@@ -128,7 +128,7 @@ public class Pawn extends Piece {
 				}
 				try
 				{
-					if (plateau.getPieceAtPosition(new Position(y,x-1)).getType() == Type.NONE)
+					if (plateau.getPieceAtPosition(new Position(y,x-1)).getType() == PieceType.NONE)
 					{
 						deplacement.add(new Position(y,x-1));
 					}

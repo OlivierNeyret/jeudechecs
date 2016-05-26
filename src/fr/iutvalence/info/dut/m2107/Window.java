@@ -201,15 +201,17 @@ public class Window extends JFrame
 	    {
 	    	for(int j=0;j<8;j++)
 	    	{
-	    		//Piece current_piece =gameboard.getPieceAtPosition(new Position(i,j));
+	    		Piece current_piece =gameboard.getPieceAtPosition(new Position(i,j));
 	    		Color blblbl = Color.BLACK;
-//	    		if (current_piece.getColor() == Color.)
-//	    		{
-//	    			if(current_piece.getType()==Type.KNIGHT)
+	    		if (current_piece.getColor() == PieceColor.WHITE)
+	    		{
+	    			if(current_piece.getType()==PieceType.KNIGHT)
+	    			{
+		    		
+		    		}
 	    		}
-	    		
 	    	}
-	    //}
+	    }
 	    
 		this.repaint();
 		this.revalidate();
