@@ -74,7 +74,7 @@ public abstract class Piece
 		  case ROOK:
 		    return "R"; 
 		  case KNIGHT:
-			    return "K";
+			    return "C";
 		  case BISHOP:
 			    return "B";
 		  case QUEEN:
