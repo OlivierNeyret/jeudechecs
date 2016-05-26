@@ -179,6 +179,8 @@ public class Window extends JFrame
 	    JScrollPane scroll=new JScrollPane(plateau);
 	    plateau.setDefaultRenderer(Object.class, new Cell());
 	    
+	    
+	    
 	    for(int i=0; i<8 ; i++ )
 	        plateau.setRowHeight(i,100);
 	    
@@ -192,8 +194,20 @@ public class Window extends JFrame
 	    this.getContentPane().add(scroll, BorderLayout.CENTER);
 
 	    ImageIcon CN = new ImageIcon("CN");
+	    ImageIcon TN = new ImageIcon("TN");
+	    ImageIcon FN = new ImageIcon("FN");
+	    ImageIcon RoiN = new ImageIcon("RoiN");
+	    ImageIcon RN = new ImageIcon("RN");
+	    ImageIcon PN = new ImageIcon("PN");
+	    
 	    ImageIcon CB = new ImageIcon("CB");
-
+	    ImageIcon TB = new ImageIcon("TB");
+	    ImageIcon FB = new ImageIcon("FB");
+	    ImageIcon RoiB = new ImageIcon("RoiB");
+	    ImageIcon RB = new ImageIcon("RB");
+	    ImageIcon PB = new ImageIcon("PB");
+	    
+	    //setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Led_Bleu_Fix.gif")));
 	    
 	    //plateau.setValueAt(icon, 0, 1);
 	    
@@ -201,15 +215,73 @@ public class Window extends JFrame
 	    {
 	    	for(int j=0;j<8;j++)
 	    	{
-	    		Piece current_piece =gameboard.getPieceAtPosition(new Position(i,j));
-	    		Color blblbl = Color.BLACK;
-	    		if (current_piece.getColor() == PieceColor.WHITE)
-	    		{
-	    			if(current_piece.getType()==PieceType.KNIGHT)
-	    			{
-		    		
+	    		Piece current_piece;
+				try
+				{
+					current_piece = gameboard.getPieceAtPosition(new Position(i,j));
+					
+					if (current_piece.getColor() == PieceColor.WHITE)
+		    		{
+		    			if(current_piece.getType()==PieceType.KNIGHT)
+		    			{
+		    				plateau.setValueAt(CB, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.ROOK)
+		    			{
+		    				plateau.setValueAt(TB, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.BISHOP)
+		    			{
+		    				plateau.setValueAt(FB, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.KING)
+		    			{
+		    				plateau.setValueAt(RoiB, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.QUEEN)
+		    			{
+		    				plateau.setValueAt(RB, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.PAWN)
+		    			{
+		    				plateau.setValueAt(PB, j, i+1);
+			    		}
 		    		}
-	    		}
+		    		
+		    		
+		    		
+		    		if (current_piece.getColor() == PieceColor.BLACK)
+		    		{
+		    			if(current_piece.getType()==PieceType.KNIGHT)
+		    			{
+		    				plateau.setValueAt(CN, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.ROOK)
+		    			{
+		    				plateau.setValueAt(TN, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.BISHOP)
+		    			{
+		    				plateau.setValueAt(FN, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.KING)
+		    			{
+		    				plateau.setValueAt(RoiN, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.QUEEN)
+		    			{
+		    				plateau.setValueAt(RN, j, i+1);
+			    		}
+		    			if(current_piece.getType()==PieceType.PAWN)
+		    			{
+		    				plateau.setValueAt(PN, j, i+1);
+			    		}
+		    		}
+				} 
+				catch (PositionOutOfBoardException e)
+				{
+					e.printStackTrace();
+				}
 	    	}
 	    }
 	    

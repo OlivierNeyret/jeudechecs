@@ -3,6 +3,8 @@ package fr.iutvalence.info.dut.m2107;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -29,8 +31,10 @@ public class Cell extends DefaultTableCellRenderer
 				cell.setBackground(Color.WHITE);
 			if (column % 2 == 1)
 				cell.setBackground(Color.BLACK);
-
 		}
+		//TODO
+	   // ((JLabel) cell).setIcon(new ImageIcon("ressources/noir/cavalier.png"));
+
 		return cell;
 	}
 }
