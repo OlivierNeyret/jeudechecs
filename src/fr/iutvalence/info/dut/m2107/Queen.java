@@ -15,7 +15,7 @@ public class Queen extends Piece {
 	 */
 	public Queen(PieceColor couleur)
 	{
-		super(couleur, Type.QUEEN);
+		super(couleur, PieceType.QUEEN);
 	}
 
 	public ArrayList<Position> deplacement(Board plateau, boolean check) {
@@ -42,7 +42,7 @@ public class Queen extends Piece {
 						!(plateau.emulateDeplacement(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x+i,y));
-						if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != PieceType.NONE)
 							colA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -55,7 +55,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x-i,y));
-						if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != PieceType.NONE)
 							colB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -68,7 +68,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x,y+i));
-						if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != PieceType.NONE)
 							rowA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -81,7 +81,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x,y-i));
-						if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != PieceType.NONE)
 							rowB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -95,7 +95,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x+i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != PieceType.NONE)
 							diagA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -108,7 +108,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x+i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != PieceType.NONE)
 							diagB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -121,7 +121,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x-i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != PieceType.NONE)
 							diagC=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -134,7 +134,7 @@ public class Queen extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x-i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != PieceType.NONE)
 							diagD=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -152,7 +152,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur && colA)
 					{
 						deplacement.add(new Position(x+i,y));
-						if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != PieceType.NONE)
 							colA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -164,7 +164,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur && colB)
 					{
 						deplacement.add(new Position(x-i,y));
-						if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != PieceType.NONE)
 							colB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -176,7 +176,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur && rowA)
 					{
 						deplacement.add(new Position(x,y+i));
-						if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != PieceType.NONE)
 							rowA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -188,7 +188,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur && rowB)
 					{
 						deplacement.add(new Position(x,y-i));
-						if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != PieceType.NONE)
 							rowB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -201,7 +201,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur && diagA)
 					{
 						deplacement.add(new Position(x+i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y+i)).getType() != PieceType.NONE)
 							diagA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -213,7 +213,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur && diagB)
 					{
 						deplacement.add(new Position(x+i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y-i)).getType() != PieceType.NONE)
 							diagB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -225,7 +225,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur && diagC)
 					{
 						deplacement.add(new Position(x-i,y-i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y-i)).getType() != PieceType.NONE)
 							diagC=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -237,7 +237,7 @@ public class Queen extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur && diagD)
 					{
 						deplacement.add(new Position(x-i,y+i));
-						if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y+i)).getType() != PieceType.NONE)
 							diagD=false;
 					}
 				} catch (PositionOutOfBoardException e)

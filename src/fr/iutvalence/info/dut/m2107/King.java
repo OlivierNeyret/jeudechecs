@@ -18,7 +18,7 @@ public class King extends Piece {
 	 */
 	public King(PieceColor color)
 	{
-		super(color, Type.KING);
+		super(color, PieceType.KING);
 	}
 
 	

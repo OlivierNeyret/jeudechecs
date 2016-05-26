@@ -119,7 +119,7 @@ public class Game
 					{
 						System.out.println(32);
 						this.board.move(pieceToMove, positionOfDestination);
-						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
+						if (pieceToMove.getType() == PieceType.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
 						{
 							this.board.promotion(pieceToMove, ihm.askPiece(pieceToMove));
 						}
@@ -148,7 +148,7 @@ public class Game
 					if(listOfMove.contains(positionOfDestination))
 					{
 						this.board.move(pieceToMove, positionOfDestination);
-						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
+						if (pieceToMove.getType() == PieceType.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
 						{
 							this.board.promotion(pieceToMove, ihm.askPiece(pieceToMove));
 						}

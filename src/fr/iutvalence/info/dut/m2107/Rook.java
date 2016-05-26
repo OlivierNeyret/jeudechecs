@@ -15,7 +15,7 @@ public class Rook extends Piece {
 	 */
 	public Rook(PieceColor couleur)
 	{
-		super(couleur, Type.ROOK);
+		super(couleur, PieceType.ROOK);
 	}
 
 	public ArrayList<Position> deplacement(Board plateau, boolean check) {
@@ -38,7 +38,7 @@ public class Rook extends Piece {
 							!(plateau.emulateDeplacement(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 						{
 							deplacement.add(new Position(x+i,y));
-							if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
+							if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != PieceType.NONE)
 								colA=false;
 						}
 				} catch (PositionOutOfBoardException e)
@@ -51,7 +51,7 @@ public class Rook extends Piece {
 								!(plateau.emulateDeplacement(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 						{
 							deplacement.add(new Position(x-i,y));
-							if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
+							if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != PieceType.NONE)
 								colB=false;
 						}
 					} catch (PositionOutOfBoardException e)
@@ -64,7 +64,7 @@ public class Rook extends Piece {
 								!(plateau.emulateDeplacement(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 						{
 							deplacement.add(new Position(x,y+i));
-							if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
+							if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != PieceType.NONE)
 								rowA=false;
 						}
 					} catch (PositionOutOfBoardException e)
@@ -77,7 +77,7 @@ public class Rook extends Piece {
 								!(plateau.emulateDeplacement(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 						{
 							deplacement.add(new Position(x,y-i));
-							if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
+							if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != PieceType.NONE)
 								rowB=false;
 						}
 					} catch (PositionOutOfBoardException e)
@@ -94,7 +94,7 @@ public class Rook extends Piece {
 				if (plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur && colA)
 					{
 						deplacement.add(new Position(x+i,y));
-						if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != PieceType.NONE)
 							colA=false;
 					}
 			} catch (PositionOutOfBoardException e)
@@ -106,7 +106,7 @@ public class Rook extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur && colB)
 					{
 						deplacement.add(new Position(x-i,y));
-						if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x-i,y)).getType() != PieceType.NONE)
 							colB=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -118,7 +118,7 @@ public class Rook extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur && rowA) 
 					{
 						deplacement.add(new Position(x,y+i));
-						if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x,y+i)).getType() != PieceType.NONE)
 							rowA=false;
 					}
 				} catch (PositionOutOfBoardException e)
@@ -130,7 +130,7 @@ public class Rook extends Piece {
 					if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur && rowB)
 					{
 						deplacement.add(new Position(x,y-i));
-						if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != Type.NONE)
+						if (plateau.getPieceAtPosition(new Position(x,y-i)).getType() != PieceType.NONE)
 							rowB=false;
 					}
 				} catch (PositionOutOfBoardException e)
