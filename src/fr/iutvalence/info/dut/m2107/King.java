@@ -24,32 +24,36 @@ public class King extends Piece {
 	
 	public ArrayList<Position> deplacement(Board board,boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
+		int x = board.getCoordonateOfPiece(this).getOrdonate();
+		int y = board.getCoordonateOfPiece(this).getAbscissa();
+		PieceColor color=this.getColor();
+		
 		if (!check) {
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor())					
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1));
+				if (board.getPieceAtPosition(new Position(x+1,y+1)).getColor()!=color)					
+					deplacement.add(new Position(x+1,y+1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor())
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+				if (board.getPieceAtPosition(new Position(x+1,y-1)).getColor()!=color)
+					deplacement.add(new Position(x+1,y-1));
 			} catch (PositionOutOfBoardException e)
 			{	
 			}
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor())
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1));
+				if (board.getPieceAtPosition(new Position(x-1,y+1)).getColor()!=color)
+					deplacement.add(new Position(x-1,y+1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor())
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+				if (board.getPieceAtPosition(new Position(x-1,y-1)).getColor()!=color)
+					deplacement.add(new Position(x-1,y-1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
@@ -59,15 +63,15 @@ public class King extends Piece {
 			{
 				try
 				{
-					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor())
-						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j));
+					if (board.getPieceAtPosition(new Position(x+i,y+j)).getColor()!=color)
+						deplacement.add(new Position(x+i,y+j));
 				} catch (PositionOutOfBoardException e)
 				{
 				}
 				try
 				{
-					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor())
-						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j));
+					if (board.getPieceAtPosition(new Position(x-i,y-j)).getColor()!=color)
+						deplacement.add(new Position(x-i,y-j));
 				} catch (PositionOutOfBoardException e)
 				{
 				}
@@ -78,33 +82,33 @@ public class King extends Piece {
 			{
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && 
-					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()+1));
+				if (board.getPieceAtPosition(new Position(x+1,y+1)).getColor()!=color && 
+					board.isCheck(new Position(x+1,y+1),color))
+					deplacement.add(new Position(x+1,y+1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && 
-					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+				if (board.getPieceAtPosition(new Position(x+1,y-1)).getColor()!=color && 
+					board.isCheck(new Position(x+1,y-1),color))
+					deplacement.add(new Position(x+1,y-1));
 			} catch (PositionOutOfBoardException e)
 			{	
 			}
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1)).getColor()!=this.getColor() && 
-					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1),this.getColor()))
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()+1));
+				if (board.getPieceAtPosition(new Position(x-1,y+1)).getColor()!=color && 
+					board.isCheck(new Position(x-1,y+1),color))
+					deplacement.add(new Position(x-1,y+1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
 			try
 			{
-				if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1)).getColor()!=this.getColor() && 
-					board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1),this.getColor()))
-					deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-1,board.getCoordonateOfPiece(this).getAbscissa()-1));
+				if (board.getPieceAtPosition(new Position(x-1,y-1)).getColor()!=color && 
+					board.isCheck(new Position(x-1,y-1),color))
+					deplacement.add(new Position(x-1,y-1));
 			} catch (PositionOutOfBoardException e)
 			{
 			}
@@ -114,17 +118,17 @@ public class King extends Piece {
 			{
 				try
 				{
-					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j)).getColor()!=this.getColor() && 
-						board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
-						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j));
+					if (board.getPieceAtPosition(new Position(x+i,y+j)).getColor()!=color && 
+						board.isCheck(new Position(x+i,y+j),color))
+						deplacement.add(new Position(x+i,y+j));
 				} catch (PositionOutOfBoardException e)
 				{
 				}
 				try
 				{
-					if (board.getPieceAtPosition(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j)).getColor()!=this.getColor() && 
-						board.isCheck(new Position(board.getCoordonateOfPiece(this).getOrdonate()+i,board.getCoordonateOfPiece(this).getAbscissa()+j),this.getColor()))
-						deplacement.add(new Position(board.getCoordonateOfPiece(this).getOrdonate()-i,board.getCoordonateOfPiece(this).getAbscissa()-j));
+					if (board.getPieceAtPosition(new Position(x-i,y-j)).getColor()!=color && 
+						board.isCheck(new Position(x+i,y+j),color))
+						deplacement.add(new Position(x-i,y-j));
 				} catch (PositionOutOfBoardException e)
 				{
 				}
