@@ -14,7 +14,7 @@ public class Bishop extends Piece {
 	 * Cree un fou de la couleur donnee
 	 * @param couleur
 	 */
-	public Bishop(Color couleur)
+	public Bishop(PieceColor couleur)
 	{
 		super(couleur, Type.BISHOP);
 	}
@@ -28,7 +28,7 @@ public class Bishop extends Piece {
 		
 		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
-		Color couleur=this.getColor();
+		PieceColor couleur=this.getColor();
 		
 		if (check){
 			for (int i=1;i<=7;i++)

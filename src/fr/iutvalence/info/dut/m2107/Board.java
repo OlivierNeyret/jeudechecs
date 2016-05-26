@@ -1,5 +1,6 @@
 package fr.iutvalence.info.dut.m2107;
 
+
 import java.util.ArrayList;
 
 /**
@@ -23,32 +24,32 @@ public class Board
 	{
 		this.board = new Piece[8][8];
 		
-		this.board[0][7] = new Rook(Color.WHITE);
-		this.board[1][7] = new Knight(Color.WHITE);
-		this.board[2][7] = new Bishop(Color.WHITE);
-		this.board[4][7] = new King(Color.WHITE);
-		this.board[3][7] = new Queen(Color.WHITE);
-		this.board[5][7] = new Bishop(Color.WHITE);
-		this.board[6][7] = new Knight(Color.WHITE);
-		this.board[7][7] = new Rook(Color.WHITE);
+		this.board[0][7] = new Rook(PieceColor.WHITE);
+		this.board[1][7] = new Knight(PieceColor.WHITE);
+		this.board[2][7] = new Bishop(PieceColor.WHITE);
+		this.board[4][7] = new King(PieceColor.WHITE);
+		this.board[3][7] = new Queen(PieceColor.WHITE);
+		this.board[5][7] = new Bishop(PieceColor.WHITE);
+		this.board[6][7] = new Knight(PieceColor.WHITE);
+		this.board[7][7] = new Rook(PieceColor.WHITE);
 		
 		for(int i=0;i<8;i++)
 		{
-			this.board[i][6]= new Pawn(Color.WHITE, Type.PAWN);
+			this.board[i][6]= new Pawn(PieceColor.WHITE, Type.PAWN);
 		}
 		
-		this.board[0][0] = new Rook(Color.BLACK);
-		this.board[1][0] = new Knight(Color.BLACK);
-		this.board[2][0] = new Bishop(Color.BLACK);
-		this.board[3][0] = new King(Color.BLACK);
-		this.board[4][0] = new Queen(Color.BLACK);
-		this.board[5][0] = new Bishop(Color.BLACK);
-		this.board[6][0] = new Knight(Color.BLACK);
-		this.board[7][0] = new Rook(Color.BLACK);
+		this.board[0][0] = new Rook(PieceColor.BLACK);
+		this.board[1][0] = new Knight(PieceColor.BLACK);
+		this.board[2][0] = new Bishop(PieceColor.BLACK);
+		this.board[3][0] = new King(PieceColor.BLACK);
+		this.board[4][0] = new Queen(PieceColor.BLACK);
+		this.board[5][0] = new Bishop(PieceColor.BLACK);
+		this.board[6][0] = new Knight(PieceColor.BLACK);
+		this.board[7][0] = new Rook(PieceColor.BLACK);
 		
 		for(int i=0;i<8;i++)
 		{
-			this.board[i][1]= new Pawn(Color.BLACK, Type.PAWN);
+			this.board[i][1]= new Pawn(PieceColor.BLACK, Type.PAWN);
 		}
 		for(int i=0;i<8;i++)
 		{
@@ -80,7 +81,7 @@ public class Board
 		int y1 = positionDep.getOrdonate();
 		int x2 = this.getCoordonateOfPiece(piece).getAbscissa();
 		int y2 = this.getCoordonateOfPiece(piece).getOrdonate();
-		tabP[x2][y2]= new Pawn(Color.NONE, Type.NONE);
+		tabP[x2][y2]= new Pawn(PieceColor.NONE, Type.NONE);
 		tabP[x1][y1]= piece;
 		
 		Board p1 = new Board(tabP);
@@ -127,7 +128,7 @@ public class Board
 	 * @param color la couleur du joueur dont on veut recuperer les pieces
 	 * @return une liste de Piece contenant les pieces restantes du joueur passe en parametre
 	 */
-	public ArrayList<Piece> getPiecePlayer(Color color)
+	public ArrayList<Piece> getPiecePlayer(PieceColor color)
 	{
 		ArrayList<Piece> piecePlayer = new ArrayList<Piece>();
 		for(int i=0;i<8;i++)
@@ -146,7 +147,7 @@ public class Board
 	 * @param color La couleur du roi que l'on cherche
 	 * @return Le roi de la couleur donnee
 	 */
-	public Piece getKing(Color color)
+	public Piece getKing(PieceColor color)
 	{
 		
 		for(int i=0;i<8;i++)
@@ -185,7 +186,7 @@ public class Board
 	 * @param color La couleur du roi sur lequel on veut tester l'echec
 	 * @return true si la position est en echec pour le roi de la couleur donnee, false sinon
 	 */
-	public boolean isCheck(Position position, Color color)
+	public boolean isCheck(Position position, PieceColor color)
 	{
 		int i = 0;
 		int j = 0;

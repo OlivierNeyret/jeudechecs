@@ -1,5 +1,6 @@
 package fr.iutvalence.info.dut.m2107;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -48,7 +49,7 @@ public class Window extends JFrame
 	private JRadioButtonMenuItem rb2 = new JRadioButtonMenuItem("Doge Game Company Edition");
 	
 
-	public Window()
+	public Window(Board gameboard)
 	{
 		// MENU//////////////////////////////////////////////////////////////
 		this.setSize(500, 500);
@@ -105,19 +106,19 @@ public class Window extends JFrame
 			public void actionPerformed(ActionEvent arg0)
 			{
 
-				game();
+				game(gameboard);
 			}
 		});
 
-		/*this.menu1.add(item1_1);
+		this.menu1.add(item1_1);
 		this.menu1.add(item1_2);
 		this.menuBar.add(menu1);
 		this.menuBar.add(menu2);
-		this.setJMenuBar(menuBar);*/
+		this.setJMenuBar(menuBar);
 		
 		//CONTENT//////////////////////////////////////////////////////
 
-		introduction();
+		introduction(gameboard);
 		
 		//VISIBLE//////////////////////////////////////////////////////
 		this.setVisible(true);
@@ -126,7 +127,7 @@ public class Window extends JFrame
 	
 	
 
-	private void introduction(){
+	private void introduction(Board gameboard){
 		JPanel intro = new JPanel();
 	
 		JLabel title = new JLabel("Chess Game");
@@ -143,7 +144,7 @@ public class Window extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				game();
+				game(gameboard);
 			}
 		});
 		
@@ -159,20 +160,20 @@ public class Window extends JFrame
 		this.add(intro);
 	}
 	
-	public void game(){
+	public void game(Board gameboard){
 		this.getContentPane().removeAll();
 	    
-		 Object[][] data = {{1,"","","","","","","",""},
-		 					{2,"", "","","","","","",""},
-		 					{3,"","","","","","","",""},
-		 					{4,"", "","","","","","",""},
-		 					{5,"","","","","","","",""},
-		 					{6,"", "","","","","","",""},
-		 					{7,"","","","","","","",""},
-		 					{8,"", "","","","","","",""}};
+		 Object[][] data = {{1,"","","","","","","","",1},
+		 					{2,"", "","","","","","","",2},
+		 					{3,"","","","","","","","",3},
+		 					{4,"", "","","","","","","",4},
+		 					{5,"","","","","","","","",5},
+		 					{6,"", "","","","","","","",6},
+		 					{7,"","","","","","","","",7},
+		 					{8,"", "","","","","","","",8}};
 
 		 //Les titres des colonnes
-	    String[]  title = {"","A", "", "C","D", "E", "F","G", "H"};
+	    String[]  title = {"","A", "B", "C","D", "E", "F","G", "H",""};
 	    JTable plateau = new JTable(data, title);
 	    plateau.getTableHeader().setReorderingAllowed(false);
 	    JScrollPane scroll=new JScrollPane(plateau);
@@ -182,16 +183,33 @@ public class Window extends JFrame
 	        plateau.setRowHeight(i,100);
 	    
 	    TableColumn column = null;
-	    for (int i = 0; i < 9; i++) {
+	    for (int i = 0; i < 10; i++) 
+	    {
 	        column = plateau.getColumnModel().getColumn(i);
-	        if (i == 0) {
-	            column.setPreferredWidth(1); //third column is bigger
-	        } else {
-	            column.setPreferredWidth(50);
-	        }
+	       
+	            column.setPreferredWidth(100);
 	    }
 	    this.getContentPane().add(scroll, BorderLayout.CENTER);
 
+	    ImageIcon CN = new ImageIcon("CN");
+	    ImageIcon CB = new ImageIcon("CB");
+
+	    
+	    //plateau.setValueAt(icon, 0, 1);
+	    
+	    for(int i=0; i<8; i++)
+	    {
+	    	for(int j=0;j<8;j++)
+	    	{
+	    		//Piece current_piece =gameboard.getPieceAtPosition(new Position(i,j));
+	    		Color blblbl = Color.BLACK;
+//	    		if (current_piece.getColor() == Color.)
+//	    		{
+//	    			if(current_piece.getType()==Type.KNIGHT)
+	    		}
+	    		
+	    	}
+	    //}
 	    
 		this.repaint();
 		this.revalidate();

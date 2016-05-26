@@ -12,7 +12,7 @@ public abstract class Piece
 	/**
 	 * this is the color of the piece white or black
 	 */
-	private final Color color;
+	private final PieceColor color;
 	
 	/**
 	 * type of the piece like queen, king, ...
@@ -24,7 +24,7 @@ public abstract class Piece
 	 * @param color c'est la couleur de la piece
 	 * @param type de la peice a creer
 	 */
-	public Piece(Color color, Type type)
+	public Piece(PieceColor color, Type type)
 	{
 		this.color = color;
 		this.type = type;
@@ -57,7 +57,7 @@ public abstract class Piece
 	 * renvoie la couleur de la piece
 	 * @return noir ou blanc selon la couleur de la piece
 	 */
-	public Color getColor()
+	public PieceColor getColor()
 	{
 		return this.color;
 	}

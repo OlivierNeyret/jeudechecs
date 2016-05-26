@@ -13,7 +13,7 @@ public class Queen extends Piece {
 	 * Cree une reine de la couleur donnee
 	 * @param couleur
 	 */
-	public Queen(Color couleur)
+	public Queen(PieceColor couleur)
 	{
 		super(couleur, Type.QUEEN);
 	}
@@ -22,7 +22,7 @@ public class Queen extends Piece {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
 		int x = plateau.getCoordonateOfPiece(this).getOrdonate();
 		int y = plateau.getCoordonateOfPiece(this).getAbscissa();
-		Color couleur=this.getColor();
+		PieceColor couleur=this.getColor();
 		
 		boolean diagA=true;
 		boolean diagB=true;

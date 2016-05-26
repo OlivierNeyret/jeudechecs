@@ -5,7 +5,7 @@ package fr.iutvalence.info.dut.m2107;
  * @author pasquiop
  *
  */
-public enum Color
+public enum PieceColor
 {
 	/**
 	 * represente la couleur banche
@@ -24,11 +24,11 @@ public enum Color
 	 * @param couleur est la couleur que lon veut inverser
 	 * @return l'inverse de la couleur passee en param
 	 */
-	public Color Invertcolor()
+	public PieceColor Invertcolor()
 	{
-		if (this == Color.WHITE)
-			return Color.BLACK;
+		if (this == PieceColor.WHITE)
+			return PieceColor.BLACK;
 		else 
-			return Color.WHITE;
+			return PieceColor.WHITE;
 	}
 }

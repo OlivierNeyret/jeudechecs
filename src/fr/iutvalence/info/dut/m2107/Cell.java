@@ -1,4 +1,5 @@
 package fr.iutvalence.info.dut.m2107;
+
 import java.awt.Color;
 import java.awt.Component;
 
@@ -13,7 +14,7 @@ public class Cell extends DefaultTableCellRenderer
 	{
 		Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-		if (column == 0)
+		if (column == 0 || column==9 )
 			cell.setBackground(Color.LIGHT_GRAY);
 		else if (row % 2 == 0)
 		{

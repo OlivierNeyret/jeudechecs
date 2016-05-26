@@ -34,8 +34,8 @@ public class Game
 	 */
 	public Game()
 	{
-		this.white = new Player(Color.WHITE);
-		this.black = new Player(Color.BLACK);
+		this.white = new Player(PieceColor.WHITE);
+		this.black = new Player(PieceColor.BLACK);
 		this.board = new Board();
 	}
 
@@ -48,15 +48,15 @@ public class Game
 	 *            la difficulte choisie par le joueur humain
 	 * 
 	 */
-	public Game(Color couleurJoueur, Difficulty difficulteChoisie)
+	public Game(PieceColor couleurJoueur, Difficulty difficulteChoisie)
 	{
-		if (couleurJoueur == Color.WHITE)
+		if (couleurJoueur == PieceColor.WHITE)
 		{
-			this.white = new Player(Color.WHITE);
+			this.white = new Player(PieceColor.WHITE);
 			this.black = new AI(difficulteChoisie);
 		} else
 		{
-			this.black = new Player(Color.BLACK);
+			this.black = new Player(PieceColor.BLACK);
 			this.white = new AI(difficulteChoisie);
 		}
 		this.board = new Board();
@@ -108,7 +108,7 @@ public class Game
 						positionPieceToMove = ihm.askPosition();
 						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
 					}
-					while(pieceToMove.getColor()!=Color.WHITE);
+					while(pieceToMove.getColor()!=PieceColor.WHITE);
 					listOfMove = pieceToMove.deplacement(this.board, false);
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);
@@ -138,7 +138,7 @@ public class Game
 						positionPieceToMove = ihm.askPosition();
 						pieceToMove = this.board.getPieceAtPosition(positionPieceToMove);
 					}
-					while(pieceToMove.getColor()!=Color.BLACK);
+					while(pieceToMove.getColor()!=PieceColor.BLACK);
 					listOfMove = pieceToMove.deplacement(this.board, false);
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);

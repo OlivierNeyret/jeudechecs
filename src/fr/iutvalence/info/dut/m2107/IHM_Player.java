@@ -75,7 +75,7 @@ public class IHM_Player
 	 */
 	public Piece askPiece(Piece piece)
 	{
-		Color color = piece.getColor();
+		PieceColor color = piece.getColor();
 		int choix = 0;
 		System.out.println("En quelle pièce souhaitez-vous promouvoir ce pion ?");
 		do

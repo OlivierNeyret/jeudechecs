@@ -7,7 +7,7 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Player
 {
-	private Color color;
+	private PieceColor color;
 
 	/**
 	 * Creer un joueur avec les pieces par defaut, de la couleur choisie
@@ -15,7 +15,7 @@ public class Player
 	 * @param color
 	 *            La couleur choisie par le joueur
 	 */
-	public Player(Color color)
+	public Player(PieceColor color)
 	{
 		this.color = color;
 	}
@@ -25,7 +25,7 @@ public class Player
 	 * 
 	 * @return la couleur du joueur
 	 */
-	public Color getColor()
+	public PieceColor getColor()
 	{
 		return this.color;
 	}
