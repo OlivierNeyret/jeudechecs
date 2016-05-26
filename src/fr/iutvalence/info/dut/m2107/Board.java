@@ -67,7 +67,9 @@ public class Board
 	public Board(Piece[][] tabP)
 	{
 		this.board=tabP;
+		
 	}
+
 
 	/**
 	 * @param piece La piece qu el'on veut deplacer
@@ -76,7 +78,16 @@ public class Board
 	 */
 	public Board emulateDeplacement(Piece piece, Position positionDep)
 	{
-		Board p1 = this;
+		
+		Piece[][] tabP1 = new Piece[8][8];
+		for(int i=0;i<8;i++)
+		{
+			for(int j=0;j<8;j++)
+			{
+				tabP1[i][j]=this.board[i][j];
+			}
+		}
+		Board p1 = new Board(tabP1);
 		p1.move(piece, positionDep);
 		
 		return p1;
