@@ -117,6 +117,7 @@ public class Game
 					//verifier validite du coup
 					if(listOfMove.contains(positionOfDestination))
 					{
+						System.out.println(32);
 						this.board.move(pieceToMove, positionOfDestination);
 						if (pieceToMove.getType() == Type.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
 						{

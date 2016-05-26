@@ -25,7 +25,7 @@ public class Position
 	 * @param ordonate l'ordonnee du position
 	 * @throws PositionOutOfBoardException Si la piece est en dehors de l'echiquier
 	 */
-	public Position(int abscissa, int ordonate) throws PositionOutOfBoardException
+	public Position(int ordonate, int abscissa) throws PositionOutOfBoardException
 	{
 		if (abscissa<=7 && ordonate<=7 && abscissa>=0 && ordonate>=0)
 		{
@@ -58,7 +58,7 @@ public class Position
 	 */
 	public String toString()
 	{
-		return "(" + ordonate + "," + abscissa + ")";
+		return "(" + this.ordonate + "," + this.abscissa + ")";
 	}
 
 }
