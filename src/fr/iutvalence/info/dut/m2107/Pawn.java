@@ -152,7 +152,6 @@ public class Pawn extends Piece {
 						{
 							if (board.getPieceAtPosition(new Position(x,y-2)).getType() == PieceType.NONE)
 							{
-								System.out.println(2);
 								deplacement.add(new Position(x, y-2));
 							}
 						}

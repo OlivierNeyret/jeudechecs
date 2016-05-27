@@ -104,11 +104,13 @@ public class Rook extends Piece {
 				{
 					if(plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur){
 							deplacement.add(new Position(x+i,y));
+							
 							if (plateau.getPieceAtPosition(new Position(x+i,y)).getType() != PieceType.NONE)
 								colA=false;
 						}
 					else colA=false;
 					}
+				
 			} catch (PositionOutOfBoardException e)
 			{
 				colA=false;

@@ -70,7 +70,6 @@ public class Board
 		
 	}
 
-
 	/**
 	 * @param piece La piece qu el'on veut deplacer
 	 * @param positionDep La position où l'on veut deplacer la piece
@@ -187,7 +186,7 @@ public class Board
 
 	/**
 	 * Verifie si la position donnee est en echec pour le roi de la couleur donnee
-	 * @param position La posiition sur laquelle on veut tester l'echec
+	 * @param position La position sur laquelle on veut tester l'echec
 	 * @param color La couleur du roi sur lequel on veut tester l'echec
 	 * @return true si la position est en echec pour le roi de la couleur donnee, false sinon
 	 */
