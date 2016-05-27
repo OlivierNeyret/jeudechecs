@@ -83,7 +83,7 @@ public class King extends Piece {
 			try
 			{
 				if (board.getPieceAtPosition(new Position(x+1,y+1)).getColor()!=color && 
-					board.isCheck(new Position(x+1,y+1),color))
+					!(board.isCheck(new Position(x+1,y+1),color)))
 					deplacement.add(new Position(x+1,y+1));
 			} catch (PositionOutOfBoardException e)
 			{
@@ -91,7 +91,7 @@ public class King extends Piece {
 			try
 			{
 				if (board.getPieceAtPosition(new Position(x+1,y-1)).getColor()!=color && 
-					board.isCheck(new Position(x+1,y-1),color))
+					!(board.isCheck(new Position(x+1,y-1),color)))
 					deplacement.add(new Position(x+1,y-1));
 			} catch (PositionOutOfBoardException e)
 			{	
@@ -99,7 +99,7 @@ public class King extends Piece {
 			try
 			{
 				if (board.getPieceAtPosition(new Position(x-1,y+1)).getColor()!=color && 
-					board.isCheck(new Position(x-1,y+1),color))
+					!(board.isCheck(new Position(x-1,y+1),color)))
 					deplacement.add(new Position(x-1,y+1));
 			} catch (PositionOutOfBoardException e)
 			{
@@ -107,7 +107,7 @@ public class King extends Piece {
 			try
 			{
 				if (board.getPieceAtPosition(new Position(x-1,y-1)).getColor()!=color && 
-					board.isCheck(new Position(x-1,y-1),color))
+					!(board.isCheck(new Position(x-1,y-1),color)))
 					deplacement.add(new Position(x-1,y-1));
 			} catch (PositionOutOfBoardException e)
 			{
@@ -119,7 +119,7 @@ public class King extends Piece {
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x+i,y+j)).getColor()!=color && 
-						board.isCheck(new Position(x+i,y+j),color))
+						!(board.isCheck(new Position(x+i,y+j),color)))
 						deplacement.add(new Position(x+i,y+j));
 				} catch (PositionOutOfBoardException e)
 				{
@@ -127,7 +127,7 @@ public class King extends Piece {
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x-i,y-j)).getColor()!=color && 
-						board.isCheck(new Position(x+i,y+j),color))
+						!(board.isCheck(new Position(x+i,y+j),color)))
 						deplacement.add(new Position(x-i,y-j));
 				} catch (PositionOutOfBoardException e)
 				{

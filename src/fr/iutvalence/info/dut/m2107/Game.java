@@ -157,7 +157,6 @@ public class Game
 				while(!listOfMove.contains(positionOfDestination));
 			}
 			numberOfMoves++;
-			ihm.displayBoard();
 		}
 	}
 }
