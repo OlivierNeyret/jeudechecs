@@ -32,7 +32,7 @@ public class Cell extends DefaultTableCellRenderer
 			if (column % 2 == 1)
 				cell.setBackground(Color.BLACK);
 		}
-		//TODO
+		//couleur piece selected 
 	   // ((JLabel) cell).setIcon(new ImageIcon("ressources/noir/cavalier.png"));
 
 		return cell;

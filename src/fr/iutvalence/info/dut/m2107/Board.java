@@ -41,8 +41,8 @@ public class Board
 		this.board[0][0] = new Rook(PieceColor.BLACK);
 		this.board[1][0] = new Knight(PieceColor.BLACK);
 		this.board[2][0] = new Bishop(PieceColor.BLACK);
-		this.board[3][0] = new King(PieceColor.BLACK);
-		this.board[4][0] = new Queen(PieceColor.BLACK);
+		this.board[4][0] = new King(PieceColor.BLACK);
+		this.board[3][0] = new Queen(PieceColor.BLACK);
 		this.board[5][0] = new Bishop(PieceColor.BLACK);
 		this.board[6][0] = new Knight(PieceColor.BLACK);
 		this.board[7][0] = new Rook(PieceColor.BLACK);

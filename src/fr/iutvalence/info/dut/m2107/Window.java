@@ -8,7 +8,9 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
@@ -27,6 +29,8 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
+
+import com.sun.glass.events.MouseEvent;
 
 public class Window extends JFrame
 {
@@ -119,6 +123,7 @@ public class Window extends JFrame
 		//CONTENT//////////////////////////////////////////////////////
 
 		introduction(gameboard);
+		this.setResizable(true);
 		
 		//VISIBLE//////////////////////////////////////////////////////
 		this.setVisible(true);
@@ -289,5 +294,30 @@ public class Window extends JFrame
 		this.revalidate();
 
 	    this.setVisible(true);
+	    System.out.println("babbabe");
+		plateau.addMouseListener(new java.awt.event.MouseAdapter() {
+		    @Override
+		    public void mouseClicked(java.awt.event.MouseEvent evt) {
+		      int row = plateau.getSelectedRow();
+		      int column = plateau.getSelectedColumn()-1;
+		      try
+			{
+				if (row < 9 && row >=0 && column <9 && column >=0 && gameboard.getPieceAtPosition(new Position(column,row)).getType()!=PieceType.NONE)
+				  { 
+						ArrayList<Position> deplacement = (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true)); 
+						while(deplacement.remove(0)!= null)
+						{
+							
+						}
+				  }
+			} catch (PositionOutOfBoardException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	     
+	    	      
+	    	  }
+	    	});
 	}
 }
