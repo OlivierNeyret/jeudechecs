@@ -192,22 +192,16 @@ public class Board
 	 */
 	public boolean isCheck(Position position, PieceColor color)
 	{
-		int i = 0;
-		int j = 0;
 		
 		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
 		piecesJ = getPiecePlayer(color.Invertcolor());
-		while (i < piecesJ.size())
+		for(int i=0;i < piecesJ.size();i++)
 		{
-			while (j < piecesJ.get(i).deplacement(this, false).size())
+			for(int j=0; j < piecesJ.get(i).deplacement(this, false).size();j++)
 			{
-
-				if (piecesJ.get(i).deplacement(this, false).get(j) == position)
+				if (piecesJ.get(i).deplacement(this, false).get(j).equals(position))
 					return true;
-				j++;
 			}
-			i++;
-			j = 0;
 		}
 		return false;
 	}
