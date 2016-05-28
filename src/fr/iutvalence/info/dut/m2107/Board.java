@@ -1,6 +1,5 @@
 package fr.iutvalence.info.dut.m2107;
 
-
 import java.util.ArrayList;
 
 /**
@@ -13,7 +12,7 @@ public class Board
 	/**
 	 * Le plateau du jeu
 	 * Contient les references de chaque piece encore en jeu
-	 * S il n y a pas de piece sur une case, la case vaut NULL
+	 * S il n y a pas de piece sur une case, la case vaut la piece Null
 	 */
 	private Piece[][] board;
 	
@@ -72,8 +71,8 @@ public class Board
 
 	/**
 	 * @param piece La piece qu el'on veut deplacer
-	 * @param positionDep La position où l'on veut deplacer la piece
-	 * @return Le plateau avec le deplacement effectué
+	 * @param positionDep La position ou l'on veut deplacer la piece
+	 * @return Le plateau avec le deplacement effectue
 	 */
 	public Board emulateDeplacement(Piece piece, Position positionDep)
 	{
@@ -233,5 +232,14 @@ public class Board
 	{
 		this.board[this.getCoordonateOfPiece(piece).getOrdonate()][this.getCoordonateOfPiece(piece).getAbscissa()] = new Null();
 		this.board[arrivalPosition.getOrdonate()][arrivalPosition.getAbscissa()] = piece;
+	}
+
+	/**
+	 * Donne le tableau a 2 dimensions representant le plateau
+	 * @return tableau de 8 par 8
+	 */
+	public Piece[][] getBoard()
+	{
+		return board;
 	}
 }
