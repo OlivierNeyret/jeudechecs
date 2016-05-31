@@ -2,6 +2,8 @@ package fr.iutvalence.info.dut.m2107;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -24,6 +26,7 @@ public class Cell extends DefaultTableCellRenderer
 				cell.setBackground(Color.BLACK);
 			if (column % 2 == 1)
 				cell.setBackground(Color.WHITE);
+			
 		}
 		else if (row % 2 == 1)
 		{
@@ -34,7 +37,8 @@ public class Cell extends DefaultTableCellRenderer
 		}
 		//couleur piece selected 
 	   // ((JLabel) cell).setIcon(new ImageIcon("ressources/noir/cavalier.png"));
-
+		
+		
 		return cell;
 	}
 }

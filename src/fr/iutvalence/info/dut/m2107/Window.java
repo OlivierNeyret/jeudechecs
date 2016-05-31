@@ -4,6 +4,7 @@ package fr.iutvalence.info.dut.m2107;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -139,7 +141,7 @@ public class Window extends JFrame
 		JLabel company = new JLabel("Doge Game Company");
 		JButton start = new JButton("Start");
 		JButton exit = new JButton("Exit");
-		
+		//Button.setBounds();
 		intro.add(title);
 		intro.add(company);
 		intro.add(start);
@@ -198,6 +200,8 @@ public class Window extends JFrame
 	    }
 	    this.getContentPane().add(scroll, BorderLayout.CENTER);
 
+	    
+	    
 	    ImageIcon CN = new ImageIcon("CN");
 	    ImageIcon TN = new ImageIcon("TN");
 	    ImageIcon FN = new ImageIcon("FN");
@@ -300,15 +304,45 @@ public class Window extends JFrame
 		    public void mouseClicked(java.awt.event.MouseEvent evt) {
 		      int row = plateau.getSelectedRow();
 		      int column = plateau.getSelectedColumn()-1;
+		      
 		      try
 			{
 				if (row < 9 && row >=0 && column <9 && column >=0 && gameboard.getPieceAtPosition(new Position(column,row)).getType()!=PieceType.NONE)
-				  { 
+				  { 	
 						ArrayList<Position> deplacement = (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true)); 
-						while(deplacement.remove(0)!= null)
+						/*while(deplacement.remove(0)!= null)
 						{
-							
-						}
+							//surbrillance
+						}*/
+						ImageIcon prev = (ImageIcon) plateau.getModel().getValueAt(column, row+1);
+						plateau.addMouseListener(new java.awt.event.MouseAdapter() 
+						{
+						    @Override
+						    public void mouseClicked(java.awt.event.MouseEvent evt) 
+						    {
+						      int newrow = plateau.getSelectedRow();
+						      int newcolumn = plateau.getSelectedColumn()-1;
+						    
+								if (row < 9 && row >=0 && column <9 && column >=0 )
+								  { 
+									ArrayList<Position> deplacement;
+									try
+									{
+										deplacement = (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true));
+									
+										if (deplacement.contains(new Position(row,column)) )
+										{
+											plateau.setValueAt(prev, newcolumn, newrow+1);
+											plateau.setValueAt("", column, row+1);
+										}
+									} catch (PositionOutOfBoardException e)
+									{
+										
+									} 
+								  }
+							} 
+					    }); 
+						
 				  }
 			} catch (PositionOutOfBoardException e)
 			{
@@ -319,5 +353,8 @@ public class Window extends JFrame
 	    	      
 	    	  }
 	    	});
+		
+		
+		
 	}
 }
