@@ -67,7 +67,7 @@ public class AI extends Player
 				listOfMove = pieceToMove.deplacement(board, true);
 				for(int j=0;j<listOfMove.size();j++)
 				{
-					temporaryBoard = board.clone();
+					temporaryBoard = (Board) board.clone();
 				}
 			}
 			/*
@@ -108,7 +108,7 @@ public class AI extends Player
 	 */
 	private int min(Board board, int depth)
 	{
-		int min;
+		int min=0;
 		return min;
 	}
 	
@@ -118,7 +118,7 @@ public class AI extends Player
 	 */
 	private int max(Board board, int depth)
 	{
-		int max;
+		int max=0;
 		return max;
 	}
 	
@@ -139,7 +139,7 @@ public class AI extends Player
 		Position positionOfKing = board.getCoordonateOfPiece(board.getKing(this.getColor().Invertcolor()));
 		if (board.isCheck(positionOfKing, this.getColor().Invertcolor()))
 		{
-			if(board.checkVictory())
+			if(board.checkVictory(this.getColor()))
 				return COEF_VICTORY;
 			eval += COEF_CHESS;
 		}

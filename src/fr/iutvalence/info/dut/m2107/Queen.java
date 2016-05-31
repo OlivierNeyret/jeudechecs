@@ -40,7 +40,7 @@ public class Queen extends Piece {
 				//Deplacements en ligne/colonne
 				try
 				{
-					if (colA && !(plateau.emulateDeplacement(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (colA && !(plateau.emulateMove(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur){
 								deplacement.add(new Position(x+i,y));
@@ -56,7 +56,7 @@ public class Queen extends Piece {
 				}
 				try
 				{
-					if (colB && !(plateau.emulateDeplacement(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (colB && !(plateau.emulateMove(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur){
 							deplacement.add(new Position(x-i,y));
@@ -71,7 +71,7 @@ public class Queen extends Piece {
 				}
 				try
 				{
-					if (rowA && !(plateau.emulateDeplacement(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (rowA && !(plateau.emulateMove(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur){
 							deplacement.add(new Position(x,y+i));
@@ -86,7 +86,7 @@ public class Queen extends Piece {
 				}
 				try
 				{
-					if (rowB && !(plateau.emulateDeplacement(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (rowB && !(plateau.emulateMove(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur){
 							deplacement.add(new Position(x,y-i));
@@ -103,7 +103,7 @@ public class Queen extends Piece {
 				//Deplacements en diagonale
 				try
 				{
-					if (diagA && !(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagA && !(plateau.emulateMove(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur){
 							deplacement.add(new Position(x+i,y+i));
@@ -118,7 +118,7 @@ public class Queen extends Piece {
 				}
 				try
 				{
-					if (diagB && !(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagB && !(plateau.emulateMove(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur){
 							deplacement.add(new Position(x+i,y-i));
@@ -133,7 +133,7 @@ public class Queen extends Piece {
 				}
 				try
 				{
-					if (diagC && !(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagC && !(plateau.emulateMove(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur){
 							deplacement.add(new Position(x-i,y-i));
@@ -148,7 +148,7 @@ public class Queen extends Piece {
 				}
 				try
 				{
-					if (diagD && !(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagD && !(plateau.emulateMove(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur){
 							deplacement.add(new Position(x-i,y+i));

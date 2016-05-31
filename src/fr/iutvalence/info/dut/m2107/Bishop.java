@@ -35,7 +35,7 @@ public class Bishop extends Piece {
 			{
 				try
 				{
-					if (diagA && !(plateau.emulateDeplacement(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagA && !(plateau.emulateMove(this, new Position(x+i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x+i,y+i)).getColor()!=couleur){
 							deplacement.add(new Position(x+i,y+i));
@@ -50,7 +50,7 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (diagB && !(plateau.emulateDeplacement(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagB && !(plateau.emulateMove(this, new Position(x+i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x+i,y-i)).getColor()!=couleur){
 							deplacement.add(new Position(x+i,y-i));
@@ -65,7 +65,7 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (diagC && !(plateau.emulateDeplacement(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagC && !(plateau.emulateMove(this, new Position(x-i,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x-i,y-i)).getColor()!=couleur){
 							deplacement.add(new Position(x-i,y-i));
@@ -80,7 +80,7 @@ public class Bishop extends Piece {
 				}
 				try
 				{
-					if (diagD && !(plateau.emulateDeplacement(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (diagD && !(plateau.emulateMove(this, new Position(x-i,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x-i,y+i)).getColor()!=couleur){
 							deplacement.add(new Position(x-i,y+i));

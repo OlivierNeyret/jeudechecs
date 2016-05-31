@@ -75,7 +75,7 @@ public class Game
 
 	/**
 	 * Le deroulement de la partie
-	 * @return 
+	 * @return La couleur du joueur qui a gagne la partir
 	 */
 	public PieceColor play()
 	{
@@ -103,11 +103,11 @@ public class Game
 					//Afficher les deplacements possibles
 					System.out.println(listOfMove);
 					//Demander le deplacement
+					System.out.println("Entrez la destination. Pour changer de pièce, entrez une position non valide.");
 					positionOfDestination = ihm.askPosition();
 					//verifier validite du coup
 					if(listOfMove.contains(positionOfDestination))
 					{
-						System.out.println(32);
 						this.board.move(pieceToMove, positionOfDestination);
 						if (pieceToMove.getType() == PieceType.PAWN && positionOfDestination.getAbscissa() == 0 || positionOfDestination.getAbscissa() == 7)
 						{

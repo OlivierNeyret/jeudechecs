@@ -46,13 +46,13 @@ public class Pawn extends Piece {
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x,y+1)).getType() == PieceType.NONE && 
-							!(board.emulateDeplacement(this, new Position(x,y+1)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
+							!(board.emulateMove(this, new Position(x,y+1)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x,y+1));
 						if (y == 1)
 						{
 							if (board.getPieceAtPosition(new Position(x,y+2)).getType() == PieceType.NONE && 
-								!(board.emulateDeplacement(this, new Position(x,y+2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
+								!(board.emulateMove(this, new Position(x,y+2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
 							{
 								deplacement.add(new Position(x,y+2));
 							}
@@ -79,13 +79,13 @@ public class Pawn extends Piece {
 				try
 				{
 					if (board.getPieceAtPosition(new Position(x,y-1)).getType() == PieceType.NONE && 
-							!(board.emulateDeplacement(this, new Position(x,y-1)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
+							!(board.emulateMove(this, new Position(x,y-1)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
 					{
 						deplacement.add(new Position(x,y-1));
 						if (y == 6)
 						{
 							if (board.getPieceAtPosition(new Position(x,y-2)).getType() == PieceType.NONE && 
-								!(board.emulateDeplacement(this, new Position(x,y-2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
+								!(board.emulateMove(this, new Position(x,y-2)).isCheck(board.getCoordonateOfPiece(board.getKing(couleur)), couleur)))
 							{
 								deplacement.add(new Position(x,y-2));
 							}

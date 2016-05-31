@@ -34,7 +34,7 @@ public class Rook extends Piece {
 			{
 				try
 				{
-					if (colA && !(plateau.emulateDeplacement(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (colA && !(plateau.emulateMove(this, new Position(x+i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x+i,y)).getColor()!=couleur){
 								deplacement.add(new Position(x+i,y));
@@ -50,7 +50,7 @@ public class Rook extends Piece {
 				}
 				try
 				{
-					if (colB && !(plateau.emulateDeplacement(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (colB && !(plateau.emulateMove(this, new Position(x-i,y)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if (plateau.getPieceAtPosition(new Position(x-i,y)).getColor()!=couleur){
 							deplacement.add(new Position(x-i,y));
@@ -65,7 +65,7 @@ public class Rook extends Piece {
 				}
 				try
 				{
-					if (rowA && !(plateau.emulateDeplacement(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (rowA && !(plateau.emulateMove(this, new Position(x,y+i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if(plateau.getPieceAtPosition(new Position(x,y+i)).getColor()!=couleur){
 							deplacement.add(new Position(x,y+i));
@@ -80,7 +80,7 @@ public class Rook extends Piece {
 				}
 				try
 				{
-					if (rowB && !(plateau.emulateDeplacement(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
+					if (rowB && !(plateau.emulateMove(this, new Position(x,y-i)).isCheck(plateau.getCoordonateOfPiece(plateau.getKing(couleur)), couleur)))
 					{
 						if (plateau.getPieceAtPosition(new Position(x,y-i)).getColor()!=couleur){
 							deplacement.add(new Position(x,y-i));
