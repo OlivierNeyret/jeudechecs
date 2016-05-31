@@ -210,10 +210,17 @@ public class Board
 	 * 
 	 * @return renvoie true si le joueur a gagne, false sinon
 	 */
-	public boolean checkVictory()
+	public boolean checkVictory(PieceColor color)
 	{
-	// TODO - implement Partie.VerifierConditionsVictoire
-		return false;
+		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
+		piecesJ = getPiecePlayer(color.Invertcolor());
+		for (int i=0; i < piecesJ.size(); i++)
+		{
+			if (!(piecesJ.get(i).deplacement(this, false).isEmpty()))
+				return false;
+		}
+		return true;
+		
 	}
 	
 	/**
