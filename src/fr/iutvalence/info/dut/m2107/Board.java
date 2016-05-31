@@ -206,6 +206,17 @@ public class Board
 	}
 	
 	/**
+	 * Verifie si un joueur a gagne
+	 * 
+	 * @return renvoie true si le joueur a gagne, false sinon
+	 */
+	public boolean checkVictory()
+	{
+	// TODO - implement Partie.VerifierConditionsVictoire
+		return false;
+	}
+	
+	/**
 	 * Transforme un pion qui atteindrait la derniere ligne du plateau en une
 	 * reine.
 	 * 

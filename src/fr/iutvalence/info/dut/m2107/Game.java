@@ -63,17 +63,6 @@ public class Game
 	}
 
 	/**
-	 * Verifie si un joueur a gagne
-	 * 
-	 * @return renvoie true si le joueur a gagne, false sinon
-	 */
-	public boolean checkVictory()
-	{
-	// TODO - implement Partie.VerifierConditionsVictoire
-		return false;
-	}
-
-	/**
 	 * Renvoie le plateau de la partie
 	 * 
 	 * @return Le plateau de la partie
@@ -91,7 +80,7 @@ public class Game
 	{
 		int numberOfMoves = 0;
 		IHM_Player ihm = new IHM_Player(this);
-		while (this.checkVictory() == false)
+		while (board.checkVictory() == false)
 		{
 			Position positionPieceToMove, positionOfDestination;
 			Piece pieceToMove;
