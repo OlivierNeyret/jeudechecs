@@ -21,14 +21,19 @@ public enum PieceColor
 	NONE;
 
 	/**
-	 * @param couleur est la couleur que lon veut inverser
-	 * @return l'inverse de la couleur passee en param
+	 * Donne la couleur inverse
+	 * blanc donne noir
+	 * noir donne blanc
+	 * none donne none
+	 * @return l'inverse de la couleur
 	 */
 	public PieceColor Invertcolor()
 	{
 		if (this == PieceColor.WHITE)
 			return PieceColor.BLACK;
-		else 
+		else if (this == PieceColor.BLACK)
 			return PieceColor.WHITE;
+		else
+			return PieceColor.NONE;
 	}
 }

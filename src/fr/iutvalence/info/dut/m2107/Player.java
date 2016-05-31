@@ -7,6 +7,9 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Player
 {
+	/**
+	 * La couleur du joueur
+	 */
 	private PieceColor color;
 
 	/**
