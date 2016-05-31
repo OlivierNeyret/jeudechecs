@@ -75,12 +75,13 @@ public class Game
 
 	/**
 	 * Le deroulement de la partie
+	 * @return 
 	 */
-	public void play()
+	public PieceColor play()
 	{
 		int numberOfMoves = 0;
 		IHM_Player ihm = new IHM_Player(this);
-		while (board.checkVictory() == false)
+		while (true)
 		{
 			Position positionPieceToMove, positionOfDestination;
 			Piece pieceToMove;
@@ -115,7 +116,10 @@ public class Game
 					}
 				}
 				while(!listOfMove.contains(positionOfDestination));
+				if (board.checkVictory(PieceColor.WHITE))
+						return PieceColor.WHITE;
 			}
+			
 			else //Le tour des noirs
 			{
 				do
@@ -144,6 +148,8 @@ public class Game
 					}
 				}
 				while(!listOfMove.contains(positionOfDestination));
+				if (board.checkVictory(PieceColor.BLACK))
+					return PieceColor.BLACK;
 			}
 			numberOfMoves++;
 		}
