@@ -1,6 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * Classe qui gere la facon dont l'intelligence artificielle (IA) va jouer
@@ -42,7 +43,7 @@ public class AI extends Player
 	 * Choix du deplacement a faire
 	 * Effectue le deplacement
 	 */
-	public void aiPlay()
+	public void aiPlay(Board board)
 	{
 		Piece pieceChoisie;
 		Position deplacementChoisi;
@@ -53,8 +54,42 @@ public class AI extends Player
 		}
 		else if(this.difficulty==Difficulty.MIDDLE)
 		{
+			int depth=3;
+			int max_val = -COEF_VICTORY;
+			Board temporaryBoard;
+			Piece pieceToMove;
+			ArrayList<Position> listOfMove;
+			
+			ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
+			for(int i=0;i<pieceOfAI.size();i++)
+			{
+				pieceToMove=pieceOfAI.get(i);
+				listOfMove = pieceToMove.deplacement(board, true);
+				for(int j=0;j<listOfMove.size();j++)
+				{
+					temporaryBoard = board.clone();
+				}
+			}
 			/*
-			 * Parcourir toutes les pi�ces
+			 * max_val <- -infini
+
+	     		Pour tous les coups possibles
+	          		simuler(coup_actuel)
+	          		val <- Min(etat_du_jeu, profondeur)
+	     
+	          		si val > max_val alors
+	               		max_val <- val
+	               		meilleur_coup <- coup_actuel
+	          		fin si
+	     
+	          		annuler_coup(coup_actuel)
+	     		fin pour
+	
+	     		jouer(meilleur_coup)
+			 */
+			
+			/*
+			 * Parcourir toutes les pieces
 			 * Pour chaque piece essayer chaque deplacement possible et calculer le meilleur coup
 			 * retenir le meilleur coup de chaque piece
 			 * comparer les meilleurs coups et choisir le meilleur coup
@@ -62,11 +97,29 @@ public class AI extends Player
 		}
 		else
 		{
-			
+			int depth=5;
 		}
-
-		
 		//this.move(pieceChoisie, deplacementChoisi);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private int min(Board board, int depth)
+	{
+		int min;
+		return min;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private int max(Board board, int depth)
+	{
+		int max;
+		return max;
 	}
 	
 	/**
@@ -83,14 +136,11 @@ public class AI extends Player
 		int nbQueen=0;
 		int nbRook=0;
 		int nbOfMove=0;
-		Position amodifier = null;
-		if (board.isCheck(amodifier, this.getColor().Invertcolor()))
+		Position positionOfKing = board.getCoordonateOfPiece(board.getKing(this.getColor().Invertcolor()));
+		if (board.isCheck(positionOfKing, this.getColor().Invertcolor()))
 		{
-			/*
-			 * Si l'adversaire est battu
-			 * alors return COEF_VICTORY;
-			 * sinon
-			 */
+			if(board.checkVictory())
+				return COEF_VICTORY;
 			eval += COEF_CHESS;
 		}
 		for (int i=0;i<8;i++)

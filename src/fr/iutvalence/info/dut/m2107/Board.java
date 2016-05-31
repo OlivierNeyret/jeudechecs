@@ -260,4 +260,9 @@ public class Board
 	{
 		return board;
 	}
+	
+	public Board clone()
+	{
+		
+	}
 }
