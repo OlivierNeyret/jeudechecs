@@ -73,7 +73,7 @@ public class Board implements Cloneable
 
 	/**
 	 * @param piece
-	 *            La piece qu el'on veut deplacer
+	 *            La piece que l'on veut deplacer
 	 * @param positionDep
 	 *            La position ou l'on veut deplacer la piece
 	 * @return Le plateau avec le deplacement effectue

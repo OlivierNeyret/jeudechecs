@@ -72,6 +72,18 @@ public class Game
 		// TODO Auto-generated method stub
 		return this.board;
 	}
+	
+	/**
+	 * Verifie si le joueur peut joueur dans le cas ou il n'est pas en echec
+	 * @param board Le plateau du jeu
+	 * @param playerColor Le joueur qui a le trait
+	 * @return True s'il peut jouer, False sinon
+	 */
+	public boolean checkDraw(Board board, PieceColor playerColor)
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	/**
 	 * Le deroulement de la partie
@@ -89,6 +101,8 @@ public class Game
 			ihm.displayBoard();
 			if(numberOfMoves%2==0) //Le tour des blancs
 			{
+				if(this.checkDraw(board, PieceColor.WHITE))
+					return PieceColor.NONE;
 				do
 				{
 					do
@@ -122,6 +136,8 @@ public class Game
 			
 			else //Le tour des noirs
 			{
+				if(this.checkDraw(board, PieceColor.BLACK))
+					return PieceColor.NONE;
 				do
 				{
 					do

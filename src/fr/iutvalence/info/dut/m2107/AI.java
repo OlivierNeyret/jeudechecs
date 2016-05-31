@@ -1,6 +1,5 @@
 package fr.iutvalence.info.dut.m2107;
 
-import java.util.Random;
 import java.util.ArrayList;
 
 /**
@@ -12,14 +11,32 @@ import java.util.ArrayList;
 public class AI extends Player
 {
 	/**
-	 * Constantes contenant les coefficients utilises dans la fonction d evaluation
+	 * Coefficient du fou
 	 */
 	private final static int COEF_BISHOP = 3;
+	/**
+	 * Coefficient du cavalier
+	 */
 	private final static int COEF_KNIGHT = 3;
+	/**
+	 * Coefficient de la tour
+	 */
 	private final static int COEF_ROOK = 5;
+	/**
+	 * Coefficient de la reine
+	 */
 	private final static int COEF_QUEEN = 10;
+	/**
+	 * Coefficient du nombre de mouvement
+	 */
 	private final static int COEF_NBOFMOVE = 1;
+	/**
+	 * Coefficient en cas d'echec
+	 */
 	private final static int COEF_CHESS = 500;
+	/**
+	 * Coefficient en cas de victoire
+	 */
 	private final static int COEF_VICTORY = 1000;
 	
 	/**
@@ -42,83 +59,117 @@ public class AI extends Player
 	/**
 	 * Choix du deplacement a faire
 	 * Effectue le deplacement
+	 * @param board Le plateau de la partie en cours
 	 */
 	public void aiPlay(Board board)
 	{
-		Piece pieceChoisie;
-		Position deplacementChoisi;
+		int depth;
+		Piece pieceChosen=null;
+		Position moveChosen=null;
 		
 		if(this.difficulty==Difficulty.EASY)
-		{
-			//Choisir un deplacement
-		}
+			depth=1;
 		else if(this.difficulty==Difficulty.MIDDLE)
+			depth=3;
+		else
+			depth=5;
+		
+		int currentValue;
+		int maxValue = -COEF_VICTORY;
+		Board temporaryBoard;
+		Piece currentPiece;
+		Position currentMove;
+		ArrayList<Position> listOfMove;
+		
+		ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
+		//On parcourt toute les possibilitees de coups
+		for(int i=0;i<pieceOfAI.size();i++)
 		{
-			int depth=3;
-			int max_val = -COEF_VICTORY;
-			Board temporaryBoard;
-			Piece pieceToMove;
-			ArrayList<Position> listOfMove;
-			
-			ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
-			for(int i=0;i<pieceOfAI.size();i++)
+			currentPiece=pieceOfAI.get(i);
+			listOfMove = currentPiece.deplacement(board, true);
+			for(int j=0;j<listOfMove.size();j++)
 			{
-				pieceToMove=pieceOfAI.get(i);
-				listOfMove = pieceToMove.deplacement(board, true);
-				for(int j=0;j<listOfMove.size();j++)
+				currentMove = listOfMove.get(j);
+				temporaryBoard = board.emulateMove(currentPiece, currentMove);
+				currentValue = this.min(temporaryBoard,depth-1);
+				if(currentValue>maxValue)
 				{
-					temporaryBoard = (Board) board.clone();
+					maxValue=currentValue;
+					pieceChosen=currentPiece;
+					moveChosen=currentMove;
 				}
 			}
-			/*
-			 * max_val <- -infini
-
-	     		Pour tous les coups possibles
-	          		simuler(coup_actuel)
-	          		val <- Min(etat_du_jeu, profondeur)
-	     
-	          		si val > max_val alors
-	               		max_val <- val
-	               		meilleur_coup <- coup_actuel
-	          		fin si
-	     
-	          		annuler_coup(coup_actuel)
-	     		fin pour
-	
-	     		jouer(meilleur_coup)
-			 */
-			
-			/*
-			 * Parcourir toutes les pieces
-			 * Pour chaque piece essayer chaque deplacement possible et calculer le meilleur coup
-			 * retenir le meilleur coup de chaque piece
-			 * comparer les meilleurs coups et choisir le meilleur coup
-			 */
 		}
-		else
-		{
-			int depth=5;
-		}
-		//this.move(pieceChoisie, deplacementChoisi);
+		board.move(pieceChosen, moveChosen);
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Cherche le noeud a valeur minimum parmi les noeuds fils du coup passe en parametre
+	 * @param board Le plateau apres le coup simule
+	 * @param depth La profondeur actuelle de l'arbre
+	 * @return La valeur (a travers la methode evaluate) du noeud choisi
 	 */
 	private int min(Board board, int depth)
 	{
-		int min=0;
+		if(depth==0 || board.checkVictory(this.getColor())) //On verifie uniquement si l'ia a gagne car un joueur ne peut pas perdre volontairement
+			return this.evaluate(board);
+		
+		int min=COEF_VICTORY;
+		int currentValue;		
+		Board temporaryBoard;
+		Piece currentPiece;
+		ArrayList<Position> listOfMove;
+		
+		ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
+		//On parcourt toute les possibilitees de coups
+		for(int i=0;i<pieceOfAI.size();i++)
+		{
+			currentPiece=pieceOfAI.get(i);
+			listOfMove = currentPiece.deplacement(board, true);
+			for(int j=0;j<listOfMove.size();j++)
+			{
+				Position currentMove = listOfMove.get(j);
+				temporaryBoard = board.emulateMove(currentPiece, currentMove);
+				currentValue = this.max(temporaryBoard,depth-1);
+				if(currentValue<min)
+					min=currentValue;
+			}
+		}
 		return min;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Cherche le noeud a valeur maximum parmi les noeuds fils du coup passe en parametre
+	 * @param board Le plateau apres le coup simule
+	 * @param depth La profondeur de l'arbre
+	 * @return La valeur (a travers la methode evaluate) du noeud choisi
 	 */
 	private int max(Board board, int depth)
 	{
-		int max=0;
+		if(depth==0 || board.checkVictory(this.getColor())) //On verifie uniquement si l'ia a gagne car un joueur ne peut pas perdre volontairement
+			return this.evaluate(board);
+
+		int max =  -COEF_VICTORY;
+		int currentValue;		
+		Board temporaryBoard;
+		Piece currentPiece;
+		ArrayList<Position> listOfMove;
+		
+		ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
+		//On parcourt toute les possibilitees de coups
+		for(int i=0;i<pieceOfAI.size();i++)
+		{
+			currentPiece=pieceOfAI.get(i);
+			listOfMove = currentPiece.deplacement(board, true);
+			for(int j=0;j<listOfMove.size();j++)
+			{
+				Position currentMove = listOfMove.get(j);
+				temporaryBoard = board.emulateMove(currentPiece, currentMove);
+				currentValue = this.min(temporaryBoard, depth-1);
+				if(currentValue>max)
+					max=currentValue;
+			}
+		}
 		return max;
 	}
 	
