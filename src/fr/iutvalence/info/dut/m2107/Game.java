@@ -98,6 +98,7 @@ public class Game
 
 	/**
 	 * Le deroulement de la partie
+	 * @param nbOfHumanPlayer le nombre de joueur humain
 	 * @return La couleur du joueur qui a gagne la partir
 	 */
 	public PieceColor play(int nbOfHumanPlayer)

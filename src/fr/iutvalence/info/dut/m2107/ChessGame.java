@@ -7,7 +7,7 @@ package fr.iutvalence.info.dut.m2107;
  * @author olivier
  */
 
-public class Main
+public class ChessGame
 {
 	/**
 	 * L'application de jeu d'echecs par Doge Game Company
@@ -21,6 +21,7 @@ public class Main
 	    IHM_Player ihmMain = new IHM_Player();
 	    int nbOfHumanPlayer = ihmMain.askMode();
 	    Game game;
+	    PieceColor winner;
 		if(nbOfHumanPlayer==1)
 		{
 			PieceColor colorChosen = ihmMain.askColor();
@@ -32,6 +33,8 @@ public class Main
 			game = new Game();
 		}
 	    //Window zFen = new Window(game.getBoard());
-	    game.play(nbOfHumanPlayer);
+	    winner = game.play(nbOfHumanPlayer);
+	    if (winner == PieceColor.NONE) System.out.println("Match nul !");
+	    System.out.println("Les "+winner.toString()+"s ont gagnés !");
 	}
 }

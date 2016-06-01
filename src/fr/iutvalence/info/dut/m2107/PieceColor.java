@@ -36,4 +36,14 @@ public enum PieceColor
 		else
 			return PieceColor.NONE;
 	}
+	
+	public String toString()
+	{
+		if (this == WHITE)
+			return "blanc";
+		else if (this == BLACK)
+			return "noir";
+		else
+			return "aucun";
+	}
 }
