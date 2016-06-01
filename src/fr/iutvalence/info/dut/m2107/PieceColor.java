@@ -27,7 +27,7 @@ public enum PieceColor
 	 * none donne none
 	 * @return l'inverse de la couleur
 	 */
-	public PieceColor Invertcolor()
+	public PieceColor invertColor()
 	{
 		if (this == PieceColor.WHITE)
 			return PieceColor.BLACK;
@@ -40,9 +40,9 @@ public enum PieceColor
 	public String toString()
 	{
 		if (this == WHITE)
-			return "blanc";
+			return "blancs";
 		else if (this == BLACK)
-			return "noir";
+			return "noirs";
 		else
 			return "aucun";
 	}

@@ -87,5 +87,4 @@ public abstract class Piece
 		    return "O";             
 		}
 	}
-
 }

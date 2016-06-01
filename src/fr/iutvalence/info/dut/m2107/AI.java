@@ -46,13 +46,13 @@ public class AI extends Player
 
 	/**
 	 * Cree une IA avec une difficulte donnee
-	 * 
+	 * @param color La couleur de l'IA
 	 * @param difficulty
 	 *            difficulte de l'IA
 	 */
-	public AI(Difficulty difficulty)
+	public AI(PieceColor color, Difficulty difficulty)
 	{
-		super(PieceColor.BLACK);
+		super(color);
 		this.difficulty = difficulty;
 	}
 
@@ -80,7 +80,7 @@ public class AI extends Player
 		Piece currentPiece;
 		Position currentMove;
 		ArrayList<Position> listOfMove;
-		
+
 		ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
 		//On parcourt toute les possibilitees de coups
 		for(int i=0;i<pieceOfAI.size();i++)
@@ -187,8 +187,8 @@ public class AI extends Player
 		int nbQueen=0;
 		int nbRook=0;
 		int nbOfMove=0;
-		Position positionOfKing = board.getCoordonateOfPiece(board.getKing(this.getColor().Invertcolor()));
-		if (board.isCheck(positionOfKing, this.getColor().Invertcolor()))
+		Position positionOfKing = board.getCoordonateOfPiece(board.getKing(this.getColor().invertColor()));
+		if (board.isCheck(positionOfKing, this.getColor().invertColor()))
 		{
 			if(board.checkVictory(this.getColor()))
 				return COEF_VICTORY;
@@ -206,7 +206,7 @@ public class AI extends Player
 					else if(currentPiece.getType()==PieceType.QUEEN) nbQueen++;
 					else if(currentPiece.getType()==PieceType.KNIGHT) nbKnight++;
 				}
-				else if (currentPiece.getColor()==this.getColor().Invertcolor())
+				else if (currentPiece.getColor()==this.getColor().invertColor())
 				{
 					if(currentPiece.getType()==PieceType.BISHOP) nbBishop--;
 					else if(currentPiece.getType()==PieceType.ROOK) nbRook--;

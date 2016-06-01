@@ -27,14 +27,15 @@ public class ChessGame
 			PieceColor colorChosen = ihmMain.askColor();
 			Difficulty diff = ihmMain.askDifficulty();
 			game = new Game(colorChosen,diff);
+			winner = game.play(colorChosen.invertColor());
 		}
 		else
 		{
 			game = new Game();
+			winner = game.play(PieceColor.NONE);
 		}
 	    //Window zFen = new Window(game.getBoard());
-	    winner = game.play(nbOfHumanPlayer);
 	    if (winner == PieceColor.NONE) System.out.println("Match nul !");
-	    System.out.println("Les "+winner.toString()+"s ont gagnés !");
+	    System.out.println("Les "+winner.toString()+" ont gagnés !");
 	}
 }

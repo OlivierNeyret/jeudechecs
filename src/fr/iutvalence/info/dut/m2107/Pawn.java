@@ -13,11 +13,10 @@ public class Pawn extends Piece {
 	/**
 	 * Cree un pion de la couleur donnee
 	 * @param couleur
-	 * @param type type du pion
 	 */
-	public Pawn(PieceColor couleur, PieceType type)
+	public Pawn(PieceColor couleur)
 	{
-		super(couleur, type);
+		super(couleur, PieceType.PAWN);
 	}
 	
 	public ArrayList<Position> deplacement(Board board, boolean check) {

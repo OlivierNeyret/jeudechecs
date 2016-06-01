@@ -22,7 +22,7 @@ public class Player
 	{
 		this.color = color;
 	}
-
+	
 	/**
 	 * Renvoie la couleur du joueur
 	 * 

@@ -34,7 +34,7 @@ public class Board implements Cloneable
 
 		for (int i = 0; i < 8; i++)
 		{
-			this.board[i][6] = new Pawn(PieceColor.WHITE, PieceType.PAWN);
+			this.board[i][6] = new Pawn(PieceColor.WHITE);
 		}
 
 		this.board[0][0] = new Rook(PieceColor.BLACK);
@@ -48,7 +48,7 @@ public class Board implements Cloneable
 
 		for (int i = 0; i < 8; i++)
 		{
-			this.board[i][1] = new Pawn(PieceColor.BLACK, PieceType.PAWN);
+			this.board[i][1] = new Pawn(PieceColor.BLACK);
 		}
 		for (int i = 0; i < 8; i++)
 		{
@@ -81,18 +81,7 @@ public class Board implements Cloneable
 	public Board emulateMove(Piece piece, Position positionDep)
 	{
 		Board temporaryBoard = (Board) this.clone();
-		/*
-		Piece[][] tabP1 = new Piece[8][8];
-		for (int i = 0; i < 8; i++)
-		{
-			for (int j = 0; j < 8; j++)
-			{
-				tabP1[i][j] = this.board[i][j];
-			}
-		}
-		Board p1 = new Board(tabP1);*/
 		temporaryBoard.move(piece, positionDep);
-
 		return temporaryBoard;
 	}
 
@@ -113,7 +102,8 @@ public class Board implements Cloneable
 					try
 					{
 						return (new Position(i, j));
-					} catch (PositionOutOfBoardException e)
+					}
+					catch (PositionOutOfBoardException e)
 					{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -198,7 +188,7 @@ public class Board implements Cloneable
 	{
 
 		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
-		piecesJ = getPiecePlayer(color.Invertcolor());
+		piecesJ = getPiecePlayer(color.invertColor());
 		for (int i = 0; i < piecesJ.size(); i++)
 		{
 			for (int j = 0; j < piecesJ.get(i).deplacement(this, false).size(); j++)
@@ -213,15 +203,18 @@ public class Board implements Cloneable
 
 	/**
 	 * Verifie si un joueur a gagne
-	 * @param color La couleur du joueur sur lequel on teste la victoire
+	 * 
+	 * @param color
+	 *            La couleur du joueur sur lequel on teste la victoire
 	 * @return renvoie true si le joueur a gagne, false sinon
 	 */
 	public boolean checkVictory(PieceColor color)
 	{
-		if (!(isCheck(getCoordonateOfPiece(getKing(color.Invertcolor())),color.Invertcolor())))
+		if (!(isCheck(getCoordonateOfPiece(getKing(color.invertColor())),
+				color.invertColor())))
 			return false;
 		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
-		piecesJ = getPiecePlayer(color.Invertcolor());
+		piecesJ = getPiecePlayer(color.invertColor());
 		for (int i = 0; i < piecesJ.size(); i++)
 		{
 			if (!(piecesJ.get(i).deplacement(this, false).isEmpty()))
@@ -289,22 +282,30 @@ public class Board implements Cloneable
 		}
 		return result;
 	}
-	
+
 	/**
-	 * Redefinition de la methode clone
-	 * Renvoie une copie du plateau
+	 * Redefinition de la methode clone. Renvoie une copie du plateau
 	 */
 	public Object clone()
 	{
-		Object o = null;
+		Board p1 = null;
 		try
 		{
-			o = super.clone();
-		} 
+			p1 = (Board) super.clone();
+			Piece[][] tabP1 = new Piece[8][8];
+			for (int i = 0; i < 8; i++)
+			{
+				for (int j = 0; j < 8; j++)
+				{
+					tabP1[i][j] = this.board[i][j];
+				}
+			}
+			p1.board=tabP1;
+		}
 		catch (CloneNotSupportedException cnse)
 		{
 			cnse.printStackTrace(System.err);
 		}
-		return o;
+		return p1;
 	}
 }
