@@ -86,8 +86,14 @@ public class Game
 	 */
 	public boolean checkDraw(Board board, PieceColor playerColor)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
+		piecesJ = board.getPiecePlayer(playerColor);
+		for (int i = 0; i < piecesJ.size(); i++)
+		{
+			if (!(piecesJ.get(i).deplacement(board, false).isEmpty()))
+				return false;
+		}
+		return true;
 	}
 
 	/**

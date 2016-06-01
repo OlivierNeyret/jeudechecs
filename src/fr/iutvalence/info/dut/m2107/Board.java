@@ -218,6 +218,8 @@ public class Board implements Cloneable
 	 */
 	public boolean checkVictory(PieceColor color)
 	{
+		if (!(isCheck(getCoordonateOfPiece(getKing(color.Invertcolor())),color.Invertcolor())))
+			return false;
 		ArrayList<Piece> piecesJ = new ArrayList<Piece>();
 		piecesJ = getPiecePlayer(color.Invertcolor());
 		for (int i = 0; i < piecesJ.size(); i++)
