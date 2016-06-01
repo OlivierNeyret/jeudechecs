@@ -19,5 +19,5 @@ public enum Difficulty {
 	/**
 	 * Difficulte la plus importante
 	 */
-	DIFFICULTY
+	DIFFICULT
 }

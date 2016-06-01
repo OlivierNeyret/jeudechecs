@@ -18,8 +18,20 @@ public class Main
 	public static void main (String[] args)
 	{
 	    System.out.println("Doge Chess Company presents ChessGame! such chess, very wow");
-	    Game game = new Game();
+	    IHM_Player ihmMain = new IHM_Player();
+	    int nbOfHumanPlayer = ihmMain.askMode();
+	    Game game;
+		if(nbOfHumanPlayer==1)
+		{
+			PieceColor colorChosen = ihmMain.askColor();
+			Difficulty diff = ihmMain.askDifficulty();
+			game = new Game(colorChosen,diff);
+		}
+		else
+		{
+			game = new Game();
+		}
 	    //Window zFen = new Window(game.getBoard());
-	    game.play();
+	    game.play(nbOfHumanPlayer);
 	}
 }
