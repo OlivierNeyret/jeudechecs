@@ -19,14 +19,17 @@ public class ChessGame
 	{
 	    System.out.println("Doge Chess Company presents ChessGame! such chess, very wow");
 	    IHM_Player ihmMain = new IHM_Player();
+	    Window zFen = new Window((new Game()).getBoard());
 	    int nbOfHumanPlayer = ihmMain.askMode();
 	    Game game;
 	    PieceColor winner;
+	  
 		if(nbOfHumanPlayer==1)
 		{
 			PieceColor colorChosen = ihmMain.askColor();
 			Difficulty diff = ihmMain.askDifficulty();
 			game = new Game(colorChosen,diff);
+			
 			winner = game.play(colorChosen.invertColor());
 		}
 		else
@@ -34,7 +37,7 @@ public class ChessGame
 			game = new Game();
 			winner = game.play(PieceColor.NONE);
 		}
-	    //Window zFen = new Window(game.getBoard());
+	   
 	    if (winner == PieceColor.NONE) System.out.println("Match nul !");
 	    System.out.println("Les "+winner.toString()+" ont gagnés !");
 	}

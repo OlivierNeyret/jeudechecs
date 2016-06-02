@@ -36,8 +36,8 @@ import com.sun.glass.events.MouseEvent;
 
 public class Window extends JFrame
 {
-	private static int couleur=0;
-
+	private Board e;
+	
 	private JMenuBar menuBar = new JMenuBar();
 
 	private JMenu menu1 = new JMenu("Fichier");
@@ -141,7 +141,9 @@ public class Window extends JFrame
 		JLabel company = new JLabel("Doge Game Company");
 		JButton start = new JButton("Start");
 		JButton exit = new JButton("Exit");
-		//Button.setBounds();
+		
+		start.setBounds(200,200,50,50);
+		
 		intro.add(title);
 		intro.add(company);
 		intro.add(start);
@@ -167,6 +169,10 @@ public class Window extends JFrame
 		this.add(intro);
 	}
 	
+	 public boolean isCellEditable(int row, int column) {
+	       return false;
+	    }
+	
 	public void game(Board gameboard){
 		this.getContentPane().removeAll();
 	    
@@ -182,9 +188,14 @@ public class Window extends JFrame
 		 //Les titres des colonnes
 	    String[]  title = {"","A", "B", "C","D", "E", "F","G", "H",""};
 	    JTable plateau = new JTable(data, title);
+	    /*for(int i=0; i<=9;i++){
+	    	for(int j=0; j<=9;j++){
+	    		plateau.
+		    }
+	    }*/
 	    plateau.getTableHeader().setReorderingAllowed(false);
 	    JScrollPane scroll=new JScrollPane(plateau);
-	    plateau.setDefaultRenderer(Object.class, new Cell());
+	    plateau.setDefaultRenderer(Object.class, new Cell(gameboard));//TODO
 	    
 	    
 	    
@@ -202,7 +213,8 @@ public class Window extends JFrame
 
 	    
 	    
-	    ImageIcon CN = new ImageIcon("CN");
+	    ImageIcon CN = new ImageIcon("ressources/CN.gif");
+	    //ImageIcon CN = new ImageIcon("CN");
 	    ImageIcon TN = new ImageIcon("TN");
 	    ImageIcon FN = new ImageIcon("FN");
 	    ImageIcon RoiN = new ImageIcon("RoiN");
@@ -220,85 +232,11 @@ public class Window extends JFrame
 	    
 	    //plateau.setValueAt(icon, 0, 1);
 	    
-	    for(int i=0; i<8; i++)
-	    {
-	    	for(int j=0;j<8;j++)
-	    	{
-	    		Piece current_piece;
-				try
-				{
-					current_piece = gameboard.getPieceAtPosition(new Position(i,j));
-					
-					if (current_piece.getColor() == PieceColor.WHITE)
-		    		{
-		    			if(current_piece.getType()==PieceType.KNIGHT)
-		    			{
-		    				plateau.setValueAt(CB, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.ROOK)
-		    			{
-		    				plateau.setValueAt(TB, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.BISHOP)
-		    			{
-		    				plateau.setValueAt(FB, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.KING)
-		    			{
-		    				plateau.setValueAt(RoiB, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.QUEEN)
-		    			{
-		    				plateau.setValueAt(RB, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.PAWN)
-		    			{
-		    				plateau.setValueAt(PB, j, i+1);
-			    		}
-		    		}
-		    		
-		    		
-		    		
-		    		if (current_piece.getColor() == PieceColor.BLACK)
-		    		{
-		    			if(current_piece.getType()==PieceType.KNIGHT)
-		    			{
-		    				plateau.setValueAt(CN, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.ROOK)
-		    			{
-		    				plateau.setValueAt(TN, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.BISHOP)
-		    			{
-		    				plateau.setValueAt(FN, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.KING)
-		    			{
-		    				plateau.setValueAt(RoiN, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.QUEEN)
-		    			{
-		    				plateau.setValueAt(RN, j, i+1);
-			    		}
-		    			if(current_piece.getType()==PieceType.PAWN)
-		    			{
-		    				plateau.setValueAt(PN, j, i+1);
-			    		}
-		    		}
-				} 
-				catch (PositionOutOfBoardException e)
-				{
-					e.printStackTrace();
-				}
-	    	}
-	    }
 	    
 		this.repaint();
 		this.revalidate();
 
 	    this.setVisible(true);
-	    System.out.println("babbabe");
 		plateau.addMouseListener(new java.awt.event.MouseAdapter() {
 		    @Override
 		    public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -306,15 +244,12 @@ public class Window extends JFrame
 		      int column = plateau.getSelectedColumn()-1;
 		      
 		      try
-			{
-				if (row < 9 && row >=0 && column <9 && column >=0 && gameboard.getPieceAtPosition(new Position(column,row)).getType()!=PieceType.NONE)
+			 {
+				if (row <=8 && row >=0 && column <=8 && column >=0 && gameboard.getPieceAtPosition(new Position(column,row)).getType()!=PieceType.NONE)
 				  { 	
-						ArrayList<Position> deplacement = (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true)); 
-						/*while(deplacement.remove(0)!= null)
-						{
-							//surbrillance
-						}*/
-						ImageIcon prev = (ImageIcon) plateau.getModel().getValueAt(column, row+1);
+						plateau.setDefaultRenderer(Object.class, new Cell(gameboard, (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true))));
+						
+						/*ImageIcon prev = (ImageIcon) plateau.getModel().getValueAt(column, row+1);
 						plateau.addMouseListener(new java.awt.event.MouseAdapter() 
 						{
 						    @Override
@@ -329,7 +264,7 @@ public class Window extends JFrame
 									try
 									{
 										deplacement = (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true));
-									
+										
 										if (deplacement.contains(new Position(row,column)) )
 										{
 											plateau.setValueAt(prev, newcolumn, newrow+1);
@@ -341,19 +276,16 @@ public class Window extends JFrame
 									} 
 								  }
 							} 
-					    }); 
-						
+					    }); */	
 				  }
 			} catch (PositionOutOfBoardException e)
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	     
 	    	      
 	    	  }
 	    	});
-		
 		
 		
 	}
