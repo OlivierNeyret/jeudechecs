@@ -251,8 +251,7 @@ public class Board implements Cloneable
 	 */
 	public void move(Piece piece, Position arrivalPosition)
 	{
-		this.board[this.getCoordonateOfPiece(piece).getOrdonate()][this
-				.getCoordonateOfPiece(piece).getAbscissa()] = new Null();
+		this.board[this.getCoordonateOfPiece(piece).getOrdonate()][this.getCoordonateOfPiece(piece).getAbscissa()] = new Null();
 		this.board[arrivalPosition.getOrdonate()][arrivalPosition.getAbscissa()] = piece;
 	}
 

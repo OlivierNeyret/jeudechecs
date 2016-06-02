@@ -180,8 +180,8 @@ public class Game
 				{
 					this.board.move(pieceToMove, positionOfDestination);
 					if (pieceToMove.getType() == PieceType.PAWN
-							&& positionOfDestination.getAbscissa() == 0
-							|| positionOfDestination.getAbscissa() == 7)
+							&& (positionOfDestination.getAbscissa() == 0
+							|| positionOfDestination.getAbscissa() == 7))
 					{
 						this.board.promotion(pieceToMove,
 								this.ihmGame.askPiece(pieceToMove));
