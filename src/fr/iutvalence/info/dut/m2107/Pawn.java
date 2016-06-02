@@ -32,11 +32,11 @@ public class Pawn extends Piece {
 			{
 				try
 				{
+					if (board.getPieceAtPosition(new Position(x+1,y+1)).getColor()==PieceColor.WHITE){
+						deplacement.add(new Position(x+1,y+1));
+					}
 					if (board.getPieceAtPosition(new Position(x-1,y+1)).getColor()==PieceColor.WHITE){
 						deplacement.add(new Position(x-1,y+1));
-					}
-					if (board.getPieceAtPosition(new Position(x-1,y-1)).getColor()==PieceColor.WHITE){
-						deplacement.add(new Position(x-1,y-1));
 					}
 				} catch (PositionOutOfBoardException e1)
 				{
