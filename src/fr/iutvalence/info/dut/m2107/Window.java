@@ -3,10 +3,12 @@ package fr.iutvalence.info.dut.m2107;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -31,12 +33,13 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
 import com.sun.glass.events.MouseEvent;
 
+
 public class Window extends JFrame
 {
-	private Board e;
 	
 	private JMenuBar menuBar = new JMenuBar();
 
@@ -64,9 +67,12 @@ public class Window extends JFrame
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setExtendedState(this.MAXIMIZED_BOTH);
 
-		this.setLocationRelativeTo(null);
+		this.setSize((int)getToolkit().getScreenSize().getWidth(), ((int)getToolkit().getScreenSize().getHeight() - 2));
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
 
 		// On initialise nos menus
@@ -112,7 +118,7 @@ public class Window extends JFrame
 			public void actionPerformed(ActionEvent arg0)
 			{
 
-				game(gameboard);
+				option(gameboard);
 			}
 		});
 
@@ -125,14 +131,69 @@ public class Window extends JFrame
 		//CONTENT//////////////////////////////////////////////////////
 
 		introduction(gameboard);
-		this.setResizable(true);
+		this.setResizable(false);
 		
 		//VISIBLE//////////////////////////////////////////////////////
 		this.setVisible(true);
 
 	}
 	
-	
+	private void option(Board gameboard){
+		this.getContentPane().removeAll();
+		JPanel options = new JPanel() ;
+		
+		JRadioButtonMenuItem j1 = new JRadioButtonMenuItem("1 Joueur");
+		JRadioButtonMenuItem j2 = new JRadioButtonMenuItem("2 Joueur");
+		
+		JRadioButtonMenuItem AI1 = new JRadioButtonMenuItem("Facile");
+		JRadioButtonMenuItem AI2 = new JRadioButtonMenuItem("Normal");
+		JRadioButtonMenuItem AI3 = new JRadioButtonMenuItem("Dificile");
+		
+		JRadioButtonMenuItem BN1 = new JRadioButtonMenuItem("Blanc");
+		JRadioButtonMenuItem BN2 = new JRadioButtonMenuItem("Noir");
+		
+		JButton lancer = new JButton("Lancer Partie");
+		
+		ButtonGroup j = new ButtonGroup();
+		j.add(j1);
+		j.add(j2);
+		options.add(j1);
+		options.add(j2);
+		j1.setSelected(true);
+		
+		ButtonGroup AI = new ButtonGroup();
+		AI.add(AI1);
+		AI.add(AI2);
+		AI.add(AI3);
+		options.add(AI1);
+		options.add(AI2);
+		options.add(AI3);
+		AI1.setSelected(true);
+		
+		ButtonGroup BN = new ButtonGroup();
+		BN.add(BN1);
+		BN.add(BN2);
+		options.add(BN1);
+		options.add(BN2);
+		BN1.setSelected(true);
+		
+		options.add(lancer);
+		
+		lancer.addActionListener(new ActionListener()
+		{
+
+			public void actionPerformed(ActionEvent arg0)
+			{
+				if(j2.isSelected())
+					game(gameboard);
+			}
+		});
+
+		this.add(options);
+		this.repaint();
+		this.revalidate();
+		
+	}
 
 	private void introduction(Board gameboard){
 		JPanel intro = new JPanel();
@@ -153,7 +214,7 @@ public class Window extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				game(gameboard);
+				option(gameboard);
 			}
 		});
 		
@@ -188,6 +249,7 @@ public class Window extends JFrame
 		 //Les titres des colonnes
 	    String[]  title = {"","A", "B", "C","D", "E", "F","G", "H",""};
 	    JTable plateau = new JTable(data, title);
+	    plateau.removeEditor();
 	    /*for(int i=0; i<=9;i++){
 	    	for(int j=0; j<=9;j++){
 	    		plateau.
@@ -210,27 +272,6 @@ public class Window extends JFrame
 	            column.setPreferredWidth(100);
 	    }
 	    this.getContentPane().add(scroll, BorderLayout.CENTER);
-
-	    
-	    
-	    ImageIcon CN = new ImageIcon("ressources/CN.gif");
-	    //ImageIcon CN = new ImageIcon("CN");
-	    ImageIcon TN = new ImageIcon("TN");
-	    ImageIcon FN = new ImageIcon("FN");
-	    ImageIcon RoiN = new ImageIcon("RoiN");
-	    ImageIcon RN = new ImageIcon("RN");
-	    ImageIcon PN = new ImageIcon("PN");
-	    
-	    ImageIcon CB = new ImageIcon("CB");
-	    ImageIcon TB = new ImageIcon("TB");
-	    ImageIcon FB = new ImageIcon("FB");
-	    ImageIcon RoiB = new ImageIcon("RoiB");
-	    ImageIcon RB = new ImageIcon("RB");
-	    ImageIcon PB = new ImageIcon("PB");
-	    
-	    //setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Led_Bleu_Fix.gif")));
-	    
-	    //plateau.setValueAt(icon, 0, 1);
 	    
 	    
 		this.repaint();
@@ -249,7 +290,7 @@ public class Window extends JFrame
 				  { 	
 						plateau.setDefaultRenderer(Object.class, new Cell(gameboard, (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true))));
 						
-						/*ImageIcon prev = (ImageIcon) plateau.getModel().getValueAt(column, row+1);
+						Piece prev =  gameboard.getBoard()[row][column] ;
 						plateau.addMouseListener(new java.awt.event.MouseAdapter() 
 						{
 						    @Override
@@ -265,10 +306,10 @@ public class Window extends JFrame
 									{
 										deplacement = (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true));
 										
-										if (deplacement.contains(new Position(row,column)) )
+										if (deplacement.contains(new Position(newrow,newcolumn)) )
 										{
-											plateau.setValueAt(prev, newcolumn, newrow+1);
-											plateau.setValueAt("", column, row+1);
+											gameboard.getBoard()[newrow][newcolumn] = prev ;
+											plateau.setDefaultRenderer(Object.class, new Cell(gameboard));
 										}
 									} catch (PositionOutOfBoardException e)
 									{
@@ -276,7 +317,7 @@ public class Window extends JFrame
 									} 
 								  }
 							} 
-					    }); */	
+					    }); 
 				  }
 			} catch (PositionOutOfBoardException e)
 			{
