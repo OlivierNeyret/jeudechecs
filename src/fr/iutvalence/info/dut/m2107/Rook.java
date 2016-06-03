@@ -32,28 +32,26 @@ public class Rook extends Piece {
 			int xKing = board.getCoordonateOfPiece(king).getOrdonate();
 			int yKing = board.getCoordonateOfPiece(king).getAbscissa();
 			
-			for (int i=0;i<3;i++){
-
-				try
-				{
-					if(board.isCheck(new Position(xKing+i,yKing),color) &&
+			try
+			{
+				for (int i=0;i<3;i++){
+					if(!(board.isCheck(new Position(xKing+i,yKing),color)) &&
 							!(board.getPieceAtPosition(new Position(xKing+i,yKing)).getType()==PieceType.NONE))
 							castling1=false;
-					if(board.isCheck(new Position(xKing-i,yKing),color) &&
+					if(!(board.isCheck(new Position(xKing-i,yKing),color)) &&
 							!(board.getPieceAtPosition(new Position(xKing-i,yKing)).getType()==PieceType.NONE))
 							castling2=false;
-				
-					if(castling1){
-						possibleCastling.add(new Position(xKing+2,yKing));
-						possibleCastling.add(new Position(xKing+1,yKing));
-					}
-					if(castling2){
-						possibleCastling.add(new Position(xKing-2,yKing));
-						possibleCastling.add(new Position(xKing-1,yKing));
-					}
-				}catch (PositionOutOfBoardException e)
-				{
 				}
+				if(castling1){
+					possibleCastling.add(new Position(xKing+2,yKing));
+					possibleCastling.add(new Position(xKing+1,yKing));
+				}
+				if(castling2){
+					possibleCastling.add(new Position(xKing-2,yKing));
+					possibleCastling.add(new Position(xKing-1,yKing));
+				}
+			}catch (PositionOutOfBoardException e)
+			{
 			}
 		}
 		return possibleCastling;

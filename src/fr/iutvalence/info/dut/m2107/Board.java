@@ -105,8 +105,6 @@ public class Board implements Cloneable
 					}
 					catch (PositionOutOfBoardException e)
 					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
 			}
 		}
@@ -262,7 +260,7 @@ public class Board implements Cloneable
 	 */
 	public Piece[][] getBoard()
 	{
-		return board;
+		return this.board;
 	}
 
 	/**
