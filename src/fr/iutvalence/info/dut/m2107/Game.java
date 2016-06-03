@@ -154,13 +154,7 @@ public class Game
 		if (this.checkDraw(this.board, color))
 			return PieceColor.NONE;
 		if (!human) // On fait jouer l'IA
-		{
-			Instant tempsDebut = Instant.now();
-			//long debut =temps.getEpochSecond();
 			ai.aiPlay(this.board);
-			long total = tempsDebut.until(Instant.now(),ChronoUnit.NANOS);
-			System.out.println(total);
-		}
 		else // Le joueur humain joue
 		{
 			boolean isCastling=false;
@@ -174,7 +168,7 @@ public class Game
 				{
 					// Demander la piece a jouer
 					System.out.println("Coup des " + color.toString()
-							+ ", choisissez une pièce à déplacer :");
+							+ ", choisissez une piï¿½ce ï¿½ dï¿½placer :");
 					positionPieceToMove = this.ihmGame.askPosition();
 					pieceToMove = this.board
 							.getPieceAtPosition(positionPieceToMove);
@@ -191,8 +185,7 @@ public class Game
 				// Afficher les deplacements possibles
 				System.out.println(listOfMove);
 				// Demander le deplacement
-				System.out
-						.println("Entrez la destination. Pour changer de pièce, entrez une position non valide.");
+				System.out.println("Entrez la destination. Pour changer de piï¿½ce, entrez une position non valide.");
 				positionOfDestination = this.ihmGame.askPosition();
 				// verifier validite du coup
 				if (listOfMove.contains(positionOfDestination))
