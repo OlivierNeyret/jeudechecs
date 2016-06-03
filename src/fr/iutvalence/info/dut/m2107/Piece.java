@@ -20,6 +20,11 @@ public abstract class Piece
 	private final PieceType type;
 	
 	/**
+	 * Est a vrai si la piece n'a jamais ete deplacee, faux si elle l'a ete au moins une fois
+	 */
+	private boolean isMoved = false;
+	
+	/**
 	 * Cree une piece avec un type et une couleur
 	 * @param color c'est la couleur de la piece
 	 * @param type de la peice a creer
@@ -38,6 +43,7 @@ public abstract class Piece
 	{
 		return (this.type);
 	}
+	
 	
 	
 	/**
@@ -86,5 +92,21 @@ public abstract class Piece
 		  default:
 		    return "O";             
 		}
+	}
+
+	/**
+	 * @return false si la piece n'a jamais ete deplacee, false sinon
+	 */
+	public boolean isMoved()
+	{
+		return this.isMoved;
+	}
+
+	/**
+	 * Met isMoved a true quand la piece est deplacee
+	 */
+	public void setMoved()
+	{
+		this.isMoved = true;
 	}
 }

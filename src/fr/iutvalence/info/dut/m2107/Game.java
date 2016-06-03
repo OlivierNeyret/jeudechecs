@@ -163,6 +163,7 @@ public class Game
 		}
 		else // Le joueur humain joue
 		{
+			boolean isCastling=false;
 			Position positionPieceToMove, positionOfDestination;
 			Piece pieceToMove;
 			ArrayList<Position> listOfMove;
@@ -180,6 +181,13 @@ public class Game
 				}
 				while (pieceToMove.getColor() != color);
 				listOfMove = pieceToMove.deplacement(this.board, true);
+				/*if(pieceToMove.getType()==PieceType.ROOK){
+					ArrayList<Position> possibleCastling = ((Rook) pieceToMove).Castling(this.board);
+					if (!(possibleCastling.isEmpty())){
+						isCastling=true;
+						System.out.println("Roque(s) Possible(s) : " + possibleCastling);
+					}
+				}*/
 				// Afficher les deplacements possibles
 				System.out.println(listOfMove);
 				// Demander le deplacement
