@@ -33,7 +33,7 @@ public class AI extends Player
 	/**
 	 * Coefficient en cas d'echec
 	 */
-	private final static int COEF_CHESS = 500;
+	private final static int COEF_CHESS = 20;
 	/**
 	 * Coefficient en cas de victoire
 	 */
@@ -64,13 +64,15 @@ public class AI extends Player
 	public void aiPlay(Board board)
 	{
 		int depth;
+		//int alpha = -COEF_VICTORY;
+		//int beta = COEF_VICTORY;
 		Piece pieceChosen=null;
 		Position moveChosen=null;
 		
 		if(this.difficulty==Difficulty.EASY)
 			depth=1;
 		else if(this.difficulty==Difficulty.MIDDLE)
-			depth=3;
+			depth=4;
 		else
 			depth=5;
 		
@@ -115,6 +117,7 @@ public class AI extends Player
 			return this.evaluate(board);
 		
 		int min=COEF_VICTORY;
+		//min=beta;
 		int currentValue;		
 		Board temporaryBoard;
 		Piece currentPiece;
@@ -132,7 +135,11 @@ public class AI extends Player
 				temporaryBoard = board.emulateMove(currentPiece, currentMove);
 				currentValue = this.max(temporaryBoard,depth-1);
 				if(currentValue<min)
+				{
 					min=currentValue;
+					//beta=min;
+					//if(alpha>=beta) break;
+				}	
 			}
 		}
 		return min;
@@ -150,6 +157,7 @@ public class AI extends Player
 			return this.evaluate(board);
 
 		int max =  -COEF_VICTORY;
+		//max = alpha;
 		int currentValue;		
 		Board temporaryBoard;
 		Piece currentPiece;
@@ -167,7 +175,11 @@ public class AI extends Player
 				temporaryBoard = board.emulateMove(currentPiece, currentMove);
 				currentValue = this.min(temporaryBoard, depth-1);
 				if(currentValue>max)
+				{
 					max=currentValue;
+					//alpha=max;
+					//if(alpha>=beta) break;
+				}
 			}
 		}
 		return max;
