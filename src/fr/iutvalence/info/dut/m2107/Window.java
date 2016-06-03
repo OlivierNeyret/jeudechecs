@@ -2,27 +2,14 @@ package fr.iutvalence.info.dut.m2107;
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-import javax.swing.AbstractButton;
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -33,31 +20,44 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-
-import com.sun.glass.events.MouseEvent;
 
 
+/**
+ * la classe qui crée et gère la fenêtre
+ * @author pasquiop
+ *
+ */
+@SuppressWarnings("serial")
 public class Window extends JFrame
 {
 	
+	/**
+	 * représente la barre de menu
+	 */
 	private JMenuBar menuBar = new JMenuBar();
 
+	/**
+	 * le sous menu
+	 */
 	private JMenu menu1 = new JMenu("Fichier");
 
-	private JMenu menu2 = new JMenu("Options");
-
-	private JMenu menu2_1 = new JMenu("Couleur");
-
+	/**
+	 * premier élément du sous menu
+	 */
 	private JMenuItem item1_1 = new JMenuItem("Nouvelle Partie");
 
+	/**
+	 * deuxième élément du sous menu
+	 */
 	private JMenuItem item1_2 = new JMenuItem("Fermer");
 
-	private JRadioButtonMenuItem rb1 = new JRadioButtonMenuItem("Noir & Blanc");
-
-	private JRadioButtonMenuItem rb2 = new JRadioButtonMenuItem("Doge Game Company Edition");
 	
 
+	/**
+	 * méthode initialisant le menu et lançant l'écran titre (la méthode "introduction")
+	 * @param gameboard : le tableau dans lequel les pièces sont stockées
+	 */
+	@SuppressWarnings({ "static-access", "unqualified-field-access" })
 	public Window(Board gameboard)
 	{
 		// MENU//////////////////////////////////////////////////////////////
@@ -79,29 +79,6 @@ public class Window extends JFrame
 
 		this.menu1.add(item1_1);
 
-		this.menu2.add(item1_1);
-
-		// On met nos radios dans un ButtonGroup
-
-		ButtonGroup bg = new ButtonGroup();
-
-		bg.add(rb1);
-
-		bg.add(rb1);
-
-		// On présélectionne la première radio
-
-		rb1.setSelected(true);
-
-		// On ajoute les éléments dans notre sous-menu
-
-		this.menu2_1.add(rb1);
-
-		this.menu2_1.add(rb2);
-
-		// Ajout du sous-menu dans notre menu
-
-		this.menu2.add(this.menu2_1);
 
 		item1_2.addActionListener(new ActionListener()
 		{
@@ -125,7 +102,6 @@ public class Window extends JFrame
 		this.menu1.add(item1_1);
 		this.menu1.add(item1_2);
 		this.menuBar.add(menu1);
-		this.menuBar.add(menu2);
 		this.setJMenuBar(menuBar);
 		
 		//CONTENT//////////////////////////////////////////////////////
@@ -138,16 +114,23 @@ public class Window extends JFrame
 
 	}
 	
+	/**
+	 * cette méthode gère l'affichage du choix des options dans différents panels
+	 * @param gameboard : le tableau qui stocke les pièces
+	 */
 	private void option(Board gameboard){
 		this.getContentPane().removeAll();
-		JPanel options = new JPanel() ;
+		JPanel joueur = new JPanel() ;
+		JPanel AIpanel = new JPanel() ;
+		JPanel couleur = new JPanel() ;
+		JPanel lancerpanel = new JPanel() ;
 		
 		JRadioButtonMenuItem j1 = new JRadioButtonMenuItem("1 Joueur");
-		JRadioButtonMenuItem j2 = new JRadioButtonMenuItem("2 Joueur");
+		JRadioButtonMenuItem j2 = new JRadioButtonMenuItem("2 Joueurs");
 		
 		JRadioButtonMenuItem AI1 = new JRadioButtonMenuItem("Facile");
 		JRadioButtonMenuItem AI2 = new JRadioButtonMenuItem("Normal");
-		JRadioButtonMenuItem AI3 = new JRadioButtonMenuItem("Dificile");
+		JRadioButtonMenuItem AI3 = new JRadioButtonMenuItem("Difficile");
 		
 		JRadioButtonMenuItem BN1 = new JRadioButtonMenuItem("Blanc");
 		JRadioButtonMenuItem BN2 = new JRadioButtonMenuItem("Noir");
@@ -157,27 +140,36 @@ public class Window extends JFrame
 		ButtonGroup j = new ButtonGroup();
 		j.add(j1);
 		j.add(j2);
-		options.add(j1);
-		options.add(j2);
+		joueur.add(j1);
+		joueur.add(j2);
+		joueur.setBounds(500, 200, 100, 100);
+		this.add(joueur);
 		j1.setSelected(true);
 		
 		ButtonGroup AI = new ButtonGroup();
 		AI.add(AI1);
 		AI.add(AI2);
 		AI.add(AI3);
-		options.add(AI1);
-		options.add(AI2);
-		options.add(AI3);
+		AIpanel.add(AI1);
+		AIpanel.add(AI2);
+		AIpanel.add(AI3);
+		AIpanel.setBounds(500, 300, 100, 100);
+		this.add(AIpanel);
 		AI1.setSelected(true);
 		
 		ButtonGroup BN = new ButtonGroup();
 		BN.add(BN1);
 		BN.add(BN2);
-		options.add(BN1);
-		options.add(BN2);
+		couleur.add(BN1);
+		couleur.add(BN2);
+		couleur.setBounds(500, 400, 100, 100);
+		this.add(couleur);
 		BN1.setSelected(true);
 		
-		options.add(lancer);
+		lancerpanel.add(lancer);
+		lancerpanel.setBounds(500, 500, 100, 100);
+		this.add(lancerpanel);
+	    
 		
 		lancer.addActionListener(new ActionListener()
 		{
@@ -185,30 +177,60 @@ public class Window extends JFrame
 			public void actionPerformed(ActionEvent arg0)
 			{
 				if(j2.isSelected())
+				{
 					game(gameboard);
+					new Game();
+				}
+				else
+				{
+					Difficulty difficulty = null;
+					if(AI1.isSelected())
+						difficulty=Difficulty.EASY;
+					if(AI2.isSelected())
+						difficulty=Difficulty.MIDDLE;
+					if(AI3.isSelected())
+						difficulty=Difficulty.DIFFICULT;
+					
+					PieceColor color = null;
+					if(BN1.isSelected())
+						color=PieceColor.WHITE;
+					if(BN2.isSelected())
+						color=PieceColor.BLACK;
+					
+					
+					new Game(color,difficulty);
+					
+					game(gameboard);
+				}
 			}
 		});
 
-		this.add(options);
 		this.repaint();
 		this.revalidate();
 		
 	}
 
+	/**
+	 * cette méthode affiche l'écran titre, d'ou l'on peut lancer une partie ou quitter
+	 * @param gameboard : le tableau qui stocke les pièces
+	 */
 	private void introduction(Board gameboard){
 		JPanel intro = new JPanel();
+		JPanel intro2 = new JPanel();
 	
 		JLabel title = new JLabel("Chess Game");
-		JLabel company = new JLabel("Doge Game Company");
+		JLabel company = new JLabel("Doge Game Company présente:");
+		Font font = new Font("Arial",Font.BOLD,12);
+		title.setFont(font);
 		JButton start = new JButton("Start");
 		JButton exit = new JButton("Exit");
 		
 		start.setBounds(200,200,50,50);
 		
-		intro.add(title);
 		intro.add(company);
-		intro.add(start);
-		intro.add(exit);
+		intro.add(title);
+		intro2.add(start);
+		intro2.add(exit);
 		
 		start.addActionListener(new ActionListener()
 		{
@@ -226,35 +248,41 @@ public class Window extends JFrame
 			}
 		});
 
-		
+		intro.setBounds(500, 100, 300, 300);
 		this.add(intro);
+		this.add(intro2);
 	}
 	
-	 public boolean isCellEditable(int row, int column) {
-	       return false;
-	    }
-	
+	/**
+	 * cette méthode gère l'affichage de l'échiquier, des pièces et affiche les déplacement possible lorsqu'on clique sur une pièce
+	 * @param gameboard le tableau qui stocke les pièces
+	 */
 	public void game(Board gameboard){
 		this.getContentPane().removeAll();
 	    
-		 Object[][] data = {{1,"","","","","","","","",1},
-		 					{2,"", "","","","","","","",2},
-		 					{3,"","","","","","","","",3},
-		 					{4,"", "","","","","","","",4},
-		 					{5,"","","","","","","","",5},
-		 					{6,"", "","","","","","","",6},
-		 					{7,"","","","","","","","",7},
-		 					{8,"", "","","","","","","",8}};
+		 Object[][] data = {{1,"","","","","","","","",""},
+		 					{2,"", "","","","","","","",""},
+		 					{3,"","","","","","","","",""},
+		 					{4,"", "","","","","","","",""},
+		 					{5,"","","","","","","","",""},
+		 					{6,"", "","","","","","","",""},
+		 					{7,"","","","","","","","",""},
+		 					{8,"", "","","","","","","",""}};
 
 		 //Les titres des colonnes
 	    String[]  title = {"","A", "B", "C","D", "E", "F","G", "H",""};
 	    JTable plateau = new JTable(data, title);
+	    
+//	    JTable plateau = new JTable(data,title) {
+//
+//	    	public boolean isCellEditable(int row, int column) {
+//
+//	    	return false;
+//
+//	    	}
+//
+//	    	};
 	    plateau.removeEditor();
-	    /*for(int i=0; i<=9;i++){
-	    	for(int j=0; j<=9;j++){
-	    		plateau.
-		    }
-	    }*/
 	    plateau.getTableHeader().setReorderingAllowed(false);
 	    JScrollPane scroll=new JScrollPane(plateau);
 	    plateau.setDefaultRenderer(Object.class, new Cell(gameboard));//TODO
@@ -280,14 +308,17 @@ public class Window extends JFrame
 	    this.setVisible(true);
 		plateau.addMouseListener(new java.awt.event.MouseAdapter() {
 		    @Override
-		    public void mouseClicked(java.awt.event.MouseEvent evt) {
+		    public void mouseClicked(java.awt.event.MouseEvent evt) 
+		    {
 		      int row = plateau.getSelectedRow();
 		      int column = plateau.getSelectedColumn()-1;
 		      
 		      try
-			 {
-				if (row <=8 && row >=0 && column <=8 && column >=0 && gameboard.getPieceAtPosition(new Position(column,row)).getType()!=PieceType.NONE)
-				  { 	
+		      {
+				if (row <=8 && row >=0 && column <=8 && column >=0 )
+				 { 	
+					if(gameboard.getPieceAtPosition(new Position(column,row)).getType()!=PieceType.NONE)
+					{
 						plateau.setDefaultRenderer(Object.class, new Cell(gameboard, (gameboard.getPieceAtPosition(new Position(column,row)).deplacement(gameboard, true))));
 						
 						Piece prev =  gameboard.getBoard()[row][column] ;
@@ -319,6 +350,8 @@ public class Window extends JFrame
 							} 
 					    }); 
 				  }
+				}
+						
 			} catch (PositionOutOfBoardException e)
 			{
 				e.printStackTrace();

@@ -2,27 +2,46 @@ package fr.iutvalence.info.dut.m2107;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+/**
+ * défini l'affichage des cellule du Jtable
+ * @author pasquiop
+ *
+ */
+@SuppressWarnings("serial")
 public class Cell extends DefaultTableCellRenderer
 {
 
+	/**
+	 * le tableau qui stocke les pièces
+	 */
 	private Board board;
+	
+	/**
+	 * liste qui stocke les déplacment possibles lorsqu'on clique sur une pièce
+	 */
 	private ArrayList<Position> dep;
 
+	/**
+	 * crée la cellule avec un tableau de pièce et une liste de déplacement vide
+	 * @param gameboard tableau stockant les pièces
+	 */
 	public Cell(Board gameboard)
 	{
 		this.board=gameboard;
-		this.dep=new ArrayList();
+		this.dep=new ArrayList<Position>();
 	}
 
+	/**
+	 * crée la cellule avec un tableau de pièce et une liste de déplacement (vide ou non)
+	 * @param gameboard tableau stockant les pièces
+	 * @param deplacement liste de déplacement possible lorsqu'on clique sur une pièce
+	 */
 	public Cell(Board gameboard, ArrayList<Position> deplacement)
 	{
 		this.board=gameboard;
