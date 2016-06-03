@@ -33,7 +33,7 @@ public class AI extends Player
 	/**
 	 * Coefficient en cas d'echec
 	 */
-	private final static int COEF_CHESS = 500;
+	private final static int COEF_CHESS = 20;
 	/**
 	 * Coefficient en cas de victoire
 	 */
@@ -64,15 +64,17 @@ public class AI extends Player
 	public void aiPlay(Board board)
 	{
 		int depth;
+		int alpha = -COEF_VICTORY;
+		int beta = COEF_VICTORY;
 		Piece pieceChosen=null;
 		Position moveChosen=null;
 		
 		if(this.difficulty==Difficulty.EASY)
-			depth=1;
+			depth=2;
 		else if(this.difficulty==Difficulty.MIDDLE)
 			depth=3;
 		else
-			depth=5;
+			depth=4;
 		
 		int currentValue;
 		int maxValue = -COEF_VICTORY;
@@ -91,7 +93,8 @@ public class AI extends Player
 			{
 				currentMove = listOfMove.get(j);
 				temporaryBoard = board.emulateMove(currentPiece, currentMove);
-				currentValue = this.min(temporaryBoard,depth-1);
+				//currentValue = this.minI(temporaryBoard,depth-1);
+				currentValue = this.alphabeta(temporaryBoard, false, depth, alpha, beta);
 				if(currentValue>maxValue)
 				{
 					maxValue=currentValue;
@@ -104,12 +107,72 @@ public class AI extends Player
 	}
 	
 	/**
+	 * Donne la valeur du coup
+	 * @param board le plateau apres le coup
+	 * @param turnAI true si c'est le tour de l'ai
+	 * @param depth la profondeur souhaite
+	 * @param alpha la valeur minimum encadrant val
+	 * @param beta la valeur maximum encadrant val
+	 * @return la valeur du coup
+	 */
+	public int alphabeta(Board board, boolean turnAI, int depth, int alpha, int beta)
+	{
+		if(depth==0 || board.checkVictory(this.getColor())) //On verifie uniquement si l'ia a gagne car un joueur ne peut pas perdre volontairement
+			return this.evaluate(board);
+		int val;
+		Board temporaryBoard;
+		Piece currentPiece;
+		ArrayList<Position> listOfMove;
+		if (!turnAI)
+		{
+			val = COEF_VICTORY;
+			ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
+			//On parcourt toute les possibilitees de coups
+			for(int i=0;i<pieceOfAI.size();i++)
+			{
+				currentPiece=pieceOfAI.get(i);
+				listOfMove = currentPiece.deplacement(board, true);
+				for(int j=0;j<listOfMove.size();j++)
+				{
+					Position currentMove = listOfMove.get(j);
+					temporaryBoard = board.emulateMove(currentPiece, currentMove);
+					val = Math.min(val,this.alphabeta(temporaryBoard, !turnAI, depth-1, alpha, beta));
+					if(alpha>=val)
+						return val;
+					beta=Math.min(beta, val);
+				}
+			}	
+		}
+		else
+		{
+			val = -COEF_VICTORY;
+			ArrayList<Piece> pieceOfAI = board.getPiecePlayer(this.getColor());
+			//On parcourt toute les possibilitees de coups
+			for(int i=0;i<pieceOfAI.size();i++)
+			{
+				currentPiece=pieceOfAI.get(i);
+				listOfMove = currentPiece.deplacement(board, true);
+				for(int j=0;j<listOfMove.size();j++)
+				{
+					Position currentMove = listOfMove.get(j);
+					temporaryBoard = board.emulateMove(currentPiece, currentMove);
+					val = Math.max(val,this.alphabeta(temporaryBoard, !turnAI, depth-1, alpha, beta));
+					if(val>=beta)
+						return val;
+					alpha=Math.max(alpha, val);
+				}
+			}
+		}
+		return val;
+	}
+	
+	/**
 	 * Cherche le noeud a valeur minimum parmi les noeuds fils du coup passe en parametre
 	 * @param board Le plateau apres le coup simule
 	 * @param depth La profondeur actuelle de l'arbre
 	 * @return La valeur (a travers la methode evaluate) du noeud choisi
 	 */
-	private int min(Board board, int depth)
+	private int minI(Board board, int depth)
 	{
 		if(depth==0 || board.checkVictory(this.getColor())) //On verifie uniquement si l'ia a gagne car un joueur ne peut pas perdre volontairement
 			return this.evaluate(board);
@@ -130,9 +193,9 @@ public class AI extends Player
 			{
 				Position currentMove = listOfMove.get(j);
 				temporaryBoard = board.emulateMove(currentPiece, currentMove);
-				currentValue = this.max(temporaryBoard,depth-1);
+				currentValue = this.maxI(temporaryBoard,depth-1);
 				if(currentValue<min)
-					min=currentValue;
+					min=currentValue;	
 			}
 		}
 		return min;
@@ -144,7 +207,7 @@ public class AI extends Player
 	 * @param depth La profondeur de l'arbre
 	 * @return La valeur (a travers la methode evaluate) du noeud choisi
 	 */
-	private int max(Board board, int depth)
+	private int maxI(Board board, int depth)
 	{
 		if(depth==0 || board.checkVictory(this.getColor())) //On verifie uniquement si l'ia a gagne car un joueur ne peut pas perdre volontairement
 			return this.evaluate(board);
@@ -165,13 +228,14 @@ public class AI extends Player
 			{
 				Position currentMove = listOfMove.get(j);
 				temporaryBoard = board.emulateMove(currentPiece, currentMove);
-				currentValue = this.min(temporaryBoard, depth-1);
+				currentValue = this.minI(temporaryBoard, depth-1);
 				if(currentValue>max)
 					max=currentValue;
 			}
 		}
 		return max;
 	}
+	
 	
 	/**
 	 * Methode evaluant la situation de l IA

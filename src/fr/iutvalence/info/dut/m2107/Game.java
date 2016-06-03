@@ -1,6 +1,8 @@
 package fr.iutvalence.info.dut.m2107;
 
 import java.util.ArrayList;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Une partie d'echecs.
@@ -36,6 +38,8 @@ public class Game
 	 * L'interface homme-machine en console de la partie
 	 */
 	private IHM_Player ihmGame;
+	
+	//private Instant temps;
 
 	/**
 	 * Creer une partie a deux joueurs humains
@@ -47,6 +51,7 @@ public class Game
 		this.ai = null;
 		this.board = new Board();
 		this.ihmGame = new IHM_Player();
+		//this.temps = new Instant(0, 0);
 	}
 
 	/**
@@ -149,9 +154,16 @@ public class Game
 		if (this.checkDraw(this.board, color))
 			return PieceColor.NONE;
 		if (!human) // On fait jouer l'IA
+		{
+			Instant tempsDebut = Instant.now();
+			//long debut =temps.getEpochSecond();
 			ai.aiPlay(this.board);
+			long total = tempsDebut.until(Instant.now(),ChronoUnit.NANOS);
+			System.out.println(total);
+		}
 		else // Le joueur humain joue
 		{
+			boolean isCastling=false;
 			Position positionPieceToMove, positionOfDestination;
 			Piece pieceToMove;
 			ArrayList<Position> listOfMove;
@@ -169,6 +181,13 @@ public class Game
 				}
 				while (pieceToMove.getColor() != color);
 				listOfMove = pieceToMove.deplacement(this.board, true);
+				/*if(pieceToMove.getType()==PieceType.ROOK){
+					ArrayList<Position> possibleCastling = ((Rook) pieceToMove).Castling(this.board);
+					if (!(possibleCastling.isEmpty())){
+						isCastling=true;
+						System.out.println("Roque(s) Possible(s) : " + possibleCastling);
+					}
+				}*/
 				// Afficher les deplacements possibles
 				System.out.println(listOfMove);
 				// Demander le deplacement

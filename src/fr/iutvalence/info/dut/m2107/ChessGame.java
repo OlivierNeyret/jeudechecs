@@ -19,7 +19,7 @@ public class ChessGame
 	{
 	    System.out.println("Doge Chess Company presents ChessGame! such chess, very wow");
 	    IHM_Player ihmMain = new IHM_Player();
-	    Window zFen = new Window((new Game()).getBoard());
+	    //Window zFen = new Window((new Game()).getBoard());
 	    int nbOfHumanPlayer = ihmMain.askMode();
 	    Game game;
 	    PieceColor winner;
