@@ -17,6 +17,47 @@ public class Rook extends Piece {
 	{
 		super(couleur, PieceType.ROOK);
 	}
+	
+	/**
+	 * @param board Le plateau de jeu actuel
+	 * @return La liste des positions de roques possibles
+	 */
+	public ArrayList<Position> Castling(Board board){
+		PieceColor color=this.getColor();
+		Piece king = board.getKing(color);
+		ArrayList<Position> possibleCastling = new ArrayList<Position>();
+		if(!(this.isMoved()) && !(king).isMoved()){
+			boolean castling1 = true;
+			boolean castling2 = true;
+			int xKing = board.getCoordonateOfPiece(king).getOrdonate();
+			int yKing = board.getCoordonateOfPiece(king).getAbscissa();
+			
+			for (int i=0;i<3;i++){
+
+				try
+				{
+					if(board.isCheck(new Position(xKing+i,yKing),color) &&
+							!(board.getPieceAtPosition(new Position(xKing+i,yKing)).getType()==PieceType.NONE))
+							castling1=false;
+					if(board.isCheck(new Position(xKing-i,yKing),color) &&
+							!(board.getPieceAtPosition(new Position(xKing-i,yKing)).getType()==PieceType.NONE))
+							castling2=false;
+				
+					if(castling1){
+						possibleCastling.add(new Position(xKing+2,yKing));
+						possibleCastling.add(new Position(xKing+1,yKing));
+					}
+					if(castling2){
+						possibleCastling.add(new Position(xKing-2,yKing));
+						possibleCastling.add(new Position(xKing-1,yKing));
+					}
+				}catch (PositionOutOfBoardException e)
+				{
+				}
+			}
+		}
+		return possibleCastling;
+	}
 
 	public ArrayList<Position> deplacement(Board plateau, boolean check) {
 		ArrayList<Position> deplacement = new ArrayList<Position>();
